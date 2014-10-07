@@ -9,6 +9,22 @@ include_once './inc/f-menu.php';
 <html>
 <head>
 <script src="js/jquery-1.7.1.min.js"></script>
+<script >
+    var value = "";
+    $(document).ready(function(){
+        $("input:radio[name=checkout_method]").click(function() {
+            value = $(this).val();
+        });
+    });
+    function continuar(){
+        if(value==="guest"){
+            return "invitado";
+        }
+        if(value==="register"){
+            return "registro";
+        }
+    }
+</script>
 </head>
 <body>
    <section  id="columns" class="container_9 clearfix col1" >
@@ -35,7 +51,7 @@ include_once './inc/f-menu.php';
                          </ul>
                          <p>Al crear una cuenta en nuestra tienda, usted será capaz de realizar el proceso de compra más rápidamente, almacenar varias direcciones de envío, ver y rastrear sus pedidos en su cuenta y más.</p>
                          <div class="buttons-set">
-                           <button onclick="" class="button" type="button" id="onepage-guest-register-button"><span><span>Continuar</span></span></button>
+                           <button onclick="continuar();" class="button" type="button" id="onepage-guest-register-button"><span><span>Continuar</span></span></button>
                          </div>
                          </form>
                     </div>
@@ -63,7 +79,7 @@ include_once './inc/f-menu.php';
                           </fieldset>
                         </form>
                         <div class="buttons-set">
-                          <button onClick="" class="button" type="button" id="onepage-guest-register-button"><span><span>Iniciar sesión</span></span></button>
+                          <button onClick="submit();" class="button" type="button" id="onepage-guest-register-button"><span><span>Iniciar sesión</span></span></button>
                         </div>
                       </div>
                     </div>
