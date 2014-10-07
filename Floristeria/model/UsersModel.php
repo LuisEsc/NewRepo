@@ -8,5 +8,4 @@ class UsersModel {
         $con->close();
         return mysqli_fetch_object($result);
     }
-
 }
