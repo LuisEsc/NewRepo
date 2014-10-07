@@ -1,0 +1,137 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22-sep-2014, 9:33:48
+    Author     : Esmonet
+*/
+
+body {
+    font-family: Arial, sans-serif;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+.b_logo{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 8px;
+
+}
+.logo{
+    margin: 0 auto;
+    margin-bottom: 8px;
+}
+.img_section{
+    padding-top: 8px;
+    width: 100%;
+    text-align: center;
+}
+.box {
+
+    max-width: 440px;
+    padding: 40px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3); 
+}
+.form-signin h2{
+    color: #777;
+    font-size: 1.3em;
+    margin-left: 0.2em;
+
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+
+}
+.form-control:focus {
+    border-color: #FFA943;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(244, 152, 25, 0.6);
+    outline: 0 none;
+}
+.form-control::-moz-placeholder {
+    color: #CCC;
+    opacity: 1;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 15px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.help_login, .help_login:hover  {
+    font-size: 0.9em;
+    color: #EA840A;
+}
+.btn-login {
+    background-image: -webkit-linear-gradient(top,#F49819 0,#EA840A 100%);
+    background-image: -o-linear-gradient(top,#F49819 0,#EA840A 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#428bca),to(#2d6ca2));
+    background-image: linear-gradient(to bottom,#F49819 0,#EA840A 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff2d6ca2', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-color: #E87E00;
+    margin-bottom: 0.4em;
+}
+.btn-login:hover{
+    cursor: default;
+}
+
+div.footer {
+    text-align: center;
+    font-size: 84%;
+    background-color: #f0f0f0;
+    border-top:1px solid #cecece;
+    position: fixed;
+    height: 64px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    z-index: 250000;
+}
+.footer ul{
+    color: #777;
+    line-height: 40px;
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+.footer ul li {
+    display: inline;
+    padding: 0;
+    padding-right: 1.5em;
+}
+.link_footer, .link_footer:hover{
+    color: #EA840A;
+}

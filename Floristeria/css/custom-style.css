@@ -1,0 +1,85 @@
+
+
+html .first-bg,aside .block h4,.pagination ul .active a,button.button span,.button.btn-checkout,.iview-prevNav,a.iview-nextNav,.dl-menuwrapper button,.dl-menuwrapper .dl-menu{
+  background-color: #8CC152;
+	
+}
+html .first-bg-hover:hover,.pagination ul a:hover{
+  background-color: #8CC152;
+}
+
+html .first-color{
+	color: #8CC152;
+	
+}
+html .first-brd,.pagination ul .active a,.sf-menu li a:after{
+	border-color: #8CC152;
+	
+}
+
+
+
+
+html .second-bg,.sf-menu ul{
+	background:#efefef;
+	
+}
+html .second-color{
+	color:#555555;
+	
+}
+html .second-brd{
+	border-color:#555555;
+	
+}
+
+
+
+html .third-bg{
+	background:#fff;
+	
+}
+html .third-color{
+	color:#fff;
+	
+}
+html .third-brd{
+	border-color:#fff;
+	
+}
+
+
+
+html .fourth-bg,.cart-table .btn-update span{
+   background-color: #AC92EC;
+	
+}
+html .fourth-color{
+	color:#424242;
+	
+}
+html .fourth-brd{
+	border-color:#424242;
+	
+}
+
+
+
+
+
+
+html .fifth-bg,.cart .discount h2, .cart .shipping h2,.cart .totals th{
+	background-color: #EFEFEF;
+	
+}
+html .fifth-color{
+	color:#EFEFEF;
+	
+}
+html .fifth-brd{
+	border-color:#EFEFEF;
+	
+}
+
+
+
