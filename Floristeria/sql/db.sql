@@ -23,3 +23,19 @@ email VARCHAR(100) NOT NULL,
 password VARCHAR(32) NOT NULL,	
 PRIMARY KEY (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE usuarios(
+id int(11) NOT NULL AUTO_INCREMENT,
+dni varchar(11),
+nombre varchar(20),
+apellidos varchar(100),
+email VARCHAR(100) NOT NULL,
+password VARCHAR(32) NOT NULL,
+telefono int(9),
+direccion varchar(120),
+localidad varchar(30),
+codpostal VARCHAR(6),
+provincia varchar(20),
+pais varchar(20),
+primary key(id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
