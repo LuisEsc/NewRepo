@@ -132,6 +132,25 @@ input.checkbox {
 input.qty {
 	width:2.5em !important;
 }
+
+input[type="submit"]{
+	overflow:visible;
+	width:auto;
+	border:0;
+	padding:0;
+	margin:0;
+	background:transparent;
+	cursor:pointer;
+}
+input[type="submit"] {
+	color: #FFFFFF;
+	display: block;
+	font-size: 18px;
+	padding: 12px;
+	text-align: center;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
 button.button::-moz-focus-inner {
 padding:0;
 border:0;
