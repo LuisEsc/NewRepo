@@ -7,13 +7,13 @@ if ($admin != null) {
 }
 
 if (filter_input(INPUT_SERVER, 'REQUEST_METHOD') == 'POST') {
-    $username = filter_input(INPUT_POST, 'login_user', FILTER_VALIDATE_EMAIL);
+    $email = filter_input(INPUT_POST, 'login_user', FILTER_VALIDATE_EMAIL);
     $password = filter_input(INPUT_POST, 'login_pass', FILTER_SANITIZE_ENCODED);
 
-    if (($username) && ($password)) {
+    if (($email) && ($password)) {
         include_once './Model/AdministratorModel.php';
-        if (($object = AdministratorModel::getAdmin($username, $password)) != null) {
-            $_SESSION['admin'] = $object->username;
+        if (($object = AdministratorModel::getAdmin($email, $password)) != null) {
+            $_SESSION['admin'] = $object->email;
             header('location:index.php');
         }
     }
