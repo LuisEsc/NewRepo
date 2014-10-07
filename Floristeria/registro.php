@@ -7,12 +7,26 @@ include_once './inc/f-menu.php';
 ?>
 <html>
     <head>
+<script src="js/jquery-1.7.1.min.js"></script>
+<script src="js/jquery.validate.js"></script>
         <script type="text/javascript">
             function comprobarDatosFormulario() {
                 if ($("#login-email").text().length() > 0 ){
                     
                 }
             }
+            $(document).ready(function(){ 
+                 $("#register-form").validate({
+                submitHandler: function(form) {
+                  // some other code
+                  // maybe disabling submit button
+                  // then:
+                  alert("esta validando");
+                 // $(form).submit();
+                }
+            });
+            });
+           
         </script>
 
     </head>
@@ -29,7 +43,7 @@ include_once './inc/f-menu.php';
                             <div class="col-1">
                                 <h3>Registrarse como nuevo usuario</h3>
                                 <div class="wrap-login">
-                                    <form method="post" action="crearUsuario.php" id="login-form">
+                                    <form method="post" id="register-form">
                                         <fieldset>
                                             <ul class="form-list">
                                                 <li>
@@ -53,7 +67,7 @@ include_once './inc/f-menu.php';
                                             </ul>
                                             <input type="hidden" value="checkout" name="context">
                                             <div class="buttons-set">
-                                                <button onClick="comprobarDatosFormulario();" class="button" type="button" id="onepage-guest-register-button"><span><span>Registrar</span></span></button>
+                                                <input type="submit" value="Registrar" class="button"/>
                                             </div>
                                         </fieldset>
                                     </form>
@@ -84,29 +98,23 @@ include_once './inc/f-menu.php';
                                         </fieldset>
                                     </form>
                                     <div class="buttons-set">
-                                        <button onClick="" class="button" type="button" id="onepage-guest-register-button"><span><span>Iniciar sesión</span></span></button>
+                                        <input type="submit" value="Iniciar sesión" class="button"/>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-                  </div>
-                </div>
-              </div>
-            </div>
+
+                  
         </li>
     </ol>
    </section>
 </body>
-=======
-                </li>
-            </ol>
-        </section>
-    </body>
+               
 
 
 
->>>>>>> origin/master
 <?php
 include_once './inc/f-footer.php';
+?>
+</html>

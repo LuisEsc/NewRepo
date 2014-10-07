@@ -132,7 +132,8 @@ input.checkbox {
 input.qty {
 	width:2.5em !important;
 }
-input[type="submit"]{
+
+input[type="submit"] {
 	overflow:visible;
 	width:auto;
 	border:0;
