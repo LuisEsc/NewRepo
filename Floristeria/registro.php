@@ -10,7 +10,7 @@ include_once './inc/f-menu.php';
         <script type="text/javascript">
             function comprobarDatosFormulario() {
                 if ($("#login-email").text().length() > 0 ){
-                    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                    
                 }
             }
         </script>
