@@ -7,9 +7,9 @@
  */
 class Connection {
 
-    const _HOST_ = "localhost";
-    const _USER_ = "root";
-    const _PASS_ = "";
+    const _HOST_ = "192.168.1.50";
+    const _USER_ = "luis";
+    const _PASS_ = "eguzki";
     const _DB_ = "floristeria";
 
     private static $connection = null;
