@@ -87,8 +87,5 @@ include_once './inc/f-menu.php';
     </ol>
    </section>
 </body>
-
-
-
 <?php
 include_once './inc/f-footer.php';
