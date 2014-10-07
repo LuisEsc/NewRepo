@@ -105,22 +105,16 @@ include_once './inc/f-menu.php';
                         </div>
                     </div>
 
-                  </div>
-                </div>
-              </div>
-            </div>
+                  
         </li>
     </ol>
    </section>
 </body>
-
-                </li>
-            </ol>
-        </section>
-    </body>
-
+               
 
 
 
 <?php
 include_once './inc/f-footer.php';
+?>
+</html>
