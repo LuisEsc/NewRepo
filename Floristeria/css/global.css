@@ -139,7 +139,6 @@ input[type="submit"] {
 	border:0;
 	padding:0;
 	margin:0;
-	background:transparent;
 	cursor:pointer;
         color: #FFFFFF;
 	display: block;
@@ -149,6 +148,7 @@ input[type="submit"] {
 	text-transform: uppercase;
 	white-space: nowrap;
 }
+
 button.button::-moz-focus-inner {
 padding:0;
 border:0;
@@ -238,6 +238,9 @@ input.input-text:focus, select:focus, textarea:focus {
 	top: 0;
 }
 #login-form .form-list input.input-text {
+	width: 280px;
+}
+#register-form {
 	width: 280px;
 }
 .form-list li.control label {
@@ -4882,6 +4885,13 @@ html .ui-slider-handle {
 	margin-left: 10px;
 }
 #login-form label {
+	display: block;
+	margin-left: 30px;
+	padding-right: 20px;
+	text-align: right;
+	width: 130px;
+}
+#register-form label {
 	display: block;
 	margin-left: 30px;
 	padding-right: 20px;

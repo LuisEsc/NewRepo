@@ -43,7 +43,7 @@ include_once './inc/f-menu.php';
                             <div class="col-1">
                                 <h3>Registrarse como nuevo usuario</h3>
                                 <div class="wrap-login">
-                                    <form method="post" id="register-form">
+                                    <form method="post" id="register-form" class="login-form">
                                         <fieldset>
                                             <ul class="form-list">
                                                 <li>
