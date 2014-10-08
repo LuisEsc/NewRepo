@@ -9,14 +9,16 @@ class UsersModel {
         return mysqli_fetch_object($result);
     }
 
-    public static function insertToDb(Usuario usuario) {
-        
+    public static function insertToDb(Usuario $user) {
+        return true;
     }
 
-    
-    public static function updateToDb(Usuario usuario) {
-        
+    public static function updateToDb(Usuario $user) {
+        return true;
     }
 
-    
+    public static function mailExists($email) {
+        return true;
+    }
+
 }
