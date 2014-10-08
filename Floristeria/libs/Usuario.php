@@ -11,17 +11,17 @@ class Usuario{
     private $localidad;
     private $codpostal;
     private $provincia;
-    private $pais;
-    
+    private $pais;    
     
     public function __construct($email, $password) {
         $this->email = $email;
         $this->password = $password;        
     }
     
-    public function actualizarDatos($nombre = "", $apellidos = "", $dni = "", 
+    public function actualizarDatos($password, $nombre = "", $apellidos = "", $dni = "", 
                                     $telefono = 0, $direccion = "", $localidad = "",
                                     $codpostal = "", $provincia = "", $pais = ""){
+        $this->password = password;
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
         $this->dni = $dni;

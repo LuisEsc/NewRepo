@@ -12,7 +12,16 @@ include_once './inc/f-menu.php';
         <script type="text/javascript">
            
             $(document).ready(function(){ 
-                
+                $("#login-email").blur(
+                    $.ajax({
+                        type: "POST",
+                        url: "funcion.php",
+                        data: { this.val() :  "codigo" },
+                        success: function(data){
+                            
+                        }
+                    });
+                );
                 $("#register-form").validate({
                     rules: {
                         login_email: { required: true, email: true, maxlength: 100},
@@ -24,17 +33,12 @@ include_once './inc/f-menu.php';
                         login_password: "La contraseña debe tener al menos 6 carácteres de longitud.",
                         login_password2 : "Las dos contraseñas deben coincidir.",
                     },
-                submitHandler: function(form) {
-                  // some other code
-                  // maybe disabling submit button
-                  // then:
-                  console.log
-                  $("#register-form").submit();
-                    
-                    //alert("esta validando");
-                 // $(form).submit();
-                }
-            });
+                    submitHandler: function(form) {
+
+                        $("#register-form").submit();
+
+                    }
+                });
             });
            
         </script>
