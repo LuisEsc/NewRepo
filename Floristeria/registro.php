@@ -16,9 +16,9 @@ include_once './inc/f-menu.php';
                     $.ajax({
                         type: "POST",
                         url: "funcion.php",
-                        data: { this.val() :  "codigo" },
+                        data: { email : this.val() },
                         success: function(data){
-                            
+                            console.log(data);
                         }
                     });
                 );
