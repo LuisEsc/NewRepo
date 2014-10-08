@@ -44,12 +44,11 @@ include_once './inc/f-menu.php';
                         // si el correo no está en la base de datos
                         if(data==0){
                            $("#emailstatus").html("");
-                           $("#emailstatus").html("<span>Email Correcto</span>");
+                           $("#emailstatus").html("<span>Email Correcto</span>");                           
                         }
                         else{
                            $("#emailstatus").html("");
                            $("#emailstatus").html("<span>Email Inorrecto</span>");
-                            
                         }
                     }
 		});
