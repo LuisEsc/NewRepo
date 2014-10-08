@@ -29,18 +29,28 @@ include_once './inc/f-menu.php';
                     },
                     submitHandler: function(form) {
 
-                        $("#register-form").submit();
-
+                        
+                      comprobarEmailAjax();
                     }
                 });
             });
             function comprobarEmailAjax(){
+                $("#emailstatus").html("<span>Comprobando...</span>");
                 $.ajax({
                     type: "GET",
                     url: "posts/emailcheck.php",
                     data: { email : $("#login-email").val() },
                     success: function(data){
-                        console.log(data);
+                        // si el correo no está en la base de datos
+                        if(data==0){
+                           $("#emailstatus").html("");
+                           $("#emailstatus").html("<span>Email Correcto</span>");
+                        }
+                        else{
+                           $("#emailstatus").html("");
+                           $("#emailstatus").html("<span>Email Inorrecto</span>");
+                            
+                        }
                     }
 		});
             }
@@ -60,13 +70,15 @@ include_once './inc/f-menu.php';
                             <div class="col-1">
                                 <h3>Registrarse como nuevo usuario</h3>
                                 <div class="wrap-login">
-                                    <form method="post" id="register-form" class="login-form" action="tempcapturaform.php">
+                                    <form method="post" id="register-form" class="login-form">
                                         <fieldset>
                                             <ul class="form-list">
                                                 <li>
                                                     <label class="required" for="login-email"><em>*</em>Correo electrónico</label>
                                                     <div class="input-box">
                                                         <input type="email" maxlength="100" value="" name="login_email" id="login-email" class="input-text required-entry validate-email">
+                                                    </div>
+                                                    <div id="emailstatus">
                                                     </div>
                                                 </li>
                                                 <li>
