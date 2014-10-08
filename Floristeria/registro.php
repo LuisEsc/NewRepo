@@ -36,9 +36,9 @@ include_once './inc/f-menu.php';
             });
             function comprobarEmailAjax(){
                 $.ajax({
-                    type: "POST",
-                    url: "posts/emailCheck.php",
-                    data: { email : this.val() },
+                    type: "GET",
+                    url: "posts/emailcheck.php",
+                    data: { email : $("#login-email").val() },
                     success: function(data){
                         console.log(data);
                     }
