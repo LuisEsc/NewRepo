@@ -11,18 +11,12 @@ include_once './inc/f-menu.php';
 <script src="js/jquery.validate.js"></script>
         <script type="text/javascript">
            
-            $(document).ready(function(){ 
-                $("#login-email").blur(
-                    $.ajax({
-                        type: "POST",
-                        url: "funcion.php",
-                        data: { email : this.val() },
-                        success: function(data){
-                            console.log(data);
-                        }
-                    });
-                );
-                $("#register-form").validate({
+            $(document).ready(function (){
+               console.log("entra"); 
+               $("#login-email").focusout(function(){
+                  comprobarEmailAjax();
+               });
+               $("#register-form").validate({
                     rules: {
                         login_email: { required: true, email: true, maxlength: 100},
                         login_password: { required: true, minlength: 6},
@@ -35,12 +29,31 @@ include_once './inc/f-menu.php';
                     },
                     submitHandler: function(form) {
 
-                        $("#register-form").submit();
-
+                        
+                      comprobarEmailAjax();
                     }
                 });
             });
-           
+            function comprobarEmailAjax(){
+                $("#emailstatus").html("<span>Comprobando...</span>");
+                $.ajax({
+                    type: "GET",
+                    url: "posts/emailcheck.php",
+                    data: { email : $("#login-email").val() },
+                    success: function(data){
+                        // si el correo no está en la base de datos
+                        if(data==0){
+                           $("#emailstatus").html("");
+                           $("#emailstatus").html("<span>Email Correcto</span>");
+                        }
+                        else{
+                           $("#emailstatus").html("");
+                           $("#emailstatus").html("<span>Email Inorrecto</span>");
+                            
+                        }
+                    }
+		});
+            }
         </script>
 
     </head>
@@ -57,13 +70,15 @@ include_once './inc/f-menu.php';
                             <div class="col-1">
                                 <h3>Registrarse como nuevo usuario</h3>
                                 <div class="wrap-login">
-                                    <form method="post" id="register-form" class="login-form" action="tempcapturaform.php">
+                                    <form method="post" id="register-form" class="login-form">
                                         <fieldset>
                                             <ul class="form-list">
                                                 <li>
                                                     <label class="required" for="login-email"><em>*</em>Correo electrónico</label>
                                                     <div class="input-box">
                                                         <input type="email" maxlength="100" value="" name="login_email" id="login-email" class="input-text required-entry validate-email">
+                                                    </div>
+                                                    <div id="emailstatus">
                                                     </div>
                                                 </li>
                                                 <li>
