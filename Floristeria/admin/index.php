@@ -1,4 +1,5 @@
 <?php
+// 
 session_start();
 if (filter_input(INPUT_SERVER, 'REQUEST_METHOD') == 'POST') {
     if (($sign = filter_input(INPUT_POST, 'sign_off', FILTER_DEFAULT)) != null) {
@@ -18,6 +19,12 @@ if ($admin == null) {
 
 $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
 
+if ($admin != null) {
+    echo("you are administrator");
+    print_r($admin);
+} else {
+    echo("introduce las herrraminetta seleccionadad");
+}
 /*
   ?>
 
@@ -84,7 +91,7 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
 ?>
 <html lang="en">
 
-    <?php 
+    <?php
     require_once '';
     ?>
     <body>
