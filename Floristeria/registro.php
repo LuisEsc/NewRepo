@@ -10,12 +10,24 @@ include_once './inc/f-menu.php';
 <script src="js/jquery-1.7.1.min.js"></script>
 <script src="js/jquery.validate.js"></script>
         <script type="text/javascript">
-            function comprobarDatosFormulario() {
-                if ($("#login-email").text().length() > 0 ){
-                    
-                }
-            }
+           
             $(document).ready(function(){ 
+                rules: {
+                    name: { required: true, minlength: 2},
+                    lastname: { required: true, minlength: 2},
+                    email: { required:true, email: true},
+                    phone: { minlength: 2, maxlength: 15},
+                    years: { required: true},
+                    message: { required:true, minlength: 2}
+                },
+                messages: {
+                    name: "Debe introducir su nombre.",
+                    lastname: "Debe introducir su apellido.",
+                    email : "Debe introducir un email válido.",
+                    phone : "El número de teléfono introducido no es correcto.",
+                    years : "Debe introducir solo números.",
+                    message : "El campo Mensaje es obligatorio.",
+                },
                  $("#register-form").validate({
                 submitHandler: function(form) {
                   // some other code
