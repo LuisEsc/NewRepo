@@ -14,39 +14,44 @@ include_once './inc/f-menu.php';
 
             $(document).ready(init());
             function init() {
-                
+
             }
             function cargarValidador() {
                 $("#register-form").validate(
-                    {
-                        rules: {
-                            login_email: {required: true, email: true, maxlength: 100},
-                            login_password: {required: true, minlength: 6},
-                            login_password2: {required: true, minlength: 6, equalTo: "#login-password"}
-                        },
-                        messages: {
-                            login_email: "Introduzca una dirección de correo eletrónico.",
-                            login_password: "La contraseña debe tener al menos 6 carácteres de longitud.",
-                            login_password2: "Las dos contraseñas deben coincidir.",
-                        }
-                    });
+                        {
+                            rules: {
+                                login_email: {required: true, email: true, maxlength: 100},
+                                login_password: {required: true, minlength: 6},
+                                login_password2: {required: true, minlength: 6, equalTo: "#login-password"}
+                            },
+                            messages: {
+                                login_email: "Introduzca una dirección de correo eletrónico.",
+                                login_password: "La contraseña debe tener al menos 6 carácteres de longitud.",
+                                login_password2: "Las dos contraseñas deben coincidir.",
+                            }
+                        });
+
             }
+
             function enviarFormulario() {
-               
-                if ($form.valid() == true) {
+                //if ($("#register-form").valid() == true) {
+                comprobarEmailAjax();
+                //}
+
+            }
+
+            function pierdefoco() {
+                if ($("#login-email").val().match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$")) {
                     comprobarEmailAjax();
                 }
-                else {
-                    alert("incorrecto");
+                else{
+                    $("#emailstatus").prop("src", "resources/images/img_incorrecto.jpg");
                 }
-                console.log($form.valid());
             }
 
-
-
             function comprobarEmailAjax() {
-                $("#emailstatus").html("<span>Comprobando...</span>");
-                $("#login_email").attr("disabled", "disabled");
+                $("#emailstatus").prop("src", "resources/images/gifCargando.gif");
+                $("#login-email").prop("disabled", "disabled");
                 $.ajax({
                     type: "GET",
                     url: "posts/emailcheck.php",
@@ -55,15 +60,14 @@ include_once './inc/f-menu.php';
                         // si el correo no está en la base de datos
                         //alert(data);
                         if (data == 0) {
-                            $("#emailstatus").html("");
-                            $("#emailstatus").html("<span>Email Correcto</span>");
+                            $("#emailstatus").prop("src", "resources/images/img_correcto.jpg");
                         }
                         else {
-                            $("#emailstatus").html("");
-                            $("#emailstatus").html("<span>Email Incorrecto</span>");
+                            $("#emailstatus").prop("src", "resources/images/img_incorrecto.jpg");
                         }
                     }
                 });
+                $("#login-email").prop("disabled", "");
             }
 
 
@@ -88,11 +92,12 @@ include_once './inc/f-menu.php';
                                             <ul class="form-list">
                                                 <li>
                                                     <label class="required" for="login-email"><em>*</em>Correo electrónico</label>
+
                                                     <div class="input-box">
-                                                        <input type="email" maxlength="100" value="" name="login_email" id="login-email" class="input-text required-entry validate-email">
+                                                        <input type="email" maxlength="100" value="" onblur="pierdefoco();" name="login_email" id="login-email" class="input-text required-entry validate-email">
+                                                    </div><div><img id="emailstatus" src=""/>
                                                     </div>
-                                                    <div id="emailstatus">
-                                                    </div>
+
                                                 </li>
                                                 <li>
                                                     <label class="required" for="login-password"><em>*</em>Contraseña</label>
@@ -119,19 +124,19 @@ include_once './inc/f-menu.php';
                             <div class="col-2">
                                 <h3>¿Usted ya es cliente?</h3>
                                 <div class="wrap-login">
-                                    <form method="post" action="/customer/account/loginPost/" id="login-form">
+                                    <form method="post"  id="login-form">
                                         <fieldset>
                                             <ul class="form-list">
                                                 <li>
                                                     <label class="required" for="login-email"><em>*</em>Correo electrónico</label>
                                                     <div class="input-box">
-                                                        <input type="text" value="" name="login[username]" id="login-email" class="input-text required-entry validate-email">
+                                                        <input type="text" value="" name="login[username]" id="login[email]" class="input-text required-entry validate-email">
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <label class="required" for="login-password"><em>*</em>Contraseña</label>
                                                     <div class="input-box">
-                                                        <input type="password" name="login[password]" id="login-password" class="input-text required-entry">
+                                                        <input type="password" name="login[password]" id="login[password]" class="input-text required-entry">
                                                     </div>
                                                 </li>
 
@@ -140,7 +145,7 @@ include_once './inc/f-menu.php';
                                         </fieldset>
                                     </form>
                                     <div class="buttons-set">
-                                        <input type="submit" value="Iniciar sesión" class="button"/>
+                                        <input type="text" value="Iniciar sesión" class="button"/>
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +158,7 @@ include_once './inc/f-menu.php';
         </section>
 
         <script type="text/javascript">
-             cargarValidador();
+            cargarValidador();
         </script>
 
 
