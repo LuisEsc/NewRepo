@@ -11,36 +11,39 @@ include_once './inc/f-menu.php';
 <script src="js/jquery.validate.js"></script>
         <script type="text/javascript">
            
-            $(document).ready(function(){ 
-                $("#login-email").blur(
-                    $.ajax({
-                        type: "POST",
-                        url: "funcion.php",
-                        data: { email : this.val() },
-                        success: function(data){
-                            console.log(data);
-                        }
-                    });
-                );
-                $("#register-form").validate({
-                    rules: {
-                        login_email: { required: true, email: true, maxlength: 100},
-                        login_password: { required: true, minlength: 6},
-                        login_password2: { required:true, minlength: 6, equalTo: "#login-password"}
-                    },
-                    messages: {
-                        login_email: "Introduzca una dirección de correo eletrónico.",
-                        login_password: "La contraseña debe tener al menos 6 carácteres de longitud.",
-                        login_password2 : "Las dos contraseñas deben coincidir.",
-                    },
-                    submitHandler: function(form) {
+            $(document).ready(function (){
+               console.log("entra"); 
+               $("#login-email").focusout(function(){
+                  comprobarEmailAjax();
+               });
+               $("#register-form").validate({
+		rules: {
+			login_email: { required: true, email: true, maxlength: 100},
+			login_password: { required: true, minlength: 6},
+			login_password2: { required:true, minlength: 6, equalTo: "#login-password"}
+		},
+		messages: {
+			login_email: "Introduzca una dirección de correo eletrónico.",
+			login_password: "La contraseña debe tener al menos 6 carácteres de longitud.",
+			login_password2 : "Las dos contraseñas deben coincidir.",
+		},
+		submitHandler: function(form) {
 
-                        $("#register-form").submit();
+			$("#register-form").submit();
 
-                    }
-                });
+		}
+	});
             });
-           
+            function comprobarEmailAjax(){
+                $.ajax({
+                    type: "POST",
+                    url: "posts/emailCheck.php",
+                    data: { email : this.val() },
+                    success: function(data){
+                        console.log(data);
+                    }
+		});
+            }
         </script>
 
     </head>
