@@ -18,7 +18,10 @@ class UsersModel {
     }
 
     public static function mailExists($email) {
-        return true;
+        $con = Connection::getConnection();
+        $result = $con->query("SELECT * FROM `usuarios` WHERE `email` = '{$email}'");
+        $con->close();
+        return mysqli_num_rows($result);
     }
 
 }
