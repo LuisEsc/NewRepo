@@ -7,57 +7,71 @@ include_once './inc/f-menu.php';
 ?>
 <html>
     <head>
-<script src="js/jquery-1.7.1.min.js"></script>
-<script src="js/jquery.validate.js"></script>
+        <script src="js/jquery-1.7.1.min.js"></script>
+        <script src="js/jquery.validate.js"></script>
         <script type="text/javascript">
-           
-            $(document).ready(function (){
-               console.log("entra"); 
-               $("#login-email").focusout(function(){
-                  comprobarEmailAjax();
-               });
-               $("#register-form").validate({
-                    rules: {
-                        login_email: { required: true, email: true, maxlength: 100},
-                        login_password: { required: true, minlength: 6},
-                        login_password2: { required:true, minlength: 6, equalTo: "#login-password"}
-                    },
-                    messages: {
-                        login_email: "Introduzca una dirección de correo eletrónico.",
-                        login_password: "La contraseña debe tener al menos 6 carácteres de longitud.",
-                        login_password2 : "Las dos contraseñas deben coincidir.",
-                    },
-                    submitHandler: function(form) {
 
-                        
-                      comprobarEmailAjax();
-                    }
-                });
-            });
-            function comprobarEmailAjax(){
+
+            $(document).ready(init());
+            function init() {
+                
+            }
+            function cargarValidador() {
+                $("#register-form").validate(
+                    {
+                        rules: {
+                            login_email: {required: true, email: true, maxlength: 100},
+                            login_password: {required: true, minlength: 6},
+                            login_password2: {required: true, minlength: 6, equalTo: "#login-password"}
+                        },
+                        messages: {
+                            login_email: "Introduzca una dirección de correo eletrónico.",
+                            login_password: "La contraseña debe tener al menos 6 carácteres de longitud.",
+                            login_password2: "Las dos contraseñas deben coincidir.",
+                        }
+                    });
+            }
+            function enviarFormulario() {
+               
+                if ($form.valid() == true) {
+                    comprobarEmailAjax();
+                }
+                else {
+                    alert("incorrecto");
+                }
+                console.log($form.valid());
+            }
+
+
+
+            function comprobarEmailAjax() {
                 $("#emailstatus").html("<span>Comprobando...</span>");
+                $("#login_email").attr("disabled", "disabled");
                 $.ajax({
                     type: "GET",
                     url: "posts/emailcheck.php",
-                    data: { email : $("#login-email").val() },
-                    success: function(data){
+                    data: {email: $("#login-email").val()},
+                    success: function (data) {
                         // si el correo no está en la base de datos
-                        if(data==0){
-                           $("#emailstatus").html("");
-                           $("#emailstatus").html("<span>Email Correcto</span>");                           
+                        //alert(data);
+                        if (data == 0) {
+                            $("#emailstatus").html("");
+                            $("#emailstatus").html("<span>Email Correcto</span>");
                         }
-                        else{
-                           $("#emailstatus").html("");
-                           $("#emailstatus").html("<span>Email Inorrecto</span>");
+                        else {
+                            $("#emailstatus").html("");
+                            $("#emailstatus").html("<span>Email Incorrecto</span>");
                         }
                     }
-		});
+                });
             }
+
+
         </script>
 
     </head>
     <body>
-        
+
         <section  id="columns" class="container_9 clearfix col1" >
             <ol id="checkoutSteps" class="opc">
                 <li class="section allow active" id="opc-login">
@@ -95,7 +109,7 @@ include_once './inc/f-menu.php';
                                             </ul>
                                             <input type="hidden" value="checkout" name="context">
                                             <div class="buttons-set">
-                                                <input type="submit" value="Registrar" class="button"/>
+                                                <button onClick="enviarFormulario();" class="button"/>Registrar</button>
                                             </div>
                                         </fieldset>
                                     </form>
@@ -133,16 +147,24 @@ include_once './inc/f-menu.php';
                         </div>
                     </div>
 
-                  
-        </li>
-    </ol>
-   </section>
-</body>
-               
+
+                </li>
+            </ol>
+        </section>
+
+        <script type="text/javascript">
+             cargarValidador();
+        </script>
 
 
 
-<?php
-include_once './inc/f-footer.php';
-?>
+
+    </body>
+
+
+
+
+    <?php
+    include_once './inc/f-footer.php';
+    ?>
 </html>
