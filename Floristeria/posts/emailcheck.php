@@ -1,5 +1,5 @@
 <?php
 
-$email = (isset($_POST['email'])) ? $_POST['email'] : null;
+$email = (isset($_GET['email'])) ? $_GET['email'] : null;
 return "tu email es " . $email;
 
