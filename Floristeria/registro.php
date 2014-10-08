@@ -12,28 +12,26 @@ include_once './inc/f-menu.php';
         <script type="text/javascript">
            
             $(document).ready(function(){ 
-                rules: {
-                    name: { required: true, minlength: 2},
-                    lastname: { required: true, minlength: 2},
-                    email: { required:true, email: true},
-                    phone: { minlength: 2, maxlength: 15},
-                    years: { required: true},
-                    message: { required:true, minlength: 2}
-                },
-                messages: {
-                    name: "Debe introducir su nombre.",
-                    lastname: "Debe introducir su apellido.",
-                    email : "Debe introducir un email válido.",
-                    phone : "El número de teléfono introducido no es correcto.",
-                    years : "Debe introducir solo números.",
-                    message : "El campo Mensaje es obligatorio.",
-                },
-                 $("#register-form").validate({
+                
+                $("#register-form").validate({
+                    rules: {
+                        login_email: { required: true, email: true, maxlength: 100},
+                        login_password: { required: true, minlength: 6},
+                        login_password2: { required:true, minlength: 6, equalTo: "#login-password"}
+                    },
+                    messages: {
+                        login_email: "Introduzca una dirección de correo eletrónico.",
+                        login_password: "La contraseña debe tener al menos 6 carácteres de longitud.",
+                        login_password2 : "Las dos contraseñas deben coincidir.",
+                    },
                 submitHandler: function(form) {
                   // some other code
                   // maybe disabling submit button
                   // then:
-                  alert("esta validando");
+                  console.log
+                  $("#register-form").submit();
+                    
+                    //alert("esta validando");
                  // $(form).submit();
                 }
             });
@@ -55,25 +53,25 @@ include_once './inc/f-menu.php';
                             <div class="col-1">
                                 <h3>Registrarse como nuevo usuario</h3>
                                 <div class="wrap-login">
-                                    <form method="post" id="register-form" class="login-form">
+                                    <form method="post" id="register-form" class="login-form" action="tempcapturaform.php">
                                         <fieldset>
                                             <ul class="form-list">
                                                 <li>
                                                     <label class="required" for="login-email"><em>*</em>Correo electrónico</label>
                                                     <div class="input-box">
-                                                        <input type="email" maxlength="100" value="" name="login[email]" id="login-email" class="input-text required-entry validate-email">
+                                                        <input type="email" maxlength="100" value="" name="login_email" id="login-email" class="input-text required-entry validate-email">
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <label class="required" for="login-password"><em>*</em>Contraseña</label>
                                                     <div class="input-box">
-                                                        <input type="password" maxlength="" name="login[password]" id="login-password" class="input-text required-entry">
+                                                        <input type="password" maxlength="" name="login_password" id="login-password" class="input-text required-entry">
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <label class="required" for="login-password2"><em>*</em>Confirmar contraseña</label>
                                                     <div class="input-box">
-                                                        <input type="text" value="" name="login[password2]" id="login-password2" class="input-text required-entry">
+                                                        <input type="password" value="" name="login_password2" id="login-password2" class="input-text required-entry">
                                                     </div>
                                                 </li>
                                             </ul>

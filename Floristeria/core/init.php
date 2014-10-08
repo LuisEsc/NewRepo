@@ -9,5 +9,6 @@ require_once './libs/Category.php';
 require_once './model/FlowersModel.php';
 require_once './model/UsersModel.php';
 require_once './libs/PoblacionEnvio.php';
+require_once './libs/Usuario.php';
 
 
