@@ -9,9 +9,11 @@ include_once './inc/f-menu.php';
     <head>
         <script src="js/jquery-1.7.1.min.js"></script>
         <script src="js/jquery.validate.js"></script>
+        
         <script type="text/javascript">
 
-
+            var correoCorrecto = false;
+            var formularioCorrecto = false;
             $(document).ready(init());
             function init() {
 
@@ -34,9 +36,20 @@ include_once './inc/f-menu.php';
             }
 
             function enviarFormulario() {
-                //if ($("#register-form").valid() == true) {
-                comprobarEmailAjax();
-                //}
+                if ($("#register-form").valid() == true && $("#login-email").val().match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$")) {
+                    comprobarEmailAjax();
+                    if (correoCorrecto == true) {
+                        $.ajax({
+                            type: "GET",
+                            url: "posts/creausuarioregistro.php",
+                            data: {email: $("#login-email").val(), password: $("#login-password").val()},
+                            success: function (data) {
+                                // si el correo no está en la base de datos
+                                alert(data);                                
+                            }
+                        });
+                    }
+                }
 
             }
 
@@ -44,14 +57,14 @@ include_once './inc/f-menu.php';
                 if ($("#login-email").val().match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$")) {
                     comprobarEmailAjax();
                 }
-                else{
+                else {
                     $("#emailstatus").prop("src", "resources/images/img_incorrecto.jpg");
                 }
             }
 
             function comprobarEmailAjax() {
                 $("#emailstatus").prop("src", "resources/images/gifCargando.gif");
-                $("#login-email").prop("disabled", "disabled");
+                $("#login-email").attr("disabled", "disabled");
                 $.ajax({
                     type: "GET",
                     url: "posts/emailcheck.php",
@@ -61,9 +74,12 @@ include_once './inc/f-menu.php';
                         //alert(data);
                         if (data == 0) {
                             $("#emailstatus").prop("src", "resources/images/img_correcto.jpg");
+                            //formularioCorrecto=true;
+                            correoCorrecto = true;
                         }
                         else {
                             $("#emailstatus").prop("src", "resources/images/img_incorrecto.jpg");
+                            correoCorrecto = false;
                         }
                     }
                 });
