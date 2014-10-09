@@ -7,8 +7,7 @@ require_once '../libs/Usuario.php';
 $email = (isset($_GET['email'])) ? $_GET['email'] : null;
 $password = (isset($_GET['password'])) ? md5($_GET['password']) : null;
 $insertado = false;
-if($email!=null && $password!=null){
-    
+if($email!=null && $password!=null){    
     $insertado = UsersModel::insertToDb(new Usuario($email, $password));
     if($insertado == true){
         echo "Se ha creado el usuario correctamente";
