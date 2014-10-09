@@ -5,7 +5,6 @@ class UsersModel {
     public static function isUser($email, $password) {
         $con = Connection::getConnection();
         $object = $con->query("SELECT * FROM `usuarios` WHERE `email` = '{$email}' AND `password` = '{$password}'", MYSQLI_STORE_RESULT);
-        
       
         $obj = mysqli_fetch_assoc($object);
         $con->close();

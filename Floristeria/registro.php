@@ -55,7 +55,7 @@ include_once './inc/f-menu.php';
 
             function comprobarEmailAjax(loginemail) {
                 $("#emailstatus").prop("src", "resources/images/gifCargando.gif");
-                $("#login-email").attr("disabled", "disabled");
+                $("#login-email").attr("disabled", true);
                 $.ajax({
                     type: "GET",
                     url: "posts/emailcheck.php",
@@ -74,7 +74,7 @@ include_once './inc/f-menu.php';
                         }
                     }
                 });
-                $("#login-email").attr("disabled", "");
+                $("#login-email").attr("disabled", false);
             }
 
 
@@ -97,15 +97,16 @@ include_once './inc/f-menu.php';
                             <div class="col-1">
                                 <h3>Registrarse como nuevo usuario</h3>
                                 <div class="wrap-login">
-                                    <form method="post" id="register-form" class="login-form" action="posts/creausuarioregistro.php">
+                                    <form method="post" id="register-form" action="posts/creausuarioregistro.php">
                                         <fieldset>
                                             <ul class="form-list">
                                                 <li>
                                                     <label class="required" for="login-email"><em>*</em>Correo electrónico</label>
 
                                                     <div class="input-box">
-                                                        <input type="email" maxlength="100" value="" onblur="pierdefoco();" name="login_email" id="login-email" class="input-text required-entry validate-email">
-                                                    </div><div><img id="emailstatus" src=""/>
+                                                        <input type="email" maxlength="100" name="login_email" value="" onblur="pierdefoco();"  id="login-email" class="input-text required-entry validate-email">
+                                                    </div>
+                                                    <div><img id="emailstatus" src=""/>
                                                     </div>
 
                                                 </li>
@@ -140,13 +141,13 @@ include_once './inc/f-menu.php';
                                                 <li>
                                                     <label class="required" for="login-email"><em>*</em>Correo electrónico</label>
                                                     <div class="input-box">
-                                                        <input type="text" value="" name="login--email" id="login[-email]" class="input-text required-entry validate-email">
+                                                        <input type="text" value="" name="login--email" id="login---email" class="input-text required-entry validate-email">
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <label class="required" for="login-password"><em>*</em>Contraseña</label>
                                                     <div class="input-box">
-                                                        <input type="password" name="login--password" id="login[-password]" class="input-text required-entry">
+                                                        <input type="password" name="login--password" id="login---password" class="input-text required-entry">
                                                     </div>
                                                 </li>
 
