@@ -5,7 +5,7 @@ class UsersModel {
     public static function isUser($email, $password) {
         $con = Connection::getConnection();
         $object = $con->query("SELECT * FROM `usuarios` WHERE `email` = '{$email}' AND `password` = '{$password}'", MYSQLI_STORE_RESULT);
-      
+
         $obj = mysqli_fetch_assoc($object);
         $con->close();
         return $obj;
@@ -26,12 +26,18 @@ class UsersModel {
         return true;
     }
 
+    public static function deleteToDb(Usuario $user) {
+        $con = Connection::getConnection();
+        $res = mysqli_query($con, "DELETE FROM `usuarios` WHERE `email` = '{$user->email}'");
+        return $res;
+    }
+
     public static function mailExists($email) {
         $con = Connection::getConnection();
         $result = $con->query("SELECT count(email) as number FROM `usuarios` WHERE email = '" . $email . "'");
         $con->close();
         $res = mysqli_fetch_object($result);
         return (int) $res->number;
-        //return $result->num_rows;
     }
+
 }
