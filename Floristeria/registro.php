@@ -9,22 +9,22 @@ include_once './inc/f-menu.php';
     <head>
         <script src="js/jquery-1.7.1.min.js"></script>
         <script src="js/jquery.validate.js"></script>
-        
+
         <script type="text/javascript">
 
             var correoCorrecto = false;
             var formularioCorrecto = false;
             $(document).ready(init());
-            function init() {
+            function init() {}
 
-            }
+
             function cargarValidador() {
                 $("#register-form").validate(
                         {
                             rules: {
                                 login_email: {required: true, email: true, maxlength: 100},
                                 login_password: {required: true, minlength: 6},
-                                login_password2: {required: true, minlength: 6, equalTo: "#login-password"}
+                                login_password2: {required: true, minlength: 6, equalTo: "#login-password"},
                             },
                             messages: {
                                 login_email: "Introduzca una dirección de correo eletrónico.",
@@ -32,22 +32,13 @@ include_once './inc/f-menu.php';
                                 login_password2: "Las dos contraseñas deben coincidir.",
                             }
                         });
-
             }
 
             function enviarFormulario() {
                 if ($("#register-form").valid() == true && $("#login-email").val().match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$")) {
-                    comprobarEmailAjax();
+                    comprobarEmailAjax($("#login-email").val());
                     if (correoCorrecto == true) {
-                        $.ajax({
-                            type: "GET",
-                            url: "posts/creausuarioregistro.php",
-                            data: {email: $("#login-email").val(), password: $("#login-password").val()},
-                            success: function (data) {
-                                // si el correo no está en la base de datos
-                                alert(data);                                
-                            }
-                        });
+                        $("#register-form").submit();
                     }
                 }
 
@@ -55,20 +46,20 @@ include_once './inc/f-menu.php';
 
             function pierdefoco() {
                 if ($("#login-email").val().match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$")) {
-                    comprobarEmailAjax();
+                    comprobarEmailAjax($("#login-email").val());
                 }
                 else {
                     $("#emailstatus").prop("src", "resources/images/img_incorrecto.jpg");
                 }
             }
 
-            function comprobarEmailAjax() {
+            function comprobarEmailAjax(loginemail) {
                 $("#emailstatus").prop("src", "resources/images/gifCargando.gif");
                 $("#login-email").attr("disabled", "disabled");
                 $.ajax({
                     type: "GET",
                     url: "posts/emailcheck.php",
-                    data: {email: $("#login-email").val()},
+                    data: {email: loginemail},
                     success: function (data) {
                         // si el correo no está en la base de datos
                         //alert(data);
@@ -83,8 +74,11 @@ include_once './inc/f-menu.php';
                         }
                     }
                 });
-                $("#login-email").prop("disabled", "");
+                $("#login-email").attr("disabled", "");
             }
+
+
+
 
 
         </script>
@@ -103,7 +97,7 @@ include_once './inc/f-menu.php';
                             <div class="col-1">
                                 <h3>Registrarse como nuevo usuario</h3>
                                 <div class="wrap-login">
-                                    <form method="post" id="register-form" class="login-form">
+                                    <form method="post" id="register-form" class="login-form" action="posts/creausuarioregistro.php">
                                         <fieldset>
                                             <ul class="form-list">
                                                 <li>
@@ -130,7 +124,7 @@ include_once './inc/f-menu.php';
                                             </ul>
                                             <input type="hidden" value="checkout" name="context">
                                             <div class="buttons-set">
-                                                <button onClick="enviarFormulario();" class="button"/>Registrar</button>
+                                                <button onClick="enviarFormulario();" class="button">Registrar</button>
                                             </div>
                                         </fieldset>
                                     </form>
@@ -140,29 +134,30 @@ include_once './inc/f-menu.php';
                             <div class="col-2">
                                 <h3>¿Usted ya es cliente?</h3>
                                 <div class="wrap-login">
-                                    <form method="post"  id="login-form">
+                                    <form method="post"  id="login-form" action="posts/loguear.php">
                                         <fieldset>
                                             <ul class="form-list">
                                                 <li>
                                                     <label class="required" for="login-email"><em>*</em>Correo electrónico</label>
                                                     <div class="input-box">
-                                                        <input type="text" value="" name="login[username]" id="login[email]" class="input-text required-entry validate-email">
+                                                        <input type="text" value="" name="login--email" id="login[-email]" class="input-text required-entry validate-email">
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <label class="required" for="login-password"><em>*</em>Contraseña</label>
                                                     <div class="input-box">
-                                                        <input type="password" name="login[password]" id="login[password]" class="input-text required-entry">
+                                                        <input type="password" name="login--password" id="login[-password]" class="input-text required-entry">
                                                     </div>
                                                 </li>
 
                                             </ul>
                                             <input type="hidden" value="checkout" name="context">
                                         </fieldset>
-                                    </form>
                                     <div class="buttons-set">
-                                        <input type="text" value="Iniciar sesión" class="button"/>
+                                        <input type="submit" value="Iniciar sesión" />
                                     </div>
+                                      
+                                    </form>  
                                 </div>
                             </div>
                         </div>
@@ -177,7 +172,7 @@ include_once './inc/f-menu.php';
             cargarValidador();
         </script>
     </body>
-    
+
     <?php
     include_once './inc/f-footer.php';
     ?>

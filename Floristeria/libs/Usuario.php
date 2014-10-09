@@ -17,9 +17,19 @@ class Usuario {
     public function __construct($email, $password) {
         $this->email = $email;
         $this->password = $password;
+        $this->nombre = "";
+        $this->apellidos = "";
+        $this->dni = "";
+        $this->telefono = "";
+        $this->direccion = "";
+        $this->localidad = "";
+        $this->codpostal = "";
+        $this->provincia = "";
+        $this->pais = "";
     }
 
-    public function actualizarDatos($password, $nombre = "", $apellidos = "", $dni = "", $telefono = 0, $direccion = "", $localidad = "", $codpostal = "", $provincia = "", $pais = "") {
+    public function actualizarDatos($email, $password, $nombre = "", $apellidos = "", $dni = "", $telefono = "", $direccion = "", $localidad = "", $codpostal = "", $provincia = "", $pais = "") {
+        $this->email = email;
         $this->password = password;
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;

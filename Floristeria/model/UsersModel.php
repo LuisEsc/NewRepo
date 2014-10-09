@@ -1,11 +1,13 @@
 <?php
-
+//require_once "libs/Usuario.php";
 class UsersModel {
 
     public static function isUser($email, $password) {
         $con = Connection::getConnection();
-        $object = mysqli_fetch_object($con->query("SELECT * FROM `usuarios` WHERE `email` = '{$email}' AND `password` = '{$password}'"));
-        return $object;
+        $object = $con->query("SELECT * FROM `usuarios` WHERE `email` = '{$email}' AND `password` = '{$password}'", MYSQLI_STORE_RESULT);
+        $obj = mysqli_fetch_assoc($object);
+        $con->close();
+        return $obj;
     }
 
     public static function insertToDb(Usuario $user) {
