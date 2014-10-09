@@ -19,6 +19,8 @@ class UsersModel {
     }
 
     public static function updateToDb(Usuario $user) {
+        $con = Connection::getConnection();
+        $res = mysqli_query($link, $query);
         return true;
     }
 
@@ -30,5 +32,4 @@ class UsersModel {
         return (int) $res->number;
         //return $result->num_rows;
     }
-
 }
