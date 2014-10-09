@@ -1,6 +1,7 @@
 <?php
-class Usuario{
-    
+
+class Usuario {
+
     public $email;
     public $password;
     public $nombre;
@@ -11,16 +12,14 @@ class Usuario{
     public $localidad;
     public $codpostal;
     public $provincia;
-    public $pais;    
-    
+    public $pais;
+
     public function __construct($email, $password) {
         $this->email = $email;
-        $this->password = $password;        
+        $this->password = $password;
     }
-    
-    public function actualizarDatos($password, $nombre = "", $apellidos = "", $dni = "", 
-                                    $telefono = 0, $direccion = "", $localidad = "",
-                                    $codpostal = "", $provincia = "", $pais = ""){
+
+    public function actualizarDatos($password, $nombre = "", $apellidos = "", $dni = "", $telefono = 0, $direccion = "", $localidad = "", $codpostal = "", $provincia = "", $pais = "") {
         $this->password = password;
         $this->nombre = $nombre;
         $this->apellidos = $apellidos;
@@ -32,8 +31,9 @@ class Usuario{
         $this->provincia = $provincia;
         $this->pais = $pais;
     }
-    
+
 }
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

@@ -19,4 +19,5 @@ class PoblacionEnvio {
         $this->pob = $p;
         $this->km = $km;
     }
+
 }
