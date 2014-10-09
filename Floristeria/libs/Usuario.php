@@ -1,17 +1,17 @@
 <?php
 class Usuario{
     
-    private $email;
-    private $password;
-    private $nombre;
-    private $dni;
-    private $apellidos;
-    private $telefono;
-    private $direccion;
-    private $localidad;
-    private $codpostal;
-    private $provincia;
-    private $pais;    
+    public $email;
+    public $password;
+    public $nombre;
+    public $dni;
+    public $apellidos;
+    public $telefono;
+    public $direccion;
+    public $localidad;
+    public $codpostal;
+    public $provincia;
+    public $pais;    
     
     public function __construct($email, $password) {
         $this->email = $email;

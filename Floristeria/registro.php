@@ -160,15 +160,8 @@ include_once './inc/f-menu.php';
         <script type="text/javascript">
             cargarValidador();
         </script>
-
-
-
-
     </body>
-
-
-
-
+    
     <?php
     include_once './inc/f-footer.php';
     ?>
