@@ -1,19 +1,22 @@
 <?php
-
+//require_once "libs/Usuario.php";
 class UsersModel {
 
     public static function isUser($email, $password) {
         $con = Connection::getConnection();
-        $result = $con->query("SELECT * FROM `usuarios` WHERE `email` = '{$email}' AND `password` = '{$password}'");
+        $object = $con->query("SELECT * FROM `usuarios` WHERE `email` = '{$email}' AND `password` = '{$password}'", MYSQLI_STORE_RESULT);
+        
+      
+        $obj = mysqli_fetch_assoc($object);
         $con->close();
-        return mysqli_fetch_object($result);
+        return $obj;
     }
 
     public static function insertToDb(Usuario $user) {
         $con = Connection::getConnection();
-        $res = mysqli_query($con, "INSERT INTO `usuarios` "
+        $res = $con->query("INSERT INTO `usuarios` "
                 . "(`id`, `dni`, `nombre`, `apellidos`, `email`, `password`, `telefono`, `direccion`, `localidad`, `codpostal`, `provincia`, pais) "
-                . "VALUES (null, '{$user->dni}', '{$user->nombre}','{$user->apellidos}','{$user->email}','{$user->password}','{$user->telefono}','{$user->direccion}','{$user->localidad}','{$user->codpostal}','{$user->provincia}','{$user->pais}')");
+                . "VALUES (null, '{$user->dni}', '{$user->nombre}','{$user->apellidos}','{$user->email}','{$user->password}','{$user->telefono}','{$user->direccion}','{$user->localidad}','{$user->codpostal}','{$user->provincia}','{$user->pais}')", MYSQLI_USE_RESULT);
         $con->close();
         return $res;
     }
