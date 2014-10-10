@@ -49,7 +49,8 @@ class UsersModel {
     }
 
     public static function isActivated() {
-        
+        // me devuelve un objeto de la claase connection
+        $con = Connection::getConnection();
     }
 
 }
