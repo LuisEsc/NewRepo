@@ -36,6 +36,7 @@ class Session {
             //print_r($_SESSION['flowers']);
         }
     }
+    
 
     public static function removeFlower(Flower $flower = null) {
         self::sessionStart();
