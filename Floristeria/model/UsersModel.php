@@ -1,4 +1,5 @@
 <?php
+
 //require_once "libs/Usuario.php";
 class UsersModel {
 
@@ -21,9 +22,16 @@ class UsersModel {
     }
 
     public static function updateToDb(Usuario $user) {
+        if ($user instanceof Usuario) {
+            // entonces usuario
+            if ($user->email != NULL) {
+                
+            }
+        }
         $con = Connection::getConnection();
-        $res = mysqli_query($link, $query);
-        return true;
+        $res = $con->query("UPDATE `usuarios` set dni = '{$user->dni}', nombre = '{$user->nombre}'", MYSQLI_USE_RESULT);
+        $con->close();
+        return $res;
     }
 
     public static function deleteToDb(Usuario $user) {
@@ -38,6 +46,10 @@ class UsersModel {
         $con->close();
         $res = mysqli_fetch_object($result);
         return (int) $res->number;
+    }
+
+    public static function isActivated() {
+        
     }
 
 }
