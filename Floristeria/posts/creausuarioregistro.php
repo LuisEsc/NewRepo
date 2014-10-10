@@ -10,13 +10,13 @@ $password = (isset($_REQUEST['login_password'])) ? md5($_REQUEST['login_password
 
 
 if($email!=null && $password!=null){        
-    $insertado = UsersModel::insertToDb(new Usuario($email, $password));
-    
+    $insertado = UsersModel::insertToDb(new Usuario($email, $password));    
     if($insertado==true){
-       echo "Se ha creado el usuario correctamente" ;
+       //echo "Se ha creado el usuario correctamente" ;
+        header("Location: ../index.php");
     }
     else{
-        echo "no se ha insertado";
+        //echo "no se ha insertado";
     }
    
 }
