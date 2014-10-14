@@ -10,7 +10,7 @@ foreach (FlowersModel::getFlowers() as $flower) {
     print "<a href=\"product.php?id={$flower->id}&mode=0\">{$flower->name}</a>";
 }
 ?>
-
 <?php
+//echo $_SESSION['email'];
 
 $index->footerCreate();

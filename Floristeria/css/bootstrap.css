@@ -2678,7 +2678,7 @@ input[type="button"].btn-block {
   background-color: #080808 \9;
 }
 
-button.btn,
+button, 
 input[type="submit"].btn {
   *padding-top: 3px;
   *padding-bottom: 3px;

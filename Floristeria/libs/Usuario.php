@@ -13,19 +13,34 @@ class Usuario {
     public $codpostal;
     public $provincia;
     public $pais;
-
-    public function __construct($email, $password) {
+    
+    public static function arrayToUser($array){
+        $this->email     = $array['email'];
+        $this->password  = $array['password'];
+        $this->nombre    = $array['nombre'];
+        $this->dni       = $array['dni'];
+        $this->apellidos = $array['apellidos'];
+        $this->telefono  = $array['telefono'];
+        $this->direccion = $array['direccion'];
+        $this->localidad = $array['localidad'];
+        $this->codpostal = $array['codpostal'];
+        $this->provincia = $array['provincia'];
+        $this->pais      = $array['pais'];
+        return $this;
+    }
+    
+    public function __construct($user) {
         $this->email = $email;
         $this->password = $password;
-        $this->nombre = "";
-        $this->apellidos = "";
-        $this->dni = "";
-        $this->telefono = "";
-        $this->direccion = "";
-        $this->localidad = "";
-        $this->codpostal = "";
-        $this->provincia = "";
-        $this->pais = "";
+        $this->nombre = $nombre;
+        $this->apellidos = $apellidos;
+        $this->dni = $dni;
+        $this->telefono = $telefono;
+        $this->direccion = $direccion;
+        $this->localidad = $localidad;
+        $this->codpostal = $codpostal;
+        $this->provincia = $provincia;
+        $this->pais = $pais;
     }
 
     public function actualizarDatos($email, $password, $nombre = "", $apellidos = "", $dni = "", $telefono = "", $direccion = "", $localidad = "", $codpostal = "", $provincia = "", $pais = "") {

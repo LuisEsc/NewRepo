@@ -1,6 +1,6 @@
 <?php
 
-//require_once "libs/Usuario.php";
+//require_once "./libs/Usuario.php";
 class UsersModel {
 
     public static function isUser($email, $password) {
@@ -24,17 +24,24 @@ class UsersModel {
     public static function updateToDb(Usuario $user) {
         if ($user instanceof Usuario) {
             // entonces usuario
+            $con = Connection::getConnection();
+
             if ($user->email != NULL) {
-                
+                $res = $con->query("UPDATE usuarios set dni = '{$user->dni}', nombre = '{$user->nombre}', apellidos = '{$user->apellidos}', password = '{$user->password}', telefono = '{$user->telefono}', direccion = '{$user->direccion}', localidad = '{$user->localidad}', codpostal = '{$user->codpostal}', provincia = '{$user->provincia}', pais = '{$user->pais}'  where email = '{$user->email}'");
+                $con->close();
+                return $res;
+            } else {
+                $con->close();
+                return 0;
             }
+        } else {
+            $con->close();
+            return 0;
         }
-        $con = Connection::getConnection();
-        $res = $con->query("UPDATE `usuarios` set dni = '{$user->dni}', nombre = '{$user->nombre}'", MYSQLI_USE_RESULT);
-        $con->close();
-        return $res;
+        //echo $res;
     }
 
-    public static function deleteToDb(Usuario $user) {
+    public static function deleteToDb($user) {
         $con = Connection::getConnection();
         $res = mysqli_query($con, "DELETE FROM `usuarios` WHERE `email` = '{$user->email}'");
         return $res;
