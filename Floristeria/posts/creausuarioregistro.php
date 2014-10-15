@@ -5,7 +5,7 @@ require_once '../model/UsersModel.php';
 require_once '../libs/Usuario.php';
 session_start();
 $email = (isset($_REQUEST['login_email'])) ? $_REQUEST['login_email'] : null;
-$password = (isset($_REQUEST['login_password']) && empty($_REQUEST['login_password'])) ? md5($_REQUEST['login_password']) : null;
+//$password = (isset($_REQUEST['login_password']) && empty($_REQUEST['login_password'])) ? md5($_REQUEST['login_password']) : null;
 
 
 if(isset($_REQUEST['login_password'])){
