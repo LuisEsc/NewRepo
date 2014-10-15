@@ -5,7 +5,6 @@ include_once './inc/f-header.php';
 include_once './inc/f-cart.php';
 include_once './inc/f-menu.php';
 require_once './libs/Usuario.php';
-
 ?>
 <html>
     <head>
@@ -18,13 +17,13 @@ require_once './libs/Usuario.php';
                 $("#txt_email").val("<?php echo $_SESSION['user']->email; ?>");
 
             });
+
             function eliminarCuenta() {
                 var confirmar = window.confirm("¿Esta seguro de que desea eliminar su cuenta?\nNo se podrán recuperar el historial de pedidos ni los datos personales");
                 if (confirmar == true) {
-                    
+
                 }
             }
-
         </script>
     </head>
     <body>
@@ -84,15 +83,12 @@ require_once './libs/Usuario.php';
                                                     <button onclick="eliminarCuenta();" type="button" class="button" id="btn_eliminarCuenta" name="btn-eliminarCuenta"><pre><span>Eliminar cuenta</span></pre></button>
                                                 </div>
                                             </li>
-
                                         </ul> 
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </li>
             </ol>
         </section>
