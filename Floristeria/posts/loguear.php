@@ -10,9 +10,10 @@ session_start();
     
     if($email!=null && $password!=null){
         $user = UsersModel::isUser($email, $password);
-        $_SESSION['user']=new Usuario($user);
+        
         if($user!=null){
-            
+            $usuario = new Usuario($email,$password);
+            $_SESSION['user']=$usuario->arrayToUser($user);
             header("Location: ../index.php");
         }
         else{
