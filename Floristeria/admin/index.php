@@ -99,7 +99,7 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
                 <span class="text-muted"></span>
             </div>
         </div>
-
+        
         <h2 class="sub-header">Section title</h2>
         <div class="table-responsive">
             <table class="table table-striped">
