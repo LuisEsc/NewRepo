@@ -4,7 +4,7 @@ require_once "../core/Connection.php";
 require_once "../libs/Usuario.php";
 session_start();
 
-$email = (  isset($_POST['email']) ? $_POST['email'] : null );
+$email = $_SESSION['user']->email;
 
 $borrado = 0;
 
@@ -14,8 +14,11 @@ if($borrado==1){
     echo true;
     unset($_SESSION['user']);
     session_destroy();
+    
+    header("Location: ../index.php");
 }
 else{
     echo false;
 }
+ 
 

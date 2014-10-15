@@ -434,6 +434,7 @@ var Grid = (function() {
                         self.$loading.hide();
                         self.$fullimage.find('img').remove();
                         self.$largeImg = $img.fadeIn(350);
+                        
                         self.$fullimage.append(self.$largeImg);
                     }
                 }).attr('src', eldata.largesrc);
