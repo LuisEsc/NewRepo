@@ -15,7 +15,7 @@ class UsersModel {
     public static function insertToDb(Usuario $user) {
         $con = Connection::getConnection();
         $res = $con->query("INSERT INTO `usuarios` "
-                . "(`id`, `dni`, `nombre`, `apellidos`, `email`, `password`, `telefono`, `direccion`, `localidad`, `codpostal`, `provincia`, pais) "
+                . "(`id`, `dni`, `nombre`, `apellidos`, `email`, `password`, `telefono`, `direccion`, `localidad`, `codpostal`, `provincia`, `pais`) "
                 . "VALUES (null, '{$user->dni}', '{$user->nombre}','{$user->apellidos}','{$user->email}','{$user->password}','{$user->telefono}','{$user->direccion}','{$user->localidad}','{$user->codpostal}','{$user->provincia}','{$user->pais}')", MYSQLI_USE_RESULT);
         $con->close();
         return $res;
