@@ -30,17 +30,17 @@ class Usuario {
     }
     
     public function __construct($user) {
-        $this->email = $email;
-        $this->password = $password;
-        $this->nombre = $nombre;
-        $this->apellidos = $apellidos;
-        $this->dni = $dni;
-        $this->telefono = $telefono;
-        $this->direccion = $direccion;
-        $this->localidad = $localidad;
-        $this->codpostal = $codpostal;
-        $this->provincia = $provincia;
-        $this->pais = $pais;
+        $this->email     = $user['email'];
+        $this->password  = $user['password'];
+        $this->nombre    = $user['nombre'];
+        $this->dni       = $user['dni'];
+        $this->apellidos = $user['apellidos'];
+        $this->telefono  = $user['telefono'];
+        $this->direccion = $user['direccion'];
+        $this->localidad = $user['localidad'];
+        $this->codpostal = $user['codpostal'];
+        $this->provincia = $user['provincia'];
+        $this->pais      = $user['pais'];
     }
 
     public function actualizarDatos($email, $password, $nombre = "", $apellidos = "", $dni = "", $telefono = "", $direccion = "", $localidad = "", $codpostal = "", $provincia = "", $pais = "") {
