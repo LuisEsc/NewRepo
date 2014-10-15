@@ -20,7 +20,7 @@ class Usuario {
         $this->nombre    = $array['nombre'];
         $this->dni       = $array['dni'];
         $this->apellidos = $array['apellidos'];
-        $this->telefono = $array['telefono'];
+        $this->telefono  = $array['telefono'];
         $this->direccion = $array['direccion'];
         $this->localidad = $array['localidad'];
         $this->codpostal = $array['codpostal'];
@@ -42,7 +42,7 @@ class Usuario {
         $this->localidad = $localidad;
         $this->codpostal = $codpostal;
         $this->provincia = $provincia;
-        $this->pais= $pais;
+        $this->pais      = $pais;
     }
 
     public function actualizarDatos($email, $password, $nombre = "", $apellidos = "", $dni = "", $telefono = "", $direccion = "", $localidad = "", $codpostal = "", $provincia = "", $pais = "") {

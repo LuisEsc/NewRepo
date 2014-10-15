@@ -6,7 +6,7 @@
 require_once "../libs/Usuario.php";
 require_once "../model/UsersModel.php";
 require_once "../core/Connection.php";
-
+session_start();
 $nombre = (isset($_REQUEST['txt-nombre'])? $_REQUEST['txt-nombre'] : null);
 $apellidos = (isset($_REQUEST['txt-apellidos'])? $_REQUEST['txt-apellidos'] : null);
 $dni = (isset($_REQUEST['txt-dni'])? $_REQUEST['txt-dni'] : null);
@@ -17,8 +17,13 @@ $codpostal = (isset($_REQUEST['txt-codpostal'])? $_REQUEST['txt-codpostal'] : nu
 $direccion = (isset($_REQUEST['txt-direccion'])? $_REQUEST['txt-direccion'] : null);
 $pais = (isset($_REQUEST['txt-pais'])? $_REQUEST['txt-pais'] : null);
 $email = (isset($_REQUEST['txt-email'])? $_REQUEST['txt-email'] : null);
-$password = (isset($_REQUEST['txt-pass'])? md5($_REQUEST['txt-pass']) : null);
-$password2 = (isset($_REQUEST['txt-pass2'])? md5($_REQUEST['txt-pass2']) :null);
+$password = "";
+$password2 = "";
+
+/*$password = (isset($_REQUEST['txt-pass'])? md5($_REQUEST['txt-pass']) : null);
+$password2 = (isset($_REQUEST['txt-pass2'])? md5($_REQUEST['txt-pass2']) :null);*/
+
+
 
 if($email!=null && ($password == $password2 & $password!=null)){
     

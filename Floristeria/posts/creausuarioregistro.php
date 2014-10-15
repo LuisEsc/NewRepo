@@ -24,7 +24,7 @@ if($email!=null && $password!=null){
     if($insertado==true){
        //echo "Se ha creado el usuario correctamente" ;
         $user = new Usuario($email, $password);
-        $_SESSION['user'] = $user->arrayToUser(UsersModel::isUser($email, $password));
+        $_SESSION['user'] = $user;
         header("Location: ../index.php");
     }
     else{
