@@ -43,6 +43,7 @@
     </div>
 
     //<!-- Mobile menu -->
+    <!--
     <div class="dl-menuwrapper none" id="dl-menu">
         <button class="dl-trigger">Open Menu</button>
         <ul class="dl-menu">
@@ -133,4 +134,5 @@
             </li>
         </ul>
     </div>
+    -->
 </header>
