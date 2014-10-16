@@ -16,7 +16,7 @@ class FlowersModel {
         }
         return null;
     }
-    
+
     public static function save(Flower $flower) {
         $sql = "INSERT INTO table_name (id, name, description, price, imagename, imagetype, category, imgblop)";
         $sql .= "VALUES (null , {$flower->name}}, {$flower->description}, {$flower->price}, {$flower->image_name}, {$flower->image_type}, {$flower->category}, {$flower->str_imgcodificada})";
