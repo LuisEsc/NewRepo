@@ -1,7 +1,8 @@
 <?php
 
-$image = (isset($_GET['image'])) ? $_GET['image'] : null;
-$type = (isset($_GET['type'])) ? $_GET['type'] : null;
+$id = (isset($_GET['id'])) ? $_GET['id'] : null;
+
+
 
 abstract class ImageType {
 
@@ -14,6 +15,4 @@ abstract class ImageType {
 if ($image != null && ($type == ImageType::Normal || $type == ImageType::Thumb)) {
     include_once '../core/Connection.php';
     $connection = Connection::getConnection();
-    
-    
 }
