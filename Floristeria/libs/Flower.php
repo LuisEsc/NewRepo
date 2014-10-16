@@ -21,8 +21,10 @@ class Flower {
     public $image_type;
     // categoria a la que pertenece la flor
     public $category = null;
+    
+    public $str_imgcodificada;
 
-    public function __construct($id, $name, $price, $description, $image_name, $image_type, $category) {
+    public function __construct($id, $name, $price, $description, $image_name, $image_type, $category, $str_imgcodificada) {
         $this->id = $id;
         $this->name = $name;
         $this->price = $price;
@@ -30,6 +32,7 @@ class Flower {
         $this->image_name = $image_name;
         $this->image_type = $image_type;
         $this->category = $category;
+        $this->str_imgcodificada = $str_imgcodificada;
     }
 
     private function tabContext() {
