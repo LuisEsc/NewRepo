@@ -1,88 +1,70 @@
 <?php
-include_once './inc/Session.php';
+require_once './inc/Session.php';
+require_once '../model/FlowersModel.php';
 $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
 ?>
 <html lang="es">
+    <script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
+
     <?php
     require_once './inc/header_struct.php';
     require_once '../core/Connection.php';
     require_once '../libs/Flower.php';
-    require_once './Model/FlowerModel.php';
+    require_once '../model/FlowersModel.php';
     ?>
     
-    <link type="text/css" rel="stylesheet" href="css/tiny.css" media="all">
-    <script type="text/javascript" src="js/tinyeditor.js"></script>
-    <script src="../js/jquery-1.7.1.min.js" ></script>   
     <script type="text/javascript">
-        $(document).ready(function(){
-            $("#btn_insertar").click(function(){
-                console.log("ahora");
-            });
-        });
-        
+        function editar(id){
+            alert(id);
+        }
+        function eliminar(id){
+            alert(id);
+        }
     </script>
+
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1 class="page-header">Añadir nueva flor</h1>
-        <form id="for" role="form" >
-            <div class="form-group">
-                <label for="email">Nombre de la Flor:</label>
-                <input type="nombre-flor" class="form-control" id="email" name="nombre">
-            </div>
-            <div class="form-group">
-                <label for="pwd">Precio:</label>
-                <input type="text" class="form-control" id="pwd" name="precio">
-            </div>
-            <div class="form-group">
-                <label for="pwd">Sección:</label>
-                <select class="form-control" name="categoria">
-                    <?php foreach ($category as $key => $value): ?>
-                        <option value="<?php echo($key); ?>"><?php echo($value); ?></option>
+        <h1 class="page-header">Listado de flores</h1>
+        
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Pvp</th>
+                        <th>Imagen</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $flowers = FlowersModel::getFlowers();
+                    foreach ($flowers as $flower):
+                        ?>
+                        <tr>
+                            <td><?php echo($category[$flower->category]) ?></td>
+                            <td><?php echo($flower->name); ?></td>
+                            <td><?php echo($flower->description); ?></td>
+                            <td><?php echo($flower->price); ?></td>
+                            <td><?php echo($flower->str_imgcodificada); ?></td>
+                            <td>
+                                <button onclick="editar(<?php echo($flower->id) ?>);" class="glyphicon glyphicon-pencil"></button>
+                                <button onclick="eliminar(<?php echo($flower->id) ?>);" class="glyphicon glyphicon-remove"></button>
+                            </td>
+                            
+                        </tr>
                     <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="ejemplo_archivo_1">Adjuntar una imagen:</label>
-                <input type="file" id="ejemplo_archivo_1" name="file">
-                <p class="help-block">Ejemplo de texto de ayuda.</p>
-            </div>
-            <div class="form-group">
-                <label>Descripción:</label>
-                <textarea id="editor_texto" style="width:400px; height:200px"></textarea>
-            </div>
-            <button id="btn_insertar" class="btn btn-default" >Guardar</button>
-            <img name="img_load" id="img-load" src=""/>
-        </form>
+                </tbody>
+            </table>
+        </div>
+        
 
-        <script type="text/javascript">
-        var editor = new TINY.editor.edit('editor', {
-            id: 'editor_texto',
-            width: 800,
-            height: 200,
-            cssclass: 'te',
-            controlclass: 'tecontrol',
-            rowclass: 'teheader',
-            dividerclass: 'tedivider',
-            controls: ['bold', 'italic', 'underline', 'strikethrough', '|', 'subscript', 'superscript', '|',
-                'orderedlist', 'unorderedlist', '|', 'outdent', 'indent', '|', 'leftalign',
-                'centeralign', 'rightalign', 'blockjustify', '|', 'unformat', '|', 'undo', 'redo', 'n',
-                'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink', '|', 'cut', 'copy', 'paste', 'print'],
-            footer: false,
-            fonts: ['Verdana', 'Arial', 'Georgia', 'Trebuchet MS'],
-            xhtml: true,
-            cssfile: 'style.css',
-            bodyid: 'editor',
-            footerclass: 'tefooter',
-            toggle: {text: 'show source', activetext: 'show wysiwyg', cssclass: 'toggle'},
-            resize: {cssclass: 'resize'}
-        });
 
-        </script>
 
     </div>
 </div>
 </div>
 
-
-
-
+</body>
 </html>
