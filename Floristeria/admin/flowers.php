@@ -12,7 +12,7 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
     require_once '../libs/Flower.php';
     require_once '../model/FlowersModel.php';
     ?>
-    
+
     <script type="text/javascript">
         function eliminar(id){
             alert(id);
@@ -21,9 +21,9 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <h1 class="page-header">Listado de flores</h1>
-        
+
         <button onclick="window.location.href='agregarflor.php'">  <param  class="glyphicon glyphicon-plus"/> Agregar Nueva Flor</button>
-        
+   
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -51,17 +51,17 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
                                 <button onclick="agregarflor.php?id=<?php echo($flower->id) ?>" class="glyphicon glyphicon-pencil"></button>
                                 <button onclick="eliminar(<?php echo($flower->id) ?>);" class="glyphicon glyphicon-remove"></button>
                             </td>
-                            
+
                         </tr>
                     <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-        
+</tbody>
+</table>
+</div>
 
 
 
-    </div>
+
+</div>
 </div>
 </div>
 
