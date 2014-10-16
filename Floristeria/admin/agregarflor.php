@@ -10,7 +10,7 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
     require_once './inc/header_struct.php';
     require_once '../core/Connection.php';
     require_once '../libs/Flower.php';
-    require_once './Model/FlowerModel.php';
+    require_once '../model/FlowersModel.php';
     ?>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -22,7 +22,7 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
             </div>
             <div class="form-group">
                 <label for="precio">Precio:</label>
-                <input type="text" class="form-control" id="precio" name="precio">
+                <input type="text" class="form-control" id="precio" name="precio" value="<?php if(isset($_REQUEST['id'])) {echo FlowersModel::getFlowerById($_REQUEST['id'])['precio'];}?>">
             </div>
             <div class="form-group">
                 <label for="categoria">Sección:</label>
@@ -41,7 +41,7 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
                 <label>Descripción:</label>
                 <textarea id="editor1" name="editor1" style="width:400px; height:200px"></textarea>
             </div>
-            <button id="btn_insertar" class="btn btn-default" >Guardar</button>
+            <button id="btn_insertar"  class="btn btn-default" ><?php if(isset($_REQUEST['id'])) echo "Guardar cambios"; else echo "Insertar nueva flor"; ?></button>
             <img name="img_load" id="img-load" src=""/>
         </form>
 

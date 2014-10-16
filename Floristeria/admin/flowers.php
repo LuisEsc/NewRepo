@@ -14,9 +14,6 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
     ?>
     
     <script type="text/javascript">
-        function editar(id){
-            alert(id);
-        }
         function eliminar(id){
             alert(id);
         }
@@ -24,6 +21,8 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <h1 class="page-header">Listado de flores</h1>
+        
+        <button onclick="window.location.href='agregarflor.php'">  <param  class="glyphicon glyphicon-plus"/> Agregar Nueva Flor</button>
         
         <div class="table-responsive">
             <table class="table table-striped">
@@ -49,7 +48,7 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
                             <td><?php echo($flower->price); ?></td>
                             <td><?php echo($flower->str_imgcodificada); ?></td>
                             <td>
-                                <button onclick="editar(<?php echo($flower->id) ?>);" class="glyphicon glyphicon-pencil"></button>
+                                <button onclick="agregarflor.php?id=<?php echo($flower->id) ?>" class="glyphicon glyphicon-pencil"></button>
                                 <button onclick="eliminar(<?php echo($flower->id) ?>);" class="glyphicon glyphicon-remove"></button>
                             </td>
                             
