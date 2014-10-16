@@ -12,21 +12,26 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
     require_once '../libs/Flower.php';
     require_once '../model/FlowersModel.php';
     ?>
+    <script type="text/javascript">
+        function eliminar(id){
+            alert(id);
+        }
+    </script>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <h1 class="page-header">Añadir nueva flor</h1>
         <form id="form" method="post" action="posts/insertarflor.php" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nombre">Nombre de la Flor:</label>
-                <input type="nombre-flor" class="form-control" id="nombre" name="nombre">
+                <input type="nombre-flor" class="form-control" id="nombre" name="nombre" value="<?php if(isset($_REQUEST['id'])) {echo FlowersModel::getFlowerById($_REQUEST['id'])->name;}?>"/>
             </div>
             <div class="form-group">
                 <label for="precio">Precio:</label>
-                <input type="text" class="form-control" id="precio" name="precio" value="<?php if(isset($_REQUEST['id'])) {echo FlowersModel::getFlowerById($_REQUEST['id'])['precio'];}?>">
+                <input type="text" class="form-control" id="precio" name="precio" value="<?php if(isset($_REQUEST['id'])) {echo FlowersModel::getFlowerById($_REQUEST['id'])->price;}?>"/>
             </div>
             <div class="form-group">
                 <label for="categoria">Sección:</label>
-                <select class="form-control" name="categoria" id="categoria">
+                <select class="form-control" name="categoria" id="categoria" value="<?php if(isset($_REQUEST['id'])) {echo $category[FlowersModel::getFlowerById($_REQUEST['id'])->category];}?>">
                     <?php foreach ($category as $key => $value): ?>
                         <option value="<?php echo($key); ?>"><?php echo($value); ?></option>
                     <?php endforeach; ?>
@@ -39,7 +44,7 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
             </div>
             <div class="form-group">
                 <label>Descripción:</label>
-                <textarea id="editor1" name="editor1" style="width:400px; height:200px"></textarea>
+                <textarea id="editor1" name="editor1" style="width:400px; height:200px"><?php if(isset($_REQUEST['id'])) {echo FlowersModel::getFlowerById($_REQUEST['id'])->description;}?></textarea>
             </div>
             <button id="btn_insertar"  class="btn btn-default" ><?php if(isset($_REQUEST['id'])) echo "Guardar cambios"; else echo "Insertar nueva flor"; ?></button>
             <img name="img_load" id="img-load" src=""/>

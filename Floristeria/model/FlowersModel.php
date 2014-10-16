@@ -42,7 +42,7 @@ class FlowersModel {
     private static function toObject($result) {
         $object = mysqli_fetch_object($result);
         if ($object != null) {
-            return new Flower($object->id, $object->name, $object->price, $object->description, $object->image_name, $object->image_type, $object->category, $object->str_imgcodificada);
+            return new Flower($object->id, $object->name, $object->price, $object->description, $object->imagename, $object->imagetype, $object->category, $object->imgblop);
         }
         return null;
     }

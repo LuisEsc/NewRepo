@@ -48,7 +48,7 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
                             <td><?php echo($flower->price); ?></td>
                             <td><?php echo($flower->str_imgcodificada); ?></td>
                             <td>
-                                <button onclick="agregarflor.php?id=<?php echo($flower->id) ?>" class="glyphicon glyphicon-pencil"></button>
+                                <button onclick="window.location.href='agregarflor.php?id=<?php echo $flower->id?>'" class="glyphicon glyphicon-pencil"></button>
                                 <button onclick="eliminar(<?php echo($flower->id) ?>);" class="glyphicon glyphicon-remove"></button>
                             </td>
 
