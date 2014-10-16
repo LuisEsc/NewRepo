@@ -15,13 +15,10 @@ if (($image !== NULL) && ($image['error'] == UPLOAD_ERR_OK)) {
         $p = $img->base64_decode_image($data);
         echo $p;
         //$img->image_view($p, $_FILES['image']['type']);
-    
     }
 }
 
 // Requiere Libreria PHP IMAGICK
-
-
 
 
 class Utils {

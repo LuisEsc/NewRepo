@@ -13,7 +13,7 @@ $poblaciones = array(
 $cart = Session::getArraySession();
 ?>
 
-<h3 class="page-title">Shopping cart</h3>
+<h3 class="page-title">Carrito</h3>
 <?php if ($cart !== null): ?>
     <div class="cart">
         <form method="post" action="checkout/cart/updatePost/">
@@ -45,10 +45,12 @@ $cart = Session::getArraySession();
                         </tr>
                     </tfoot>
                     <tbody>
-                        <?php foreach ($cart as $S_flower): ?> 
+                        <?php foreach ($cart as $S_flower): print_r($S_flower); ?>
+
+
                             <tr class="first last odd">
                                 <td><a class="product-image" href="/"><img src="media/items/small/it17.jpg"></a></td>
-                                <td><h2 class="product-name"> <a href="sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html"><?php echo($S_flower['title']); ?>r</a> </h2>
+                                <td><h2 class="product-name"> <a href="sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html"><?php echo($S_flower['name']); ?>r</a> </h2>
                                     <!-- properties
                                     <dl>
                                         <dt><strong>Color:</strong> Brown</dt>
@@ -143,11 +145,11 @@ $cart = Session::getArraySession();
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function() {
+    <script type="text/javascript">
+        $(document).ready(function () {
             "use strict";
 
-            $(".input a").click(function() {
+            $(".input a").click(function () {
 
                 var inputEl = $(this).parent().parent().children().next().children();
                 var qty = inputEl.val();
@@ -170,7 +172,7 @@ $cart = Session::getArraySession();
 
             })
 
-            $('#country').change(function() {
+            $('#country').change(function () {
                 var min = <?php echo(PoblacionEnvio::PRECIO_FIJO); ?>;
                 var gastos = min + ($(this).val() * <?php echo(PoblacionEnvio::PRECIO_KM); ?>);
                 var html_envio = (gastos > 0) ? (Math.round(gastos * 100) / 100).toFixed(2) + "&nbsp;&euro;" : "Gratuito";
@@ -180,9 +182,6 @@ $cart = Session::getArraySession();
             });
         });
     </script>
-
     <?php
-
-
-
- endif;
+endif;
+include_once './inc/f-footer.php';

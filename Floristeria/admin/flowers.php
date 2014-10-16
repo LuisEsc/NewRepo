@@ -10,6 +10,7 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
     require_once './Model/FlowerModel.php';
     ?>
     <link type="text/css" rel="stylesheet" href="css/tiny.css" media="all">
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="js/tinyeditor.js"></script>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <h1 class="page-header">Añadir nueva flor</h1>
@@ -42,7 +43,9 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
             <button type="submit" class="btn btn-default">Guardar</button>
         </form>
         <script type="text/javascript">
-            new TINY.editor.edit('editor', {
+
+
+            var editor = new TINY.editor.edit('editor', {
                 id: 'input',
                 width: 800,
                 height: 200,
@@ -56,19 +59,24 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
                     'font', 'size', 'style', '|', 'image', 'hr', 'link', 'unlink', '|', 'cut', 'copy', 'paste', 'print'],
                 footer: false,
                 fonts: ['Verdana', 'Arial', 'Georgia', 'Trebuchet MS'],
-                xhtml: true,
+                xhtml: false,
                 cssfile: 'style.css',
                 bodyid: 'editor',
                 footerclass: 'tefooter',
                 toggle: {text: 'show source', activetext: 'show wysiwyg', cssclass: 'toggle'},
                 resize: {cssclass: 'resize'}
             });
+            function mirarContenido() {
+                console.log($('#editor'));
+            }
+        </script>
+        <button onclick="mirarContenido();">Mirar</button>
+        <script type="text/javascript">
+
         </script>
     </div>
 </div>
 </div>
-
-
 
 
 </html>
