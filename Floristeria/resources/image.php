@@ -1,7 +1,7 @@
 <?php
 
+// Obtengo el ID
 $id = filter_input(INPUT_GET, 'ID', FILTER_VALIDATE_INT);
-
 
 // Compruebo que el valor devuelto de la función sea diferente a false y a null 
 if (($id != FALSE) && ($id != NULL)) {
@@ -15,6 +15,7 @@ if (($id != FALSE) && ($id != NULL)) {
         require_once '../admin/libs/BinaryImage.php';
 
         header("Content-Type: {$flower->image_type}");
+        
         echo(BinaryImage::getImage($flower->str_imgcodificada));
     }
 }
