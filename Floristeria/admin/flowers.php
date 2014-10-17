@@ -17,12 +17,16 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
         function eliminar(id){
             alert(id);
         }
+        fucntion cambioCategoria(){
+            
+        }
     </script>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1 class="page-header">Listado de flores</h1>
+        <h1 class="page-header">Listado de flores</h1>   Seleccione una categoría para filtrar los resultados: <select id="combo-categorias" onchange="cambioCategoria();"> </select>
+        <br/><br/>
 
-        <button onclick="window.location.href='agregarflor.php'">  <param  class="glyphicon glyphicon-plus"/> Agregar Nueva Flor</button>
+        <button> <param onclick="window.location.href='agregarflor.php'"/>  <param class="glyphicon glyphicon-plus"/> Agregar Nueva Flor</button>
    
         <div class="table-responsive">
             <table class="table table-striped">
@@ -46,7 +50,7 @@ $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 
                             <td><?php echo($flower->name); ?></td>
                             <td><?php echo($flower->description); ?></td>
                             <td><?php echo($flower->price); ?></td>
-                            <td><?php echo($flower->str_imgcodificada); ?></td>
+                            <td><img width="50" height="50" src="data:<?php echo $flower->image_type; ?>;base64,<?php if($flower!=null) echo $flower->str_imgcodificada; ?>" /></td>
                             <td>
                                 <button onclick="window.location.href='agregarflor.php?id=<?php echo $flower->id?>'" class="glyphicon glyphicon-pencil"></button>
                                 <button onclick="eliminar(<?php echo($flower->id) ?>);" class="glyphicon glyphicon-remove"></button>
