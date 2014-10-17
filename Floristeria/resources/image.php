@@ -12,12 +12,11 @@ if (($id != FALSE) && ($id != NULL)) {
 
     // Compruebo que el valor no sea nulo 
     if (($flower = FlowersModel::getFlowerById($id)) != null) {
-        //header("Content-Type: image/jpeg");
-        print_r($flower);
+        require_once '../admin/libs/BinaryImage.php';
+        
+        header("Content-Type: {$flower->image_type}");
+        echo (BinaryImage::getImage($flower->str_imgcodificada));
     }
-    // print_r($flower);
-    // header("Content-Type: image/jpeg");
-    // header("Content-Length: " . strlen($cnt));
 }
 
 abstract class ImageType {
