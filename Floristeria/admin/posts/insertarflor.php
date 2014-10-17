@@ -10,17 +10,16 @@ $categoria = $_REQUEST['categoria'];
 $file = $_FILES['files'];
 $descripcion = $_REQUEST['editor1'];
 
-$maximoTamanoFichero = 3145728;
+$maximoTamanoFichero = 1572864;
 
-echo "insertaflor";
 
 if($file['error']==0){
     if($file['size']<=$maximoTamanoFichero){
-        
-        $flower = new Flower(null, $nombre, $precio, $descripcion, $file['name'], $file['type'], $categoria, BinaryImage::getBinary($file['tmp_name']));
-        //echo "<br/>".$flower->str_imgcodificada."<br/>";
-        $insertado = FlowersModel::save($flower);  
-        //echo "insertado: ".$insertado;
+        $flower = new Flower(null, $nombre, $precio, $descripcion, $file['name'], $file['type'], $categoria, mysql_escape_string(BinaryImage::getBinary($file['tmp_name'])) );
+        $insertado = FlowersModel::save($flower);
+    }
+    else{
+        echo "Tamaño incorrecto";
     }
 }
 else{

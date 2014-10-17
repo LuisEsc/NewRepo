@@ -10,7 +10,7 @@ $flower = null;
 
 if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
     $flower = FlowersModel::getFlowerById($_REQUEST['id']);
-    echo $flower->category;
+    //echo $flower->category;
 }
 
 ?>
@@ -28,8 +28,15 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
         }
         function actualizarFlor(id){
             $("#form").attr("action", "posts/actualizarflor.php");
+            
             $("#form").submit();
         }
+            $("#ejemplo_archivo_1").change(function(){
+                
+               
+                
+            });
+        
     </script>
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -53,14 +60,14 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
             </div>
             <div class="form-group">
                 <label for="ejemplo_archivo_1">Adjuntar una imagen:</label>
-                <input type="file" id="ejemplo_archivo_1" name="files"><img src="data:image/jpeg;base64{<?php echo $flower->str_imgcodificada; ?>}"/>
+                <input  type="file" id="ejemplo_archivo_1" accept="image/png, image/jpeg, image/jpg" name="files"/><img id="img-flor" width="200" height="200" src="data:<?php echo $flower->image_type ?>;base64,<?php if($flower!=null) echo $flower->str_imgcodificada; ?>"/>
                 <p class="help-block">Ejemplo de texto de ayuda.</p>
             </div>
             <div class="form-group">
                 <label>Descripción:</label>
                 <textarea id="editor1" name="editor1" style="width:400px; height:200px"><?php if($flower!=null) echo $flower->description; ?></textarea>
             </div>
-            <input type="button" id="btn_insertar"  onclick="<?php if($flower!=null) echo "actualizarFlor(".$flower->id.");"; else echo "insertarFlor();" ?>"class="btn btn-default"  value="<?php if ($flower!=null) echo "Guardar cambios"; else echo "Insertar nueva flor"; ?>"/>
+            <input type="button" id="btn_insertar"  onclick="<?php if($flower!=null) echo "actualizarFlor(".$flower->id.");"; else echo "insertarFlor();" ?>" class="btn btn-default"  value="<?php if ($flower!=null) echo "Guardar cambios"; else echo "Insertar nueva flor"; ?>"/>
             <img name="img_load" id="img-load" src=""/>
         </form>
 
