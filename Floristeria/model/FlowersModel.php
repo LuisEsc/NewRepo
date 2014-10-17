@@ -18,8 +18,12 @@ class FlowersModel {
     }
 
     public static function save(Flower $flower) {
-        $sql = "INSERT INTO table_name (id, name, description, price, imagename, imagetype, category, imgblop)";
-        $sql .= "VALUES (null , {$flower->name}}, {$flower->description}, {$flower->price}, {$flower->image_name}, {$flower->image_type}, {$flower->category}, {$flower->str_imgcodificada})";
+        $sql = "INSERT INTO flower (id, name, description, price, imagename, imagetype, category, imgblop)";
+        //$sql .= "VALUES (null , {$flower->name}}, {$flower->description}, {".(float) $flower->price.",} {$flower->image_name}, {$flower->image_type}, {". (int) $flower->category ."}, {". $flower->str_imgcodificada."})");
+        $sql .= "VALUES (null , '{$flower->name}', '{$flower->description}', {$flower->price}, '{$flower->image_name}', '{$flower->image_type}', {$flower->category}, '{$flower->str_imgcodificada}')";
+        
+        echo "id: ".$flower->id;
+        self::setQuery($sql);
     }
 
     private static function setQuery($str_query) {

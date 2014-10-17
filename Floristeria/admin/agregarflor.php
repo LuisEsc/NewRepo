@@ -22,9 +22,6 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
     require_once './inc/header_struct.php';
     ?>
     <script type="text/javascript">
-        function eliminar(id) {
-            alert(id);
-        }
         function insertarFlor(){
             $("#form").attr("action", "posts/insertarflor.php");
             $("#form").submit();
@@ -56,7 +53,7 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
             </div>
             <div class="form-group">
                 <label for="ejemplo_archivo_1">Adjuntar una imagen:</label>
-                <input type="file" id="ejemplo_archivo_1" name="files"><img <?php //src="data:image/jpeg;base64{}" ?>/>
+                <input type="file" id="ejemplo_archivo_1" name="files"><img src="data:image/jpeg;base64{<?php echo $flower->str_imgcodificada; ?>}"/>
                 <p class="help-block">Ejemplo de texto de ayuda.</p>
             </div>
             <div class="form-group">

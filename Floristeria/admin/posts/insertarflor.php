@@ -1,6 +1,6 @@
 <?php
 require_once '../../core/Connection.php';
-require_once '../Model/FlowerModel.php';
+require_once '../../model/FlowersModel.php';
 require_once '../../libs/Flower.php';
 require_once '../libs/BinaryImage.php';
 
@@ -12,12 +12,15 @@ $descripcion = $_REQUEST['editor1'];
 
 $maximoTamanoFichero = 3145728;
 
+echo "insertaflor";
+
 if($file['error']==0){
     if($file['size']<=$maximoTamanoFichero){
         
-        $flower = new Flower("", $nombre, $precio, $descripcion, $file['tmp_name'], $file['type'], $categoria, BinaryImage::getBase64($file['tmp_name']));
-        $insertado = FlowerModel::save($flower);
-                
+        $flower = new Flower(null, $nombre, $precio, $descripcion, $file['name'], $file['type'], $categoria, BinaryImage::getBinary($file['tmp_name']));
+        //echo "<br/>".$flower->str_imgcodificada."<br/>";
+        $insertado = FlowersModel::save($flower);  
+        //echo "insertado: ".$insertado;
     }
 }
 else{
