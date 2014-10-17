@@ -1,12 +1,8 @@
 <?php
-
-$status = (isset($_POST['status'])) ? $_POST['status'] : null;
-$img = (isset($_FILES['imagefile'])) ? $_FILES['imagefile'] : null;
-
-//print_r($img);
-//header("Content-Type: image/jpeg");
-//header("Content-Length: " . strlen($cnt));
-//echo FileCopy::readData(FileCopy::CopyToDB($img));
+/*
+ * 
+ * 
+ */
 
 class BinaryImage {
 
