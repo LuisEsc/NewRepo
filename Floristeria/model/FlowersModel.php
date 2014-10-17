@@ -26,6 +26,11 @@ class FlowersModel {
         self::setQuery($sql);
     }
     
+    public static function update(Flower $flower){
+        $sql = "UPDATE flower SET name = '{$flower->name}', description = '{$flower->description}', price= {$flower->price}, imagename = '{$flower->image_name}', imagetype = '{$flower->image_type}', category = {$flower->category}, imgblop = '{$flower->str_imgcodificada}' where id = {$flower->id}";
+        self::setQuery($sql);
+    }
+    
     public static function delete($id){
         $sql = "DELETE FROM flower WHERE id='{$id}'";
         return self::setQuery($sql);

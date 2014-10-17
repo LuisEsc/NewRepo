@@ -26,11 +26,10 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
             $("#form").submit();
         }
         function actualizarFlor(id) {
-            $("#form").attr("action", "posts/actualizarflor.php");
+            $("#form").attr("action", ("posts/actualizarflor.php?id="+id));
 
             $("#form").submit();
-        }
-            
+        }            
         
     </script>
 
