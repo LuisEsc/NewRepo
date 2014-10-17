@@ -13,15 +13,8 @@ if (($id != FALSE) && ($id != NULL)) {
     // Compruebo que el valor no sea nulo 
     if (($flower = FlowersModel::getFlowerById($id)) != null) {
         require_once '../admin/libs/BinaryImage.php';
-        
+
         header("Content-Type: {$flower->image_type}");
-        echo (BinaryImage::getImage($flower->str_imgcodificada));
+        echo(BinaryImage::getImage($flower->str_imgcodificada));
     }
-}
-
-abstract class ImageType {
-
-    const Normal = 0;
-    const Thumb = 1;
-
 }
