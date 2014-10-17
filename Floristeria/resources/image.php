@@ -10,13 +10,14 @@ if (($id != FALSE) && ($id != NULL)) {
     require_once '../libs/Flower.php';
     require_once '../model/FlowersModel.php';
 
-
+    // Compruebo que el valor no sea nulo 
     if (($flower = FlowersModel::getFlowerById($id)) != null) {
-        header("Content-Type: image/jpeg");
+        //header("Content-Type: image/jpeg");
+        print_r($flower);
     }
-    print_r($flower);
-    header("Content-Type: image/jpeg");
-    header("Content-Length: " . strlen($cnt));
+    // print_r($flower);
+    // header("Content-Type: image/jpeg");
+    // header("Content-Length: " . strlen($cnt));
 }
 
 abstract class ImageType {
