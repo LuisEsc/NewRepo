@@ -10,7 +10,6 @@ $flower = null;
 
 if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
     $flower = FlowersModel::getFlowerById($_REQUEST['id']);
-    //echo $flower->category;
 }
 
 ?>
@@ -24,6 +23,7 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
     <script type="text/javascript">
         function insertarFlor(){
             $("#form").attr("action", "posts/insertarflor.php");
+            
             $("#form").submit();
         }
         function actualizarFlor(id){
@@ -32,8 +32,6 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
             $("#form").submit();
         }
             $("#ejemplo_archivo_1").change(function(){
-                
-               
                 
             });
         

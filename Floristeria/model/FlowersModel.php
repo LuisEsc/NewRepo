@@ -25,6 +25,11 @@ class FlowersModel {
         echo "id: ".$flower->id;
         self::setQuery($sql);
     }
+    
+    public static function delete($id){
+        $sql = "DELETE FROM flower WHERE id='{$id}'";
+        return self::setQuery($sql);
+    }
 
     private static function setQuery($str_query) {
         $con = Connection::getConnection();
