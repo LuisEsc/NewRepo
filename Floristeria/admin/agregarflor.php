@@ -51,6 +51,7 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
         <form id="form" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nombre">Nombre de la Flor:</label>
+                <input type="hidden" name="id" value="<?php if($flower!=null) echo $flower->id; ?>"/>
                 <input type="nombre-flor" class="form-control" id="nombre" name="nombre" value="<?php if ($flower != null) echo $flower->name; ?>"/>
             </div>
             <div class="form-group">
@@ -61,7 +62,7 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
                 <label for="categoria">Sección:</label>
                 <select class="form-control" name="categoria" id="categoria" >
                     <?php foreach ($category as $key => $value): ?>
-                        <option <?php if ($flower != null && $key == (int) $flower->category) echo " selected='selected'"; ?> value="<?php echo($key); ?>"><?php echo($value); ?></option>
+                        <option <?php if ($flower != null && ($key == (int) $flower->category)) echo " selected='selected'"; ?> value="<?php echo($key); ?>"><?php echo($value); ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -112,7 +113,7 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
 
         function archivo(evt) {
             var files = evt.target.files;
-            if (files[0].size > 989762) {
+            if (files[0].size > 2097152) {
                 alert("Tamaño excedido");
             } else {
                 if (files[0].type.match('image.*')) {

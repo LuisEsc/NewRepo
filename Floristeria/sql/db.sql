@@ -39,3 +39,22 @@ provincia varchar(20),
 pais varchar(20),
 primary key(id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE pedidos(
+id_pedido INT(11) NOT NULL AUTO_INCREMENT,
+id_cliente INT(11) NOT NULL,
+timestamp TIMESTAMP NOT NULL,
+precio_total DOUBLE(10,4) NOT NULL,
+PRIMARY KEY(id_pedido),
+FOREIGN KEY (id_cliente) REFERENCES usuarios(id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE productos_pedido(
+id_pedido INT(11) NOT NULL,
+id_producto int(11),
+nombre_producto varchar(60) not null,
+precio_producto double(10,4) not null,
+PRIMARY KEY(id_pedido,id_producto),
+FOREIGN KEY (id_producto) REFERENCES flower(id),
+FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;

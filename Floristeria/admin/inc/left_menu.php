@@ -5,5 +5,6 @@
                 <!-- <li class="active"><a href="#">Overview</a></li> -->
                 <li><a href="categories.php">Categorías</a></li>
                 <li><a href="flowers.php">Flores</a></li>
+                <li><a href="pedidos.php">Pedidos</a></li>
             </ul>
         </div>

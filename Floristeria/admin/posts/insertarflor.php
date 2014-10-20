@@ -11,7 +11,7 @@ $categoria = $_REQUEST['categoria'];
 $file = $_FILES['files'];
 $descripcion = $_REQUEST['editor1'];
 
-$maximoTamanoFichero = 1572864;
+$maximoTamanoFichero = 2097152;
 
 
 if($file['error']==0){
