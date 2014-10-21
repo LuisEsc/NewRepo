@@ -3,18 +3,25 @@
 class OrderModel {
 
     public static function getOrders() {
-        return self::toOrderArray(self::setQuery("SELECT * FROM pedidos ORDER BY pedidos.id_pedido ASC"));
+        $res = self::toOrderArray(self::setQuery("SELECT * FROM pedidos ORDER BY pedidos.id_pedido ASC"));
+        //Connection::getConnection()->close();
+        return $res;
+        
     }
 
     public static function getOrdersByUserId($user_id) {
-        return self::toArray(self::setQuery("SELECT * FROM pedidos WHERE id_cliente = '{$user_id}' ORDER BY pedidos.id_pedido ASC"));
+        $res = self::toArray(self::setQuery("SELECT * FROM pedidos WHERE id_cliente = '{$user_id}' ORDER BY pedidos.id_pedido ASC"));
+        Connection::getConnection()->close();
+        return $res;
     }
 
     public static function getOrderById($id) {
+        $res = null;
         if (is_numeric($id)) {
-            return self::toObject(self::setQuery("SELECT * FROM pedidos WHERE id_pedido = '{$id}'"));
+            $res = self::toObject(self::setQuery("SELECT * FROM pedidos WHERE id_pedido = '{$id}'"));
         }
-        return null;
+        //Connection::getConnection()->close();
+        return $res;
     }
     
     public static function getFlowersByOrderId($order_id) {
@@ -35,7 +42,7 @@ class OrderModel {
         $con = Connection::getConnection();
        
         $res = $con->query($str_query);
-        $con->close();
+        //$con->close();
         
         return $res;
     }
@@ -52,14 +59,25 @@ class OrderModel {
         return $array;
     }
     private static function toFlowerArray($result){
-        $arrayy = array();
+        $array = array();
         while ($row = mysqli_fetch_assoc($result)) {
             //print_r($row);
-            $arrayy[] = new Flower(
+            $array[] = new Flower(
                     $row['id'], $row['name'], $row['price'], $row['description'], $row['imagename'], $row['imagetype'], $row['category'], $row['imgblop']
             );
         }
-        return $arrayy;
+        return $array;
+    }
+    
+    public static function toObject($res){
+        $object = null;
+        while ($row = mysqli_fetch_assoc($res)) {
+            //print_r($row);
+            $object = new Order(
+                    $row['id_pedido'], $row['id_cliente'], $row['timestamp'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total']
+            );
+        }
+        return $object;
     }
 
 

@@ -5,11 +5,20 @@ class UsersModel {
 
     public static function isUser($email, $password) {
         $con = Connection::getConnection();
-        $object = $con->query("SELECT * FROM `usuarios` WHERE `email` = '{$email}' AND `password` = '{$password}'", MYSQLI_STORE_RESULT);
+        $object = self::setQuery("SELECT * FROM `usuarios` WHERE `email` = '{$email}' AND `password` = '{$password}'", MYSQLI_STORE_RESULT);
 
-        $obj = mysqli_fetch_assoc($object);
-        $con->close();
+        $obj = mysql_fetch_assoc($object);
+        //$con->close();
         return $obj;
+    }
+    
+    public static function getUserById($id){
+        //echo "SELECT * FROM usuarios WHERE id = {$id}";
+        $user = self::toObject(self::setQuery("SELECT * FROM floristeria.usuarios WHERE id = {$id}"));
+        //print_r($user);
+        //$array = mysqli_fetch_array($user);
+        //Connection::getConnection()->close();
+        return $user;
     }
 
     public static function insertToDb(Usuario $user) {
@@ -58,6 +67,35 @@ class UsersModel {
     public static function isActivated() {
         // me devuelve un objeto de la claase connection
         $con = Connection::getConnection();
+    }
+    
+    private static function setQuery($str_query) {
+        $con = Connection::getConnection();       
+        $res = $con->query($str_query);
+        //$con->close();
+        return $res;
+        
+        
+    }
+    private static function toObject($result){
+        $row = mysqli_fetch_object($result);
+        $usuario = null;
+        if($row!=null)
+        $usuario = new Usuario(
+                $row->email,
+                $row->password,
+                $row->nombre,
+                $row->apellidos,
+                $row->dni,
+                $row->telefono,
+                $row->direccion,
+                $row->localidad,
+                $row->codpostal,
+                $row->provincia,
+                $row->pais
+                );
+        
+        return $usuario;
     }
 
 }
