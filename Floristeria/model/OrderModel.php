@@ -10,8 +10,8 @@ class OrderModel {
     }
 
     public static function getOrdersByUserId($user_id) {
-        $res = self::toArray(self::setQuery("SELECT * FROM pedidos WHERE id_cliente = '{$user_id}' ORDER BY pedidos.id_pedido ASC"));
-        Connection::getConnection()->close();
+        $res = self::toOrderArray(self::setQuery("SELECT * FROM pedidos WHERE id_cliente = '{$user_id}' ORDER BY pedidos.id_pedido ASC"));
+        //Connection::getConnection()->close();
         return $res;
     }
 
@@ -29,6 +29,28 @@ class OrderModel {
         $sql .= " FROM `floristeria`.`flower`, `floristeria`.`flores_pedido` ";
         $sql .= " WHERE `flores_pedido`.`id_flor` = `flower`.`id`";
         $sql .= " AND `flores_pedido`.`id_pedido` = {$order_id}";
+        
+        return self::toFlowerArray(self::setQuery($sql));
+    }
+    public static function getFlowersByOrderIdAndUserId($order_id, $user_email) {
+        /*
+        $sql  = " SELECT `flower`.`id`, `flower`.`name`,`flower`.`price`, `flower`.`description`, `flower`.`imagename`, `flower`.`imagetype`, `flower`.`category`, `flower`.`imgblop` ";
+        $sql .= " FROM `floristeria`.`flower`, `floristeria`.`flores_pedido`, `floristeria`.`pedidos` ";
+        $sql .= " WHERE `flores_pedido`.`id_flor` = `flower`.`id`";
+        $sql .= " AND `flores_pedido`.`id_pedido` = {$order_id}";
+        $sql .= " AND `pedidos`.`id_cliente` = {$user_id}";
+        $sql .= " AND `pedidos`.`id_pedido` = {$order_id}";
+        echo $sql;
+        
+        $sql ="SELECT `flower`.`id`, `flower`.`name`,`flower`.`price`, `flower`.`description`, `flower`.`imagename`, `flower`.`imagetype`, `flower`.`category`, `flower`.`imgblop` FROM `floristeria`.`flower`, `floristeria`.`flores_pedido`, `floristeria`.`pedidos` WHERE `flores_pedido`.`id_flor` = `flower`.`id` AND `flores_pedido`.`id_pedido` = {$order_id} AND `pedidos`.`id_cliente` = {$user_id} AND `pedidos`.`id_pedido` = {$order_id}";
+        */
+        
+        $sql = "SELECT `flower`.`id`, `flower`.`name`,`flower`.`price`, `flower`.`description`, `flower`.`imagename`, `flower`.`imagetype`, `flower`.`category`, `flower`.`imgblop` FROM `floristeria`.`flower`, `floristeria`.`flores_pedido`, `floristeria`.`pedidos`, `floristeria`.`usuarios` WHERE `flores_pedido`.`id_flor` = `flower`.`id` AND `flores_pedido`.`id_pedido` = {$order_id} AND `pedidos`.`id_cliente` = `usuarios`.`id` AND `usuarios`.`email` = '{$user_email}' AND `pedidos`.`id_pedido` = {$order_id};";
+        
+        
+        
+        //$sql .= " AND `pedidos`.`id_cliente` = {$user_id}";
+        //$sql .= " AND ";
         
         return self::toFlowerArray(self::setQuery($sql));
     }

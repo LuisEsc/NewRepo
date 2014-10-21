@@ -6,7 +6,7 @@ require_once '../libs/Order.php';
 require_once '../core/Connection.php';
 require_once '../libs/Flower.php';
 
-//$category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
+$category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
 
 $id_pedido = null;
 
@@ -47,7 +47,7 @@ else{
                         foreach ($flowers as $flower):?>
                     
                         <tr>
-                            <td><?php echo $flower->category;    ?></td>
+                            <td><?php echo $category[$flower->category];    ?></td>
                             <td><?php echo $flower->name;   ?></td>
                             <td><?php echo $flower->description;    ?></td>
                             <td><img width="70" height="70" src="data:<?php echo $flower->image_type; ?>;base64,<?php if ($flower != null) echo $flower->str_imgcodificada; ?>" /></td>

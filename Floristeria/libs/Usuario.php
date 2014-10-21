@@ -14,6 +14,7 @@ class Usuario {
     public $provincia;
     public $pais;
     
+    
     public function arrayToUser($array){
         $this->email     = $array['email'];
         $this->password  = $array['password'];
