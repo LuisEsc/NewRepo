@@ -1,14 +1,14 @@
 <?php
 include_once './core/init.php';
+if(!isset($_SESSION['user'])){
+    header("Location: ./registro.php");
+}
+
 
 include_once './inc/f-header.php';
 include_once './inc/f-cart.php';
 include_once './inc/f-menu.php';
 require_once './libs/Usuario.php';
-
-if(!isset($_SESSION['user'])){
-    header("Location: ./registro.php");
-}
 
 ?>
 <html>

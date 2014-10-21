@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    //<!-- Mobile menu -->
+    <!-- Mobile menu -->
     <!--
     <div class="dl-menuwrapper none" id="dl-menu">
         <button class="dl-trigger">Open Menu</button>

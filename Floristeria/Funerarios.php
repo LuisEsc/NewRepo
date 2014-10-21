@@ -33,7 +33,7 @@ include_once './inc/f-menu.php';
                    data-title = "<?php echo($flower->name); ?>"
                    data-description = "<?php echo($flower->description); ?>"> 
                     <span class = "overlay-grid"><i class = "icon-zoom-in"></i></span> 
-                    <img src = "images/ramos/pequeños/ramo1-180.png" > 
+                    <img width="200" height="200" src ="data:<?php echo $flower->image_type ?>;base64,<?php echo $flower->str_imgcodificada; ?>" > 
                 </a> 
             </li>
         <?php endforeach; ?>

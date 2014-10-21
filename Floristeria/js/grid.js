@@ -196,7 +196,7 @@ var Grid = (function() {
             // default settings
             settings = {
         minHeight: 500,
-        speed: 350,
+        speed: 900,
         easing: 'ease'
     };
 
@@ -534,7 +534,7 @@ var Grid = (function() {
         getEl: function() {
             return this.$previewEl;
         }
-    }
+    };
 
     return {
         init: init,

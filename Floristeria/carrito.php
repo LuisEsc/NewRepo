@@ -1,5 +1,8 @@
 <?php
 require_once './core/init.php';
+if(!isset($_SESSION['user'])){
+    header("Location: index.php");
+}
 include_once './inc/f-header.php';
 include_once './inc/f-cart.php';
 include_once './inc/f-menu.php';
@@ -14,7 +17,7 @@ $cart = Session::getArraySession();
 ?>
 
 <h3 class="page-title">Carrito</h3>
-<?php if ($cart !== null): ?>
+<?php if ($cart !== null ): ?>
     <div class="cart">
         <form method="post" action="checkout/cart/updatePost/">
             <fieldset>
@@ -45,12 +48,12 @@ $cart = Session::getArraySession();
                         </tr>
                     </tfoot>
                     <tbody>
-                        <?php foreach ($cart as $S_flower): print_r($S_flower); ?>
+                        <?php foreach ($cart as $S_flower): /*print_r($S_flower);*/ ?>
 
 
                             <tr class="first last odd">
-                                <td><a class="product-image" href="/"><img src="media/items/small/it17.jpg"></a></td>
-                                <td><h2 class="product-name"> <a href="sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html"><?php echo($S_flower['name']); ?>r</a> </h2>
+                                <td><a class="product-image" href="/"><img src="data:<?php echo $S_flower['image_type'];?>;base64,<?php echo $S_flower['str_imgcodificada']; ?>"></a></td>
+                                <td><h2 class="product-name"> <a href="sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html"><?php echo($S_flower['name']); ?></a> </h2>
                                     <!-- properties
                                     <dl>
                                         <dt><strong>Color:</strong> Brown</dt>

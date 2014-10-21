@@ -30,6 +30,7 @@ class Session {
                     'price' => $flower->price,
                     'imagename' => $flower->image_name,
                     'imagetype' => $flower->image_type,
+                    'str_imgcodificada' => $flower->str_imgcodificada,
                     'cant' => $cant
                 );
             }

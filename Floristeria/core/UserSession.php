@@ -12,5 +12,14 @@ class UserSession {
             session_start();
         }
     }
+    
+    public static function sessionStatus(){
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
 }
