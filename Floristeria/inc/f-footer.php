@@ -32,9 +32,8 @@
                 <h4>Mi Cuenta</h4>
                 <div class="block_content">
                     <ul>
-                        <li><a href="/">Mis Pedidos</a></li>
-                        <li><a href="/">Mis Direcciones</a></li>
-                        <li><a href="/">Mis Datos Personales</a></li>
+                        <li><a href="mispedidos.php">Mis Pedidos</a></li>
+                        <li><a href="panelcontrolusuario.php">Mis Datos Personales</a></li>
                     </ul>
                 </div>
             </div>

@@ -12,18 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/core/Session.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/Funerarios.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/ramos.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/centros.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/model/FlowersModel.php</file>
             <file>file:/D:/GitHub/NewRepo/Floristeria/index.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/flower_to_cart.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/inc/f-cart.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/panelcontrolusuario.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/core/init.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/manageSession.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/carrito.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/inc/f-menu.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/inc/f-footer.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/plantas.php</file>
         </group>
     </open-files>
 </project-private>

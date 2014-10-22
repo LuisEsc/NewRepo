@@ -26,6 +26,9 @@ class FlowersModel {
         self::setQuery($sql);
     }
     
+    public static function getRandomFlowers($numFlowers){
+        $sql .= "SELECT * FROM flower order by RAND() limit {$numFlowers}";
+    }
     public static function update(Flower $flower){
         $sql = "UPDATE flower SET name = '{$flower->name}', description = '{$flower->description}', price= {$flower->price}, imagename = '{$flower->image_name}', imagetype = '{$flower->image_type}', category = {$flower->category}, imgblop = '{$flower->str_imgcodificada}' where id = {$flower->id}";
         self::setQuery($sql);
