@@ -22,28 +22,37 @@ class Session {
                     $_SESSION['flowers'][$index]['cant'] = $cant;
                 }
             } else {
-                $cant = ($cant == null) ? 1 : $cant;
+                $existe = false;
+                foreach ($_SESSION['flowers'] as $incice => $valor) {
+                    if ($valor->id == $flower->id) {
+                        $existe = true;
+                        
+                    }
+                }
+                if ($existe == false) {
+                    $cant = ($cant == null) ? 1 : $cant;
 
-                $_SESSION['flowers'][] = array(
-                    'id' => $flower->id,
-                    'name' => $flower->name,
-                    'price' => $flower->price,
-                    'imagename' => $flower->image_name,
-                    'imagetype' => $flower->image_type,
-                    'str_imgcodificada' => $flower->str_imgcodificada,
-                    'cant' => $cant
-                );
+                    $_SESSION['flowers'][] = array(
+                        'id' => $flower->id,
+                        'name' => $flower->name,
+                        'price' => $flower->price,
+                        'imagename' => $flower->image_name,
+                        'imagetype' => $flower->image_type,
+                        'str_imgcodificada' => $flower->str_imgcodificada,
+                        'cant' => $cant
+                    );
+                }
             }
             //print_r($_SESSION['flowers']);
         }
+        //self::removeCard();
     }
-    
 
     public static function removeFlower(Flower $flower = null) {
         self::sessionStart();
-        if (self::containsFlower($flower) && isset($_SESSION['flowers'])) {
-            if (($index = self::getFlowerIndexSession($flower)) !== null) {
-                unset($_SESSION['flowers'][$index]);
+        foreach ($_SESSION['flowers'] as $indice => $valor) {
+            if ($valor['id'] == $flower->id) {
+                unset($_SESSION['flowers'][$indice]);
             }
         }
     }

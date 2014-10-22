@@ -48,11 +48,10 @@ $cart = Session::getArraySession();
                         </tr>
                     </tfoot>
                     <tbody>
-                        <?php foreach ($cart as $S_flower): /*print_r($S_flower);*/ ?>
-
+                        <?php foreach ($cart as $S_flower): ?>
 
                             <tr class="first last odd">
-                                <td><a class="product-image" href="/"><img src="data:<?php echo $S_flower['image_type'];?>;base64,<?php echo $S_flower['str_imgcodificada']; ?>"></a></td>
+                                <td><a class="product-image" href="/"><img width="180" height="180" src="data:<?php echo $S_flower['imagetype']; ?>;base64,<?php echo $S_flower['str_imgcodificada']; ?>"></a></td>
                                 <td><h2 class="product-name"> <a href="sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html"><?php echo($S_flower['name']); ?></a> </h2>
                                     <!-- properties
                                     <dl>

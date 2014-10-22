@@ -22,8 +22,10 @@ if ($id !== null && $mode !== null) {
         default:
             break;
     }
+    //Session::removeCard();
+    //print_r($_SESSION['flowers']);
 
-    header('Location:' . getSessionReferer());
+    header('Location: ' . getSessionReferer());
 }
 
 function getSessionReferer() {

@@ -29,7 +29,7 @@ include_once './inc/f-menu.php';
                    data-more = "Leer más"
                    data-currency = "&euro;"
                    data-price = "<?php echo($flower->price); ?>"
-                   data-largesrc = "resources/images/<?php echo($flower->image_name); ?>"
+                   data-largesrc = "data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>"
                    data-title = "<?php echo($flower->name); ?>"
                    data-description = "<?php echo($flower->description); ?>"> 
                     <span class = "overlay-grid"><i class = "icon-zoom-in"></i></span> 

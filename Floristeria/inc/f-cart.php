@@ -23,7 +23,7 @@ $cart = Session::getArraySession();
 
                                 <li class="item"> <a href="<?php echo($r_link); ?>" class="closed">X</a>
                                     <div class="item-thumbnail">
-                                        <a title="" href="#"><img src="media/top-cart-item.jpg" width="89" height="89"></a>
+                                        <a title="" href="#"><img src="data:<?php echo $S_flower['imagetype']; ?>;base64,<?php echo $S_flower['str_imgcodificada']; ?>" width="89" height="89"></a>
                                     </div>
                                     <a class="item-name" href="product.html"><?php echo($S_flower['name']); ?></a>
                                     <div class="info-item-cart"> 
