@@ -24,16 +24,37 @@ class OrderModel {
         return $res;
     }
     
+    public static function getQuantity($id){
+        $sql = "SELECT * FROM flores_pedidos WHERE id_pedido = {$id}";
+        return mysql_fetch_array(self::setQuery($sql));
+    }
+    
+    public static function OrderPrepared($id){
+        $sql = "UPDATE pedidos SET preparado = 1 WHERE id_pedido = {$id}";
+        self::setQuery($sql);
+    }
+    
     public static function saveOrder(Order $order){
-        $sql = " INSERT INTO pedidos AS(id_pedido, id_cliente, timestamp, precio_total) ";
-        $sql.= " VALUES(null, $order->id_cliente, ".date("D-d/M/Y -- g:i:s").", {$order->precio_total}) ";
-        if(self::setQuery($sql)){
+        $sql = " INSERT INTO pedidos (id_cliente, timestam, precio_total) ";
+        $sql.= " VALUES($order->id_cliente, '{$order->timestam}', {$order->precio_total}) ";
+        echo $sql;
+        $insertado = false;
+        self::setQuery($sql);
+        
+            $sql = " SELECT id_pedido FROM pedidos WHERE timestam = '{$order->timestam}' ";
+            $res = self::setQuery($sql);
+            $result = mysqli_fetch_array($res);
+        
             $sql = "";
             $flower ;
             foreach($order->array_flores as $indice=>$valor){
-                $flower = new Flower($order->array_flores->);
+                $sql = " INSERT INTO flores_pedido";
+                $sql.= " VALUES({$result[0]}, {$valor[1]}, '{$valor[2]}', {$valor[3]}) ";
+                echo $sql;
+                $insertado = self::setQuery($sql);
             }
-        }
+        
+        return $insertado;
     }
     
     public static function getFlowersByOrderId($order_id) {
@@ -44,33 +65,17 @@ class OrderModel {
         
         return self::toFlowerArray(self::setQuery($sql));
     }
-    public static function getFlowersByOrderIdAndUserId($order_id, $user_email) {
-        /*
-        $sql  = " SELECT `flower`.`id`, `flower`.`name`,`flower`.`price`, `flower`.`description`, `flower`.`imagename`, `flower`.`imagetype`, `flower`.`category`, `flower`.`imgblop` ";
-        $sql .= " FROM `floristeria`.`flower`, `floristeria`.`flores_pedido`, `floristeria`.`pedidos` ";
-        $sql .= " WHERE `flores_pedido`.`id_flor` = `flower`.`id`";
-        $sql .= " AND `flores_pedido`.`id_pedido` = {$order_id}";
-        $sql .= " AND `pedidos`.`id_cliente` = {$user_id}";
-        $sql .= " AND `pedidos`.`id_pedido` = {$order_id}";
-        echo $sql;
-        
-        $sql ="SELECT `flower`.`id`, `flower`.`name`,`flower`.`price`, `flower`.`description`, `flower`.`imagename`, `flower`.`imagetype`, `flower`.`category`, `flower`.`imgblop` FROM `floristeria`.`flower`, `floristeria`.`flores_pedido`, `floristeria`.`pedidos` WHERE `flores_pedido`.`id_flor` = `flower`.`id` AND `flores_pedido`.`id_pedido` = {$order_id} AND `pedidos`.`id_cliente` = {$user_id} AND `pedidos`.`id_pedido` = {$order_id}";
-        */
-        
-        $sql = "SELECT `flower`.`id`, `flower`.`name`,`flower`.`price`, `flower`.`description`, `flower`.`imagename`, `flower`.`imagetype`, `flower`.`category`, `flower`.`imgblop` FROM `floristeria`.`flower`, `floristeria`.`flores_pedido`, `floristeria`.`pedidos`, `floristeria`.`usuarios` WHERE `flores_pedido`.`id_flor` = `flower`.`id` AND `flores_pedido`.`id_pedido` = {$order_id} AND `pedidos`.`id_cliente` = `usuarios`.`id` AND `usuarios`.`email` = '{$user_email}' AND `pedidos`.`id_pedido` = {$order_id};";
-        
-        
-        
-        //$sql .= " AND `pedidos`.`id_cliente` = {$user_id}";
-        //$sql .= " AND ";
+    public static function getFlowersByOrderIdAndUserId($order_id, $user_email) {        
+        $sql = " SELECT `flower`.`id`, `flower`.`name`,`flower`.`price`, `flower`.`description`, `flower`.`imagename`, `flower`.`imagetype`, `flower`.`category`, `flower`.`imgblop` ";
+        $sql.= " FROM `floristeria`.`flower`, `floristeria`.`flores_pedido`, `floristeria`.`pedidos`, `floristeria`.`usuarios` ";
+        $sql.= " WHERE `flores_pedido`.`id_flor` = `flower`.`id` AND `flores_pedido`.`id_pedido` = {$order_id} ";
+        $sql.= " AND `pedidos`.`id_cliente` = `usuarios`.`id` ";
+        $sql.= " AND `usuarios`.`email` = '{$user_email}' ";
+        $sql.= " AND `pedidos`.`id_pedido` = {$order_id};";
         
         return self::toFlowerArray(self::setQuery($sql));
     }
 
-    public static function save(Order $order) {
-        $sql = "";
-        self::setQuery($sql);
-    }
 
     private static function setQuery($str_query) {
         $con = Connection::getConnection();
@@ -86,7 +91,7 @@ class OrderModel {
         while ($row = mysqli_fetch_assoc($resulta)) {
             //print_r($row);
             $array[] = new Order(
-                    $row['id_pedido'], $row['id_cliente'], $row['timestamp'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total']
+                    $row['id_pedido'], $row['id_cliente'], $row['timestam'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total'], $row['preparado']
             );
             
         }
@@ -108,7 +113,7 @@ class OrderModel {
         while ($row = mysqli_fetch_assoc($res)) {
             //print_r($row);
             $object = new Order(
-                    $row['id_pedido'], $row['id_cliente'], $row['timestamp'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total']
+                    $row['id_pedido'], $row['id_cliente'], $row['timestam'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total'], $row['preparado']
             );
         }
         return $object;

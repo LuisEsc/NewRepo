@@ -144,7 +144,7 @@ $cart = Session::getArraySession();
                 </table>
                 <ul class="checkout-types">
                     <li>
-                        <button onclick="window.location = 'checkout.html';" class="button btn-proceed-checkout btn-checkout" title="Proceed to Checkout" type="button"><span><span>PROCEED TO CHECKOUT</span></span></button>
+                        <button onclick="window.location = 'checkout.php';" class="button btn-proceed-checkout btn-checkout" title="Proceed to Checkout" type="button"><span><span>PROCEED TO CHECKOUT</span></span></button>
                     </li>
                 </ul>
             </div>

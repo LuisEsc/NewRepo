@@ -42,7 +42,7 @@
             <div class="block last">
                 <h4>Contactar</h4>
                 <div class="block_content">
-                    <p><a href="mailto:info@floristeriaalbahaca.es">info@floristeriaalbahaca.es</a> <br/>
+                    <p><a href="mailto:info@floristeriaalbahaca.es">albahaca@interflora.es</a> <br/>
                         974 231 468<br />
                         C/Jose María Lacasa nº 17, 22001, Huesca</p>
                 </div>

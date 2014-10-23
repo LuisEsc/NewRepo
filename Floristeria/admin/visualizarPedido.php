@@ -39,6 +39,8 @@ else{
                         <th>Descripcion</th>
                         <th>Imagen</th>
                         <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Importe</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,11 +54,13 @@ else{
                             <td><?php echo $flower->description;    ?></td>
                             <td><img width="70" height="70" src="data:<?php echo $flower->image_type; ?>;base64,<?php if ($flower != null) echo $flower->str_imgcodificada; ?>" /></td>
                             <td><?php echo round($flower->price,2, PHP_ROUND_HALF_UP); ?> €</td>
+                            <td><?php print_r(OrderModel::getQuantity($id_pedido));   ?></td>
+                            <td><?php     ?></td>
                         </tr>
 
                         <?php endforeach;?>
                         
-                        <tr><td/><td/><td/><td/><td><b>TOTAL: <?php echo round(OrderModel::getOrderById($id_pedido)->precio_total,2 ,PHP_ROUND_HALF_UP); ?> €</b></td></tr>
+                        <tr><td/><td/><td/><td/><td/><td/><td><b>TOTAL: <?php echo round(OrderModel::getOrderById($id_pedido)->precio_total,2 ,PHP_ROUND_HALF_UP); ?> €</b></td></tr>
                 </tbody>
             </table>
         </div>

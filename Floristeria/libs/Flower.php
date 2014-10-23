@@ -21,7 +21,7 @@ class Flower {
     public $image_type;
     // categoria a la que pertenece la flor
     public $category = null;
-    
+    // imagen en base 64
     public $str_imgcodificada;
 
     public function __construct($id, $name, $price, $description, $image_name, $image_type, $category, $str_imgcodificada) {

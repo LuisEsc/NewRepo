@@ -12,5 +12,7 @@ require_once './libs/PoblacionEnvio.php';
 require_once './libs/Usuario.php';
 require_once './libs/Slide.php';
 require_once './model/SliderModel.php';
+require_once './libs/Order.php';
+require_once './model/OrderModel.php';
 
 require_once './inc/f_session_usuario.php';

@@ -1,7 +1,7 @@
 <?php
 
 class Usuario {
-
+    public $id;
     public $email;
     public $password;
     public $nombre;
@@ -30,7 +30,7 @@ class Usuario {
         return $this;
     }
     
-    public function __construct($email, $password, $nombre = "", $apellidos = "", $dni = "", $telefono = "", $direccion = "", $localidad = "", $codpostal = "", $provincia = "", $pais = "") {
+    public function __construct($email, $password, $nombre = "", $apellidos = "", $dni = "", $telefono = "", $direccion = "", $localidad = "", $codpostal = "", $provincia = "", $pais = "", $id=0) {
         //echo $this->email;
         $this->email     = $email;
         
@@ -44,6 +44,11 @@ class Usuario {
         $this->codpostal = $codpostal;
         $this->provincia = $provincia;
         $this->pais      = $pais;
+        $this->$id = $id;
+    }
+    
+    public function setId($id){
+        $this->id = $id;
     }
 
     public function actualizarDatos($email, $password, $nombre = "", $apellidos = "", $dni = "", $telefono = "", $direccion = "", $localidad = "", $codpostal = "", $provincia = "", $pais = "") {
