@@ -7,8 +7,8 @@ $cart = Session::getArraySession();
         <div class="quick-access">
             <ul>
                 <li><a href="manageSession.php"><?php if(isset($_SESSION['user'])){ echo "Cerrar Session"; } else { echo "Iniciar Sesion"; }?></a></li>
-                <?php if( isset($_SESSION['user'])){ ?><li class="cart-icon" > 
-                    <a title="View my shopping cart" href="/" ><i class="icon-shopping-cart"></i></a>
+               <li class="cart-icon" > 
+                    <a title="View my shopping cart" href="carrito.php" ><i class="icon-shopping-cart"></i></a>
 
                     <span><?php echo(Session::getItemsCount()); ?> item(s) - <?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span>
                     <ul class="cart-items clearfix">
@@ -43,7 +43,7 @@ $cart = Session::getArraySession();
                                 </div>
                             </li>
 
-                <?php }} ?>
+                <?php } ?>
                     </ul>
                 </li>
             </ul>

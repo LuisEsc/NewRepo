@@ -45,12 +45,13 @@ include_once './inc/f-menu.php';
         });
     </script>
     <div id="iview">
-        <div data-iview:thumbnail="media/scr1-500px.jpg" data-iview:image="media/scr1-500px.jpg">
+        <div data-iview:thumbnail="media/slide1.jpg" data-iview:image="media/slide1.jpg">
+            
             <div class="iview-caption caption1" data-x="100" data-y="250" data-transition="expandDown">
-                <h3>Mis tulipanes</h3>
+                <h3>Variedad</h3>
             </div>
             <div class="iview-caption caption1" data-x="100" data-y="350" data-transition="expandDown">
-                <h5 > Una variedad de tulipanes preciosos para decorar tu casa.</h5>
+                <h5 >Disponemos de una gran variedad de flores perfectas para todas las ocasiones.</h5>
             </div>
         </div>
         <div data-iview:thumbnail="media/scr6-500px.jpg" data-iview:image="media/scr6-500px.jpg" data-iview:transition="block-drop-random" data-iview:pausetime="2000">
@@ -80,7 +81,7 @@ include_once './inc/f-menu.php';
 <section  id="columns" class="container_9 clearfix col1" >
     <ul id="og-grid" class="og-grid">
         <?php
-        foreach (FlowersModel::getFlowers() as $flower):
+        foreach (FlowersModel::getRandomFlowers(5) as $flower):
             $link = "flower_to_cart.php?mode=" . Session::_INSERT_ . "&";
             $link.= "id={$flower->id}&";
             $link.= "v=" . md5($flower->id);

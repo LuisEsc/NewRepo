@@ -10,7 +10,7 @@ class Order{
     
     public $timestamp;
     
-    public $array_flores;
+    public $array_flores = array();
 
     public function __construct($id_pedido, $id_cliente, $timestamp, $array_flores , $precio_total = 0.0){ 
         $this->id_pedido = $id_pedido;

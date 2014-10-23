@@ -7,7 +7,7 @@
             <li class="item"><a class="parent" href="bodas.php">Bodas</a> </li>
             <li class="item"><a class="parent" href="plantas.php">Plantas</a> </li>
             <li class="item"><a class="parent" href="funerarios.php">Funerarios</a> </li>
-            <?php if(isset($_SESSION['user'])){ ?><li class="item"><a class="parent" href="carrito.php">Carro de compra</a></li><?php } ?>
+            <li class="item"><a class="parent" href="carrito.php">Carro de compra</a></li>
         </ul>
     </nav>
 </div>

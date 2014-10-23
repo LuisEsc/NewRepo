@@ -6,5 +6,6 @@
                 <li><a href="categories.php">Categorías</a></li>
                 <li><a href="flowers.php">Flores</a></li>
                 <li><a href="pedidos.php">Pedidos</a></li>
+                <li><a href="newSlider.php">Presentación de Inicio</a></li>
             </ul>
         </div>

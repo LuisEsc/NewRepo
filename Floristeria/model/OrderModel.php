@@ -24,6 +24,18 @@ class OrderModel {
         return $res;
     }
     
+    public static function saveOrder(Order $order){
+        $sql = " INSERT INTO pedidos AS(id_pedido, id_cliente, timestamp, precio_total) ";
+        $sql.= " VALUES(null, $order->id_cliente, ".date("D-d/M/Y -- g:i:s").", {$order->precio_total}) ";
+        if(self::setQuery($sql)){
+            $sql = "";
+            $flower ;
+            foreach($order->array_flores as $indice=>$valor){
+                $flower = new Flower($order->array_flores->);
+            }
+        }
+    }
+    
     public static function getFlowersByOrderId($order_id) {
         $sql  = " SELECT `flower`.`id`, `flower`.`name`,`flower`.`price`, `flower`.`description`, `flower`.`imagename`, `flower`.`imagetype`, `flower`.`category`, `flower`.`imgblop` ";
         $sql .= " FROM `floristeria`.`flower`, `floristeria`.`flores_pedido` ";

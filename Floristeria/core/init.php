@@ -10,5 +10,7 @@ require_once './model/FlowersModel.php';
 require_once './model/UsersModel.php';
 require_once './libs/PoblacionEnvio.php';
 require_once './libs/Usuario.php';
+require_once './libs/Slide.php';
+require_once './model/SliderModel.php';
 
 require_once './inc/f_session_usuario.php';

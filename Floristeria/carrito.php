@@ -1,8 +1,6 @@
 <?php
 require_once './core/init.php';
-if(!isset($_SESSION['user'])){
-    header("Location: index.php");
-}
+
 include_once './inc/f-header.php';
 include_once './inc/f-cart.php';
 include_once './inc/f-menu.php';
@@ -17,9 +15,9 @@ $cart = Session::getArraySession();
 ?>
 
 <h3 class="page-title">Carrito</h3>
-<?php if ($cart !== null ): ?>
+<?php if ($cart !== null): ?>
     <div class="cart">
-        <form method="post" action="checkout/cart/updatePost/">
+        <form method="post" action="./checkout.php">
             <fieldset>
                 <table class="data-table cart-table" id="shopping-cart-table">
                     <colgroup>
@@ -43,12 +41,17 @@ $cart = Session::getArraySession();
                     </thead>
                     <tfoot>
                         <tr class="first last">
-                            <td class="a-center last" colspan="50"><button class="button btn-continue" title="Continue Shopping" type="button"><span><span><i class="icon-shopping-cart"></i>Continuar comprando</span></span></button>
-                                <button class="button btn-update" title="Update Shopping Cart" value="update_qty" name="update_cart_action" type="submit"><span><span><i class="icon-refresh"></i>Actualizar carrito</span></span></button></td>
+                            <td class="a-center last" colspan="50"><button class="button btn-continue" title="Continue Shopping" onclick="window.location.href='index.php'" type="button"><span><span><i class="icon-shopping-cart"></i>Continuar comprando</span></span></button>
+                                <button class="button btn-update" onclick="window.location.reload();" type="button"><span><span><i class="icon-refresh"></i>Actualizar carrito</span></span></button></td>
                         </tr>
                     </tfoot>
                     <tbody>
-                        <?php foreach ($cart as $S_flower): ?>
+                        <?php
+                        foreach ($cart as $S_flower):
+                            $r_link = "flower_to_cart.php?mode=" . Session::_DELETE_ . "&";
+                            $r_link.= "id={$S_flower['id']}&";
+                            $r_link.= "v=" . md5($S_flower['id']);
+                            ?>
 
                             <tr class="first last odd">
                                 <td><a class="product-image" href="/"><img width="180" height="180" src="data:<?php echo $S_flower['imagetype']; ?>;base64,<?php echo $S_flower['str_imgcodificada']; ?>"></a></td>
@@ -74,9 +77,9 @@ $cart = Session::getArraySession();
                                         </div>
                                     </div></td>
                                 <td class="a-center"><span class="cart-price"><span class="price"><?php echo(Session::priceFormat(((double) $S_flower['cant']) * $S_flower['price'])); ?>&nbsp;&euro;</span></span></td>
-                                <td class="a-center last"><a class="btn-remove btn-remove2" title="Remove item" href="/">x</a></td>
+                                <td class="a-center last"><a class="btn-remove btn-remove2" title="Remove item" href="<?php echo $r_link; ?>">x</a></td>
                             </tr>
-                        <?php endforeach; ?>
+    <?php endforeach; ?>
                     </tbody>
                 </table>
             </fieldset>
@@ -94,11 +97,11 @@ $cart = Session::getArraySession();
                                             <div class="styled-select">
                                                 <select title="Country" class="validate-select" id="country" name="country_id">
                                                     <option  value="">-- Selecciona una población --</option>
-                                                    <?php
-                                                    foreach ($poblaciones as $poblacionesEnvio) {
-                                                        echo "<option value=\"{$poblacionesEnvio->km}\" data\"{$poblacionesEnvio->id}\">{$poblacionesEnvio->pob}</option>";
-                                                    }
-                                                    ?>
+    <?php
+    foreach ($poblaciones as $poblacionesEnvio) {
+        echo "<option value=\"{$poblacionesEnvio->km}\" data\"{$poblacionesEnvio->id}\">{$poblacionesEnvio->pob}</option>";
+    }
+    ?>
                                                 </select>
                                             </div>
                                         </div>

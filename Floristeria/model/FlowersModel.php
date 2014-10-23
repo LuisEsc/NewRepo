@@ -22,12 +22,12 @@ class FlowersModel {
         //$sql .= "VALUES (null , {$flower->name}}, {$flower->description}, {".(float) $flower->price.",} {$flower->image_name}, {$flower->image_type}, {". (int) $flower->category ."}, {". $flower->str_imgcodificada."})");
         $sql .= "VALUES (null , '{$flower->name}', '{$flower->description}', {$flower->price}, '{$flower->image_name}', '{$flower->image_type}', {$flower->category}, '{$flower->str_imgcodificada}')";
         
-        echo "id: ".$flower->id;
         self::setQuery($sql);
     }
     
     public static function getRandomFlowers($numFlowers){
-        $sql .= "SELECT * FROM flower order by RAND() limit {$numFlowers}";
+        $sql = "SELECT * FROM flower order by RAND() limit {$numFlowers}";
+        return self::toArray(self::setQuery($sql));
     }
     public static function update(Flower $flower){
         $sql = "UPDATE flower SET name = '{$flower->name}', description = '{$flower->description}', price= {$flower->price}, imagename = '{$flower->image_name}', imagetype = '{$flower->image_type}', category = {$flower->category}, imgblop = '{$flower->str_imgcodificada}' where id = {$flower->id}";

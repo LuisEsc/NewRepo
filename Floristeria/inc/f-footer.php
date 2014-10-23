@@ -21,22 +21,24 @@
                 <h4>Información</h4>
                 <div class="block_content">
                     <ul>
-                        <li class="item"><a title="Política de Cookies" href="/">Política de Cookies</a></li>
-                        <li class="item"><a title="Política de Privacidad" href="/">Política de Privacidad</a></li>
+                        <li class="item"><a title="Política de Privacidad y Cookies" href="politicaPrivacidad.php">Política de Privacidad y Cookies</li>
                         <li class="item"><a title="¿Quienes Somos?" href="/">¿Quienes Somos?</a></li>
                         <li><a title="Sitemap" href="index.php?controller=sitemap">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="block">
-                <h4>Mi Cuenta</h4>
-                <div class="block_content">
-                    <ul>
-                        <li><a href="mispedidos.php">Mis Pedidos</a></li>
-                        <li><a href="panelcontrolusuario.php">Mis Datos Personales</a></li>
-                    </ul>
+
+            <?php if (isset($_SESSION['user'])) { ?>
+                <div class="block">
+                    <h4>Mi Cuenta</h4>
+                    <div class="block_content">
+                        <ul>
+                            <li><a href="mispedidos.php">Mis Pedidos</a></li>
+                            <li><a href="panelcontrolusuario.php">Mis Datos Personales</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            <?php } ?>
             <div class="block last">
                 <h4>Contactar</h4>
                 <div class="block_content">
