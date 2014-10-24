@@ -6,7 +6,6 @@ class OrderModel {
         $res = self::toOrderArray(self::setQuery("SELECT * FROM pedidos ORDER BY pedidos.id_pedido ASC"));
         //Connection::getConnection()->close();
         return $res;
-        
     }
 
     public static function getOrdersByUserId($user_id) {
@@ -14,7 +13,14 @@ class OrderModel {
         //Connection::getConnection()->close();
         return $res;
     }
-
+    
+    public static function getUserIdByOrderId($order_id){
+        $sql = "SELECT id_cliente FROM pedidos WHERE id_pedido = {$order_id}";
+        $res = mysqli_fetch_row(self::setQuery($sql));
+        
+        return (int) $res[0];
+    }
+    
     public static function getOrderById($id) {
         $res = null;
         if (is_numeric($id)) {
@@ -23,66 +29,67 @@ class OrderModel {
         //Connection::getConnection()->close();
         return $res;
     }
-    
-    public static function getQuantity($id){
-        $sql = "SELECT * FROM flores_pedidos WHERE id_pedido = {$id}";
-        return mysql_fetch_array(self::setQuery($sql));
+
+    public static function getQuantity($id_pedido) {
+        $sql = "SELECT * FROM flores_pedido WHERE id_pedido = {$id_pedido}";
+        return self::toGenericAssocArray(self::setQuery($sql));
     }
-    
-    public static function OrderPrepared($id){
+
+    public static function OrderPrepared($id) {
         $sql = "UPDATE pedidos SET preparado = 1 WHERE id_pedido = {$id}";
         self::setQuery($sql);
     }
-    
-    public static function saveOrder(Order $order){
-        $sql = " INSERT INTO pedidos (id_cliente, timestam, precio_total) ";
-        $sql.= " VALUES($order->id_cliente, '{$order->timestam}', {$order->precio_total}) ";
+
+    public static function saveOrder(Order $order) {
+        $sql = " INSERT INTO pedidos (id_cliente, timestam, precio_total, preparado) ";
+        $sql.= " VALUES($order->id_cliente, '{$order->timestamp}', {$order->precio_total}, 0) ";
         echo $sql;
         $insertado = false;
         self::setQuery($sql);
-        
-            $sql = " SELECT id_pedido FROM pedidos WHERE timestam = '{$order->timestam}' ";
-            $res = self::setQuery($sql);
-            $result = mysqli_fetch_array($res);
-        
-            $sql = "";
-            $flower ;
-            foreach($order->array_flores as $indice=>$valor){
-                $sql = " INSERT INTO flores_pedido";
-                $sql.= " VALUES({$result[0]}, {$valor[1]}, '{$valor[2]}', {$valor[3]}) ";
-                echo $sql;
-                $insertado = self::setQuery($sql);
-            }
-        
+
+        $sql = " SELECT id_pedido FROM pedidos WHERE timestam = '{$order->timestamp}' ";
+        echo $sql;
+        $res = self::setQuery($sql);
+        $result = mysqli_fetch_array($res);
+
+        $sql = "";
+        $flower;
+        foreach ($order->array_flores as $indice => $valor) {
+            $sql = " INSERT INTO flores_pedido";
+            $sql.= " VALUES({$result[0]}, {$valor[1]}, '{$valor[2]}', {$valor[3]}, {$valor[4]}) ";
+            echo $sql;
+            $insertado = self::setQuery($sql);
+        }
+
         return $insertado;
     }
-    
+
     public static function getFlowersByOrderId($order_id) {
-        $sql  = " SELECT `flower`.`id`, `flower`.`name`,`flower`.`price`, `flower`.`description`, `flower`.`imagename`, `flower`.`imagetype`, `flower`.`category`, `flower`.`imgblop` ";
+        $sql = " SELECT `flower`.`id`, `flower`.`name`,`flower`.`price`, `flower`.`description`, `flower`.`imagename`, `flower`.`imagetype`, `flower`.`category`, `flower`.`imgblop` ";
         $sql .= " FROM `floristeria`.`flower`, `floristeria`.`flores_pedido` ";
         $sql .= " WHERE `flores_pedido`.`id_flor` = `flower`.`id`";
         $sql .= " AND `flores_pedido`.`id_pedido` = {$order_id}";
-        
+
         return self::toFlowerArray(self::setQuery($sql));
     }
-    public static function getFlowersByOrderIdAndUserId($order_id, $user_email) {        
+
+    public static function getFlowersByOrderIdAndUserId($order_id, $user_email) {
         $sql = " SELECT `flower`.`id`, `flower`.`name`,`flower`.`price`, `flower`.`description`, `flower`.`imagename`, `flower`.`imagetype`, `flower`.`category`, `flower`.`imgblop` ";
         $sql.= " FROM `floristeria`.`flower`, `floristeria`.`flores_pedido`, `floristeria`.`pedidos`, `floristeria`.`usuarios` ";
         $sql.= " WHERE `flores_pedido`.`id_flor` = `flower`.`id` AND `flores_pedido`.`id_pedido` = {$order_id} ";
         $sql.= " AND `pedidos`.`id_cliente` = `usuarios`.`id` ";
         $sql.= " AND `usuarios`.`email` = '{$user_email}' ";
         $sql.= " AND `pedidos`.`id_pedido` = {$order_id};";
-        
+
         return self::toFlowerArray(self::setQuery($sql));
     }
 
-
     private static function setQuery($str_query) {
         $con = Connection::getConnection();
-       
+
         $res = $con->query($str_query);
         //$con->close();
-        
+
         return $res;
     }
     
@@ -93,11 +100,11 @@ class OrderModel {
             $array[] = new Order(
                     $row['id_pedido'], $row['id_cliente'], $row['timestam'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total'], $row['preparado']
             );
-            
         }
         return $array;
     }
-    private static function toFlowerArray($result){
+
+    private static function toFlowerArray($result) {
         $array = array();
         while ($row = mysqli_fetch_assoc($result)) {
             //print_r($row);
@@ -107,8 +114,8 @@ class OrderModel {
         }
         return $array;
     }
-    
-    public static function toObject($res){
+
+    public static function toObject($res) {
         $object = null;
         while ($row = mysqli_fetch_assoc($res)) {
             //print_r($row);
@@ -119,5 +126,29 @@ class OrderModel {
         return $object;
     }
 
+    private static function toGenericAssocArray($result) {
+        
+        $nombreCampos = array();
+        //$numRows = mysqli_num_rows($result);
+        $array_generico = array(array());
+        $campo = 0;
+        
+        while($temp_array = mysqli_fetch_field($result)){
+            //echo "<br/><br/>";
+            $nombreCampos[$campo]=(String) $temp_array->name;
+            $campo++;
+        }        
+        //print_r($nombreCampos);
+        while($row = mysqli_fetch_array($result)){
+            for($i = 0;$i<sizeof($row) ;$i++){
+                $array_generico[($row[1])][$nombreCampos[$i]] = $row[$i];
+            }
+            
+        //print_r($array_generico[$row[1]]);
+        }
+        
+        
+        return $array_generico;
+    }
 
 }

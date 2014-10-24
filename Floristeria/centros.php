@@ -22,9 +22,8 @@ include_once './inc/f-menu.php';
             ?>
             <li> 
                 <a href = "#"
-                   data-addtohref = "<?php echo($link); ?>"
                    data-onclick ="addToCart();"
-                   data-addtocart = "Añadir al carro"
+                   data-addtocart = "<a href='<?php echo $link; ?>'>Añadir al carro</a>"
                    data-or = "O"
                    data-more = "Leer más"
                    data-currency = "&euro;"

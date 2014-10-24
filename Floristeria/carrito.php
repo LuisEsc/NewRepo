@@ -14,6 +14,20 @@ $poblaciones = array(
 $cart = Session::getArraySession();
 ?>
 
+<style type="text/css">
+    .newcenter{
+        text-align: center;
+    }
+    ul{
+        width: 100
+    }
+    .input{
+        margin: auto;
+        display: table;
+        
+    }
+    
+</style>
 <h3 class="page-title">Carrito</h3>
 <?php if ($cart !== null): ?>
     <div class="cart">
@@ -22,7 +36,7 @@ $cart = Session::getArraySession();
                 <table class="data-table cart-table" id="shopping-cart-table">
                     <colgroup>
                         <col width="1">
-                        <col>
+                        <col >
                         <col width="1">
                         <col width="1">
                         <col width="1">
@@ -32,8 +46,8 @@ $cart = Session::getArraySession();
                     <thead>
                         <tr class="first last">
                             <th rowspan="1" class="product-image-unit">Imagen</th>
-                            <th rowspan="1" class="product-name-unit"><span class="nobr">Producto</span> </th>
-                            <th colspan="1" class="a-center"><span class="nobr">Precio Unitario</span></th>
+                            <th rowspan="1" class="product-name-unit">Producto </th>
+                            <th colspan="1" class="a-center">Precio Unitario</th>
                             <th class="a-center" rowspan="1">Cantidad</th>
                             <th colspan="1" class="a-center">Subtotal</th>
                             <th class="a-center" rowspan="1">Acción</th>
@@ -63,8 +77,8 @@ $cart = Session::getArraySession();
                                     </dl>
                                     -->
                                 </td>
-                                <td class="a-center"><span class="cart-price"> <span class="price"><?php echo($S_flower['price']); ?>&nbsp;&euro;</span></span></td>
-                                <td class="a-center">
+                                <td class="a-center"><span class="cart-price"> <span class="price"><?php echo round($S_flower['price'],2,PHP_ROUND_HALF_UP); ?>&nbsp;&euro;</span></span></td>
+                                <td class="a-center newcenter" >
                                     <div class="input-qty-box">
                                         <div class="input">
                                             <ul class="range">

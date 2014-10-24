@@ -26,7 +26,7 @@ include_once './inc/f-menu.php';
                    data-onclick ="addToCart();"
                    data-addtocart = "Añadir al carro"
                    data-or = "O"
-                   data-more = "Leer más"
+                   data-more = "<a href='ficha.php?id=<?php echo $flower->id; ?>'>Leer Más</a>"
                    data-currency = "&euro;"
                    data-price = "<?php echo($flower->price); ?>"
                    data-largesrc = "data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>"

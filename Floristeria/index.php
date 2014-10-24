@@ -7,7 +7,16 @@ include_once './inc/f_session_usuario.php';
 
 include_once './inc/f-cart.php';
 include_once './inc/f-menu.php';
-?>
+?> <style type="text/css">
+        
+        .ancho{
+            
+            width: auto;
+            overflow: hidden;
+            border: 1px solid red;
+        }
+        
+    </style>
 
 <div class="slider-home-page">
 
@@ -44,10 +53,11 @@ include_once './inc/f-menu.php';
             });
         });
     </script>
+   
     <div id="iview">
         <div data-iview:thumbnail="media/slide1.jpg" data-iview:image="media/slide1.jpg">
             
-            <div class="iview-caption caption1" data-x="100" data-y="250" data-transition="expandDown">
+            <div class="ancho iview-caption caption1" data-x="100" data-y="250" data-transition="expandDown">
                 <h3>Variedad</h3>
             </div>
             <div class="iview-caption caption1" data-x="100" data-y="350" data-transition="expandDown">
@@ -55,16 +65,16 @@ include_once './inc/f-menu.php';
             </div>
         </div>
         <div data-iview:thumbnail="media/scr6-500px.jpg" data-iview:image="media/scr6-500px.jpg" data-iview:transition="block-drop-random" data-iview:pausetime="2000">
-            <div class="iview-caption caption1" data-x="100" data-y="250" data-transition="expandDown">
+            <div class="ancho iview-caption caption1" data-x="100" data-y="250" data-transition="expandDown">
                 <h3>Claveles</h3>
             </div>
             <div class="iview-caption caption1" data-x="100" data-y="350" data-transition="expandDown">
                 <h5 > Una variedad de claveles perfecta para una velada romántica.</h5>
             </div>
         </div>
-        <div data-iview:thumbnail="media/scr3-500px.jpg" data-iview:image="media/scr3-500px.jpg">
-            <div class="iview-caption caption1" data-x="100" data-y="250" data-transition="expandDown">
-                <h3>Florecillas azules</h3>
+        <div data-iview:image="media/scr3-500px.jpg">
+            <div class="iview-caption caption1 ancho" data-x="100" data-y="250" data-transition="expandDown">
+                <h3>Florecillas&nbsp;azules</h3>
             </div>
             <div class="iview-caption caption1" data-x="100" data-y="350" data-transition="expandDown">
                 <h5 >Estas alegres florecillas azules seran la alegría de la huerta.</h5>

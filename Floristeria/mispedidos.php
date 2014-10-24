@@ -48,7 +48,7 @@ if (!isset($_SESSION['user'])) {
                                         <th>Funciones</th>
                                     </tr>
                                     <?php
-                                    $orders = OrderModel::getOrdersByUserId(62);
+                                    $orders = OrderModel::getOrdersByUserId($_SESSION['user']->id);
                                     foreach ($orders as $order):
                                         ?>
 

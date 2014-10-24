@@ -13,11 +13,14 @@ class UsersModel {
     
     public static function getUserById($id){
         //echo "SELECT * FROM usuarios WHERE id = {$id}";
-        $user = self::toObject(self::setQuery("SELECT * FROM floristeria.usuarios WHERE id = {$id}"));
+        $sql = "SELECT * FROM floristeria.usuarios WHERE id = {$id}";
+        $user = self::toObject(self::setQuery($sql));
         //print_r($user);
+        //echo $sql;
         //$array = mysqli_fetch_array($user);
         //Connection::getConnection()->close();
-        return $user;
+       // print_r($user);
+       return $user;
     }
 
     public static function insertToDb(Usuario $user) {
@@ -91,7 +94,8 @@ class UsersModel {
                 $row->localidad,
                 $row->codpostal,
                 $row->provincia,
-                $row->pais
+                $row->pais,
+                $row->id
                 );
         
         return $usuario;

@@ -27,6 +27,7 @@ class Usuario {
         $this->codpostal = $array['codpostal'];
         $this->provincia = $array['provincia'];
         $this->pais =      $array['pais'];
+        $this->id = $array['id'];
         return $this;
     }
     
