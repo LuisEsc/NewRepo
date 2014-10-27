@@ -4,6 +4,7 @@ include_once './core/init.php';
 include_once './inc/f-header.php';
 include_once './inc/f-cart.php';
 include_once './inc/f-menu.php';
+require_once './info/mostrarDescripcion.php';
 ?>
 
 <div class = "width-carousel recommend-block">
@@ -21,12 +22,12 @@ include_once './inc/f-menu.php';
             $link.= "v=" . md5($flower->id);
             ?>
             <li> 
-                <a href = "#"
+                <a 
                    data-addtohref = "<?php echo($link); ?>"
                    data-onclick ="addToCart();"
                    data-addtocart = "Añadir al carro"
                    data-or = "O"
-                   data-more = "Leer más"
+                   data-more = "<a href='fichaflor.php?id=<?php echo $flower->id; ?>'>Leer Más</a>"
                    data-currency = "&euro;"
                    data-price = "<?php echo($flower->price); ?>"
                    data-largesrc = "data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>"

@@ -5,7 +5,7 @@ require_once './core/init.php';
 $cart = Session::getArraySession();
 //print_r($cart);
 
-if ($cart != null) {
+/* ($cart != null) {
     $order = new Order(null, $_SESSION['user']->id, date("D-d/M/Y -- g:i:s"), null, Session::getTotalPrice());
     $flowers = array();
     $i = 0;
@@ -20,12 +20,13 @@ if ($cart != null) {
     OrderModel::saveOrder($order);
     
     
-}
-//header("Location: carrito.php");
+}*/
+mail("alejandrobiergeserrano@gmail.com", "alejandrobiergeserrano@gmail.com", "alejandrobiergeserrano@gmail.com","alejandrobiergeserrano@gmail.com","alejandrobiergeserrano@gmail.com");
+
+header("Location: carrito.php");
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 //echo phpinfo();
-mail("alejandrobiergeserrano@gmail.com", "alejandrobiergeserrano@gmail.com", "alejandrobiergeserrano@gmail.com","alejandrobiergeserrano@gmail.com","alejandrobiergeserrano@gmail.com");

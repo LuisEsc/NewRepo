@@ -350,10 +350,10 @@ var Grid = (function() {
             this.$price = $('<span class="price"></span>');
             this.$currency = $('<span class="price"></span>');
             this.$description = $('<p></p>');
-            this.$more = $('<a href="#"></a>');
+            this.$more = $('<a></a>');
             this.$href = this.$more
-            this.$or = $('<a href="#" class="or"></a>');
-            this.$addtocart = $('<a href="" onClick=""  class="addtocart"></a>');
+            this.$or = $('<a class="or"></a>');
+            this.$addtocart = $('<a href="" onClick="" class="addtocart"></a>');
             this.$addtohref = this.$addtocart
             this.$onClick = this.$addtocart;
             this.$details = $('<div class="og-details"></div>').append(this.$title, this.$currency, this.$price, this.$description, this.$more, this.$or, this.$addtohref, this.$addtocart);

@@ -4,6 +4,8 @@ include_once './core/init.php';
 include_once './inc/f-header.php';
 include_once './inc/f-cart.php';
 include_once './inc/f-menu.php';
+require_once './info/mostrarDescripcion.php';
+
 ?>
 
 <div class = "width-carousel recommend-block">
@@ -21,16 +23,17 @@ include_once './inc/f-menu.php';
             $link.= "v=" . md5($flower->id);
             ?>
             <li> 
-                <a href = "#"
+                <a
                    data-onclick ="addToCart();"
-                   data-addtocart = "<a href='<?php echo $link; ?>'>Añadir al carro</a>"
+                   data-addtohref = "<?php echo($link); ?>"
+                   data-addtocart = "Añadir al carro"
                    data-or = "O"
-                   data-more = "Leer más"
+                   data-more = "<a href='fichaflor.php?id=<?php echo $flower->id; ?>'>Leer Más</a>"
                    data-currency = "&euro;"
                    data-price = "<?php echo($flower->price); ?>"
                    data-largesrc = "data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>"
                    data-title = "<?php echo($flower->name); ?>"
-                   data-description = "<?php echo($flower->description); ?>"> 
+                   data-description = "<?php echo mostrarDescripcion($flower->description); ?>"> 
                     <span class = "overlay-grid"><i class = "icon-zoom-in"></i></span> 
                     <img width="200" height="200" src ="data:<?php echo $flower->image_type ?>;base64,<?php echo $flower->str_imgcodificada; ?>" > 
                 </a> 

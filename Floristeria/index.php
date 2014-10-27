@@ -13,7 +13,6 @@ include_once './inc/f-menu.php';
             
             width: auto;
             overflow: hidden;
-            border: 1px solid red;
         }
         
     </style>
