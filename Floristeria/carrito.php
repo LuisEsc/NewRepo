@@ -9,6 +9,7 @@ $poblaciones = array(
     new PoblacionEnvio("HU", "Huesca", 0),
     new PoblacionEnvio("SI", "Sietamo", 12),
     new PoblacionEnvio("MO", "Monflorite", 5)
+    
 );
 
 $cart = Session::getArraySession();
@@ -68,7 +69,7 @@ $cart = Session::getArraySession();
                             ?>
 
                             <tr class="first last odd">
-                                <td><a class="product-image" href="/"><img width="180" height="180" src="data:<?php echo $S_flower['imagetype']; ?>;base64,<?php echo $S_flower['str_imgcodificada']; ?>"></a></td>
+                                <td><a class="product-image" href="fichaflor.php?id=<?php echo $S_flower['id']; ?>"><img width="180" height="auto" src="data:<?php echo $S_flower['imagetype']; ?>;base64,<?php echo $S_flower['str_imgcodificada']; ?>"/></a></td>
                                 <td><h2 class="product-name"> <a href="sony-vaio-vgn-txn27n-b-11-1-notebook-pc.html"><?php echo($S_flower['name']); ?></a> </h2>
                                     <!-- properties
                                     <dl>

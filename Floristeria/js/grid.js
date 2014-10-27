@@ -437,6 +437,7 @@ var Grid = (function() {
                         
                         self.$fullimage.append(self.$largeImg);
                     }
+                    $img.attr("width", "310");
                 }).attr('src', eldata.largesrc);
             }
 

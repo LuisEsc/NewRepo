@@ -23,19 +23,19 @@ require_once './info/mostrarDescripcion.php';
             $link.= "v=" . md5($flower->id);
             ?>
             <li> 
-                <a
+                <a href='fichaflor.php?id=<?php echo $flower->id; ?>'
                    data-onclick ="addToCart();"
                    data-addtohref = "<?php echo($link); ?>"
                    data-addtocart = "Añadir al carro"
                    data-or = "O"
-                   data-more = "<a href='fichaflor.php?id=<?php echo $flower->id; ?>'>Leer Más</a>"
+                   data-more = "Leer Más"
                    data-currency = "&euro;"
                    data-price = "<?php echo($flower->price); ?>"
                    data-largesrc = "data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>"
                    data-title = "<?php echo($flower->name); ?>"
                    data-description = "<?php echo mostrarDescripcion($flower->description); ?>"> 
                     <span class = "overlay-grid"><i class = "icon-zoom-in"></i></span> 
-                    <img width="200" height="200" src ="data:<?php echo $flower->image_type ?>;base64,<?php echo $flower->str_imgcodificada; ?>" > 
+                    <img width="150"  src ="data:<?php echo $flower->image_type ?>;base64,<?php echo $flower->str_imgcodificada; ?>" > 
                 </a> 
             </li>
         <?php endforeach; ?>

@@ -96,7 +96,7 @@ include_once './inc/f-menu.php';
             $link.= "v=" . md5($flower->id);
             ?>
             <li> 
-                <a href = "#"
+                <a href='fichaflor.php?id=<?php echo $flower->id; ?>'
                    data-addtohref = "<?php echo($link); ?>"
                    data-onclick ="addToCart();"
                    data-addtocart = "Añadir al carro"

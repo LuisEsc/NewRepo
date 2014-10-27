@@ -3,13 +3,8 @@ include_once './core/init.php';
 $flower = null;
 
 
-if (isset($_SESSION['user'])) {
-    if (isset($_REQUEST['id'])) {
-        $flower = FlowersModel::getFlowerById($_REQUEST['id']);
-    } else {
-        header("Location: index.php");
-    }
-   
+if (isset($_REQUEST['id'])) {
+    $flower = FlowersModel::getFlowerById($_REQUEST['id']);
 } else {
     header("Location: index.php");
 }
@@ -48,20 +43,22 @@ require_once './info/mostrarDescripcion.php';
                 <script src="js/jquery.bxslider.min.js"></script> 
                 <!-- bxSlider CSS file -->
                 <link href="css/jquery.bxslider.css" rel="stylesheet" />
-                
-                <img src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" width="331" height="332">
-
+                <div >
+                    <img height="332" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" style="max-width: 50%; max-height: 50%;">
+                </div>
                 <div id="short_description_block">
                     <h1 style="font-size: 35px;"><?php echo $flower->name; ?></h1>
                     <div class="price">
-                        <p class="our_price_display" style="font-size: 25px;"> <?php echo round($flower->price, 2, PHP_ROUND_HALF_UP)." €"; ?> </p>
+                        <p class="our_price_display" style="font-size: 25px;"> <?php echo round($flower->price, 2, PHP_ROUND_HALF_UP) . " €"; ?> </p>
                     </div>
                     <div id="short_description_content" class="rte align_justify">
                         <?php echo mostrarDescripcion($flower->description); ?>
                     </div>
-                    <?php   $link = "flower_to_cart.php?mode=" . Session::_INSERT_ . "&";
-                            $link.= "id={$flower->id}&";
-                            $link.= "v=" . md5($flower->id); ?> 
+                    <?php
+                    $link = "flower_to_cart.php?mode=" . Session::_INSERT_ . "&";
+                    $link.= "id={$flower->id}&";
+                    $link.= "v=" . md5($flower->id);
+                    ?> 
                     <button class="btn btn-add" onclick="window.location.href = '<?php echo $link; ?>'">AÑADIR AL CARRO</button>
                 </div>
             </div>
@@ -69,7 +66,7 @@ require_once './info/mostrarDescripcion.php';
         <div class="wrap-tabs">
             <div class="tabs container_9">
                 <ul class="i-tab">
-                    <li> Description </li>
+                    <li>Descripción</li>
                 </ul>
                 <ul class="tab-content">
                     <li  class="content-li active ">
@@ -105,5 +102,6 @@ require_once './info/mostrarDescripcion.php';
         </script>
 
 
-<?php
-include_once './inc/f-footer.php';
+        <?php
+        include_once './inc/f-footer.php';
+        
