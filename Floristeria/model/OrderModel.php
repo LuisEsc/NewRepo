@@ -21,6 +21,11 @@ class OrderModel {
         return (int) $res[0];
     }
     
+    public static function getOrderByDate($date){
+        $sql = "SELECT * FROM pedidos WHERE timestam = '{$date}'";
+        return self::toObject(self::setQuery($sql));
+    }
+    
     public static function getOrderById($id) {
         $res = null;
         if (is_numeric($id)) {
@@ -43,12 +48,12 @@ class OrderModel {
     public static function saveOrder(Order $order) {
         $sql = " INSERT INTO pedidos (id_cliente, timestam, precio_total, preparado) ";
         $sql.= " VALUES($order->id_cliente, '{$order->timestamp}', {$order->precio_total}, 0) ";
-        echo $sql;
+        
         $insertado = false;
         self::setQuery($sql);
 
         $sql = " SELECT id_pedido FROM pedidos WHERE timestam = '{$order->timestamp}' ";
-        echo $sql;
+       
         $res = self::setQuery($sql);
         $result = mysqli_fetch_array($res);
 
@@ -57,7 +62,7 @@ class OrderModel {
         foreach ($order->array_flores as $indice => $valor) {
             $sql = " INSERT INTO flores_pedido";
             $sql.= " VALUES({$result[0]}, {$valor[1]}, '{$valor[2]}', {$valor[3]}, {$valor[4]}) ";
-            echo $sql;
+            
             $insertado = self::setQuery($sql);
         }
 

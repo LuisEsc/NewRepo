@@ -20,9 +20,16 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/js/grid.js</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/centros.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/plantas.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/admin/posts/actualizarflor.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/admin/agregarflor.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/admin/pedidos.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/model/FlowersModel.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/index.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/checkout.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/model/OrderModel.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/admin/visualizarPedido.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/carrito.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/plantillafacturacorreo.php</file>
         </group>
     </open-files>
 </project-private>
