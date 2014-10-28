@@ -7,9 +7,24 @@ include_once './inc/f-menu.php';
 require_once './info/mostrarDescripcion.php';
 ?>
 
+
+<script src="js/jquery-1.7.1.min.js"></script>
+
+
+</script>
+<div class="width-carousel recommend-block">
+    <div class="container_9">
+        <h3  class="title-block">Trabajos Relaizados</h3>
+        <div align="center">
+            <img src="resources/images/slide22.jpg" width="380"/>
+            <img src="resources/images/slide33.jpg" width="380"/>
+            <img src="resources/images/slide44.jpg" width="380"/>
+        </div>
+    </div>
+</div>
 <div class = "width-carousel recommend-block">
     <div class = "container_9">
-        <h3 class = "title-block"><?php echo "Bodas" ?></h3>
+        <h3 class = "title-block"><?php echo "Bodas - Productos" ?></h3>
     </div>
 </div>
 
@@ -41,15 +56,15 @@ require_once './info/mostrarDescripcion.php';
     </ul>
     <script type="text/javascript" src="js/grid.js"></script> 
     <script>
-        $(function() {
-            "use strict";
-            Grid.init();
-        });
+    $(function () {
+        "use strict";
+        Grid.init();
+    });
 
-        function addToCart() {
-            //alert("entra");
+    function addToCart() {
+        //alert("entra");
 
-        }
+    }
     </script>
 </section>
 

@@ -33,7 +33,21 @@ require_once './info/mostrarDescripcion.php';
         <script src="js/jquery.bxslider.min.js"></script> 
         <script type="text/javascript" src="js/photoZoom.min.js"></script>
         <link href="css/jquery.bxslider.css" rel="stylesheet" />
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">
 
+            stLight.options({publisher: "f1ac6bbe-5eb3-4b22-95f6-e82a3cd1e8ec", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+        </script>
+
+        <!-- FA -->
+        <meta property="og:title" content="Floristeria Albahaca - <?php echo $flower->name; ?> - <?php echo round($flower->price,2,PHP_ROUND_HALF_UP); ?>" />
+        <meta property="og:type" content="large" />
+        <meta property="og:url" content="http://localhost/Floristeria/fichaflor.php?id=<?php echo $flower->id; ?>" />
+        <meta property="og:image" content="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" />
+        <meta property="og:site_name" content="Floristeria Albahaca - Huesca" />
+        <meta property="og:description" content="<?php echo $flower->description; ?>" />
+        <meta property="fb:admins" content="1166749937" />
+        <!-- END FA -->
     </head>
     <body >
         <script>
@@ -45,16 +59,15 @@ require_once './info/mostrarDescripcion.php';
                 $("#imageContainer").photoZoom();
             });
 
-
         </script>
         <section  id="columns" class="container_9 clearfix col1" >
             <div id="primary_block" class="clearfix">
                 <div id="imageContainer">
-                        <img id="foto" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" height="332"/>
-                        <?php /* <img id="zoom_02" height="332" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" style="max-width: 50%; max-height: 50%;"> */ ?>
+                    <img itemprop="image" id="foto" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" height="332"/>
+                    <?php /* <img id="zoom_02" height="332" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" style="max-width: 50%; max-height: 50%;"> */ ?>
                 </div>
                 <div id="short_description_block">
-                    <h1 style="font-size: 35px;"><?php echo $flower->name; ?></h1>
+                    <h1 itemprop="name" style="font-size: 35px;"><?php echo $flower->name; ?></h1>
                     <div class="price">
                         <p class="our_price_display" style="font-size: 25px;"> <?php echo round($flower->price, 2, PHP_ROUND_HALF_UP) . " €"; ?> </p>
                     </div>
@@ -67,7 +80,12 @@ require_once './info/mostrarDescripcion.php';
                     $link.= "v=" . md5($flower->id);
                     ?> 
                     <button class="btn btn-add" onclick="window.location.href = '<?php echo $link; ?>'">AÑADIR AL CARRO</button>
-                </div>
+
+                </div><div style="vertical-align: central; text-align: center;">
+                    <span id="button_face" class='st_facebook_large' displayText='Facebook'></span>
+                    <span class='st_twitter_large' displayText='Tweet'></span>
+                    <span class='st_pinterest_large' displayText='Pinterest'></span>
+                    <span class='st_googleplus_large' displayText='Google +'></span></div>
             </div>
         </section>
         <div class="wrap-tabs">
@@ -78,15 +96,18 @@ require_once './info/mostrarDescripcion.php';
                 <ul class="tab-content">
                     <li  class="content-li active ">
                         <div class="box-collateral box-description">
-                            <div class="std">
+                            <div itemprop="description" class="std">
                                 <?php echo $flower->description; ?>
                             </div>
                         </div>
                     </li>
 
                 </ul>
+
+
             </div>
         </div>
+
         <script>
 
 
@@ -103,10 +124,11 @@ require_once './info/mostrarDescripcion.php';
                             .eq($(this).index()).show();
                 })
 
-
+                stLight.options({publisher: "12345"});
 
             });
         </script>
+        
 
         <?php
         include_once './inc/f-footer.php';
