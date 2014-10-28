@@ -10,7 +10,7 @@ require_once './libs/Order.php';
 require_once './core/Session.php';
 
 $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
-
+error_reporting(0);
 if (!isset($_SESSION['user'])) {
     header("Location: ./registro.php");
 }
@@ -19,7 +19,7 @@ if (isset($_REQUEST['ip'])) {
     $id_pedido = $_REQUEST['ip'];
 }
 $flowers = OrderModel::getFlowersByOrderIdAndUserId($id_pedido, $_SESSION['user']->email);
-
+$flores_pedido = OrderModel::getQuantity($id_pedido);
 if ($flowers == null) {
     header("Location: mispedidos.php");
 }
@@ -57,16 +57,18 @@ if ($flowers == null) {
                                     <tr>
                                         <th>Categoria</th>
                                         <th>Nombre</th>
-                                        <th>Descripcion</th>
+                                        <th width="1">Descripcion</th>
                                         <th>Imagen</th>
-                                        <th>Precio</th>
+                                        <th>Precio unitario</th>
+                                        <th>Cantidad</th>
+                                        <th>Importe</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-<?php
-if ($flowers != null)
-    foreach ($flowers as $flower):
-        ?>
+                                    <?php
+                                    if ($flowers != null)
+                                        foreach ($flowers as $flower):
+                                            ?>
 
                                             <tr>
                                                 <td><?php echo $category[$flower->category]; ?></td>
@@ -74,11 +76,13 @@ if ($flowers != null)
                                                 <td><?php echo $flower->description; ?></td>
                                                 <td><img width="70" height="70" src="data:<?php echo $flower->image_type; ?>;base64,<?php if ($flower != null) echo $flower->str_imgcodificada; ?>" /></td>
                                                 <td><?php echo round($flower->price, 2, PHP_ROUND_HALF_UP); ?> €</td>
+                                                <td><?php echo $flores_pedido[$flower->id]['cantidad']; ?> </td>
+                                                <td><?php echo round($flower->price * $flores_pedido[$flower->id]['cantidad'], 2, PHP_ROUND_HALF_UP); ?>€</td>
                                             </tr>
 
-    <?php endforeach; ?>
+                                        <?php endforeach; ?>
 
-                                    <tr><td/><td/><td/><td/><td><b>TOTAL: <?php echo round(OrderModel::getOrderById($id_pedido)->precio_total, 2, PHP_ROUND_HALF_UP); ?> €</b></td></tr>
+                                            <tr><td/><td/><td/><td/><td/><td style="font-size:25px;"><b>TOTAL: </b></td><td style="font-size:25px;"><b><?php echo round(OrderModel::getOrderById($id_pedido)->precio_total, 2, PHP_ROUND_HALF_UP); ?> €</b></td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -86,7 +90,7 @@ if ($flowers != null)
                 </li>
             </ol>
         </section>
-<?php
-include_once './inc/f-footer.php';
-?>
+        <?php
+        include_once './inc/f-footer.php';
+        ?>
 </html>

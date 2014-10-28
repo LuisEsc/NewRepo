@@ -75,6 +75,8 @@ if (isset($_REQUEST['id_pedido'])) {
                     <?php
                     $orders = OrderModel::getOrders();
                     foreach ($orders as $order):
+                           $sum = OrderModel::getTotalQuantity($order->id_pedido);
+                           $sumQuantity = $sum[0];
 
                         if ($tipo == $order->preparado || $tipo == null) {
                             ?>
@@ -86,7 +88,7 @@ if (isset($_REQUEST['id_pedido'])) {
                                 <td><?php echo $order->timestamp; ?></td>
                                 <td><?php
                                     $array = $order->array_flores;
-                                    echo sizeof($array);
+                                    echo $sumQuantity;
                                     ?></td>
                                 <td><?php echo $order->precio_total; ?> €</td>
                                 <td><button title="informacion del pedido" onclick="more(<?php echo($order->id_pedido) ?>);" class="glyphicon glyphicon-info-sign"> </button>

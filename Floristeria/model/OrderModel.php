@@ -39,6 +39,11 @@ class OrderModel {
         $sql = "SELECT * FROM flores_pedido WHERE id_pedido = {$id_pedido}";
         return self::toGenericAssocArray(self::setQuery($sql));
     }
+    
+    public static function getTotalQuantity($id_pedido){
+        $sql = "SELECT SUM(cantidad) FROM flores_pedido WHERE id_pedido = {$id_pedido}";
+        return  mysqli_fetch_array(self::setQuery($sql));
+    }
 
     public static function OrderPrepared($id) {
         $sql = "UPDATE pedidos SET preparado = 1 WHERE id_pedido = {$id}";

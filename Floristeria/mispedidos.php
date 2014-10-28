@@ -11,6 +11,10 @@ require_once './core/Session.php';
 if (!isset($_SESSION['user'])) {
     header("Location: ./registro.php");
 }
+
+
+
+
 ?>
 <html>
     <head>
@@ -50,13 +54,15 @@ if (!isset($_SESSION['user'])) {
                                     <?php
                                     $orders = OrderModel::getOrdersByUserId($_SESSION['user']->id);
                                     foreach ($orders as $order):
+                                        $sumQuant = OrderModel::getTotalQuantity($order->id_pedido);
+                                        $sumQuantity = $sumQuant[0];
                                         ?>
 
                                         <tr>
                                             <td><?php echo $order->timestamp; ?></td>
                                             <td><?php
                                                 $array = $order->array_flores;
-                                                echo sizeof($array);
+                                                echo $sumQuantity;
                                                 ?></td>
                                             <td><?php echo round($order->precio_total, 2, PHP_ROUND_HALF_UP); ?> €</td>
                                             <td><button onclick="more(<?php echo($order->id_pedido) ?>);" />Details </button></td>

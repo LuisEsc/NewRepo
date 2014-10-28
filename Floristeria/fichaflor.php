@@ -25,7 +25,6 @@ require_once './info/mostrarDescripcion.php';
 
 
         <script src="js/jquery-1.7.1.min.js"></script>
-        <script src="js/jquery.elevatezoom.js"></script>
         <script src="js/modernizr.custom.js"></script>
         <script src="js/jquery.dlmenu.js"></script>
         <script src="js/scripts.js"></script>

@@ -17,7 +17,7 @@ if ($cart != null) {
     $order->setFlowerArray($flowers);
 
 
-    //OrderModel::saveOrder($order);
+    OrderModel::saveOrder($order);
 
 
     $fromAddress = "esmonetpruebas@gmail.com";
