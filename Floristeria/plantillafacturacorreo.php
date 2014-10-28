@@ -1,16 +1,17 @@
 <?php
 require_once './core/init.php';
-
+//require './core/Session.php';
 $cart = Session::getArraySession();
-$user = $_SESSION['user'];
-$order = null;
-$flowers = $_SESSION['flowers'];
-error_reporting(0);
 
-if ($cart != null) {
-    //$flowers = OrderModel::getQuantity($order->id_pedido);
-}
+$user = $_SESSION['user'];
+$flowers = $_SESSION['flowers'];
+
+
+
+
+
 ?>
+
 <html>
     <head>
         <link href="css/styles.css" rel="stylesheet" type="text/css" media="all">
@@ -30,36 +31,38 @@ if ($cart != null) {
                 vertical-align: middle;
             }
             .total{
-                font-size: 40px;
+                font-size: 60px;
                 color: black;
             }
         </style>
     </head>
+
     <body>
         <h1>MUCHAS GRACIAS POR COMPRAR EN FLORISTER&Iacute;A ALBAHACA.</h1>
         <h3>Este es el resumen de su pedido:<br/></h3>
-        <table width="500" border="1" cellpadding="15" cellspacing="50">
+        <table width="500" border="1">
             <thead>
-                <th width="1">Producto</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Importe</th>
+            <th width="1">Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Importe</th>
         </thead>
         <tbody>
-            <?php foreach ($cart as $flowers): ?>
-            <tr>
-                <td height="30"><?php echo $flowers['name']; ?></td>
-                <td height="30"><?php echo $flowers['cant']; ?></td>
-                <td height="30"><?php echo round($flowers['price'], 2, PHP_ROUND_HALF_UP); ?> &euro;</td>
-                <td height="30"><?php echo round($flowers['cant'] * $flowers['price'], 2, PHP_ROUND_HALF_UP); ?> &euro;</td>
-            </tr>
-            <?php endforeach; ?>
-            
-                
-        </tbody>
-        
+            <?php
+            foreach ($cart as $flowers) {
+                echo "<tr>";
+                    echo "<td height='30'>" . $flowers['name'] . "</td>";
+                    echo "<td height='30'>" . $flowers['cant'] . "</td>";
+                    echo "<td height='30'>" . round($flowers['price'], 2, PHP_ROUND_HALF_UP) . " &euro;</td>";
+                    echo "<td height='30'>" . round($flowers['cant'] * $flowers['price'], 2, PHP_ROUND_HALF_UP) . " &euro;</td>";
+                echo "</tr>";
+            }
+            ?>
+
+
+        </tbody>        
     </table>
-        <p class="total"><b>Total:</b> <?php echo Session::getTotalPrice(); ?> &euro;</p>                
-                
+    <h1 class="total"><b>Total:</b> <?php echo Session::getTotalPrice(); ?> &euro;</h1>                
+
 </body>
 </html>

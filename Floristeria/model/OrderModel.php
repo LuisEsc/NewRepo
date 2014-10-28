@@ -139,17 +139,15 @@ class OrderModel {
         $campo = 0;
         
         while($temp_array = mysqli_fetch_field($result)){
-            //echo "<br/><br/>";
+            
             $nombreCampos[$campo]=(String) $temp_array->name;
             $campo++;
         }        
-        //print_r($nombreCampos);
         while($row = mysqli_fetch_array($result)){
             for($i = 0;$i<sizeof($row) ;$i++){
                 $array_generico[($row[1])][$nombreCampos[$i]] = $row[$i];
             }
             
-        //print_r($array_generico[$row[1]]);
         }
         
         

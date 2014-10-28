@@ -23,10 +23,17 @@ require_once './info/mostrarDescripcion.php';
         <link href="css/custom-style.css" rel="stylesheet" type="text/css" media="all" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
 
+
         <script src="js/jquery-1.7.1.min.js"></script>
+        <script src="js/jquery.elevatezoom.js"></script>
         <script src="js/modernizr.custom.js"></script>
         <script src="js/jquery.dlmenu.js"></script>
         <script src="js/scripts.js"></script>
+        <link rel="stylesheet" href="css/prettyPhoto.css" />
+        <script src="js/jquery.prettyPhoto.js"></script> 
+        <script src="js/jquery.bxslider.min.js"></script> 
+        <script type="text/javascript" src="js/photoZoom.min.js"></script>
+        <link href="css/jquery.bxslider.css" rel="stylesheet" />
 
     </head>
     <body >
@@ -35,16 +42,17 @@ require_once './info/mostrarDescripcion.php';
                 'use strict';
                 $('#dl-menu').dlmenu();
             });
+            $(document).ready(function () {
+                $("#imageContainer").photoZoom();
+            });
+
+
         </script>
         <section  id="columns" class="container_9 clearfix col1" >
             <div id="primary_block" class="clearfix">
-                <link rel="stylesheet" href="css/prettyPhoto.css" />
-                <script src="js/jquery.prettyPhoto.js"></script> 
-                <script src="js/jquery.bxslider.min.js"></script> 
-                <!-- bxSlider CSS file -->
-                <link href="css/jquery.bxslider.css" rel="stylesheet" />
-                <div >
-                    <img height="332" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" style="max-width: 50%; max-height: 50%;">
+                <div id="imageContainer">
+                        <img id="foto" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" height="332"/>
+                        <?php /* <img id="zoom_02" height="332" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" style="max-width: 50%; max-height: 50%;"> */ ?>
                 </div>
                 <div id="short_description_block">
                     <h1 style="font-size: 35px;"><?php echo $flower->name; ?></h1>
@@ -100,7 +108,6 @@ require_once './info/mostrarDescripcion.php';
 
             });
         </script>
-
 
         <?php
         include_once './inc/f-footer.php';
