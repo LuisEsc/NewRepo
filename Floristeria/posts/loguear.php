@@ -14,7 +14,7 @@ session_start();
         
         if($user!=null){
             $usuario = new Usuario($email,$password);
-            print_r($usuario->arrayToUser($user));
+            //print_r($usuario->arrayToUser($user));
             $_SESSION['user']=$usuario->arrayToUser($user);
             header("Location: ../index.php");
         }

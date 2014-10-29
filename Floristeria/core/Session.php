@@ -113,7 +113,7 @@ class Session {
     }
 
     private static function sessionStart() {
-        if (session_status() != PHP_SESSION_ACTIVE) {
+        if (session_id() != PHP_SESSION_ACTIVE) {
             session_start();
         }
     }

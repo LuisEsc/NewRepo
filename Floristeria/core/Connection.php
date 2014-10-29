@@ -7,10 +7,10 @@
  */
 class Connection {
 
-    const _HOST_ = "192.168.1.50";
-    const _USER_ = "luis";
-    const _PASS_ = "eguzki";
-    const _DB_ = "floristeria";
+    const _HOST_ = "db533057487.db.1and1.com";
+    const _USER_ = "dbo533057487";
+    const _PASS_ = "dbdeveloper1234";
+    const _DB_ = "db533057487";
 
     private static $connection = null;
 

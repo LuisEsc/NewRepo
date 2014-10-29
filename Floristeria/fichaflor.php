@@ -15,6 +15,7 @@ require_once './info/mostrarDescripcion.php';
 ?>
 
 <html>
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,32 +34,23 @@ require_once './info/mostrarDescripcion.php';
         <script type="text/javascript" src="js/photoZoom.min.js"></script>
         <link href="css/jquery.bxslider.css" rel="stylesheet" />
 
-
-        <!-- FA -->
-        <meta property="og:title" content="TITULU" />
-        <meta property="og:type" content="large" />
-        <meta property="og:url" content="http://localhost.local/Floristeria/fichaflor.php?id=<?php echo $flower->id; ?>" />
-        <meta property="od:image" content="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>"/>
-        <meta property="og:site_name" content="Floristeria Albahaca - Huesca" />
+        <meta property="og:title" content="<?php echo $flower->name;?>" />
+        
+        <meta property="og:url" content="http://www.floristeriaalbahaca.es/floristeria/fichaflor.php?id=<?php echo $flower->id; ?>" />
+        <meta property="og:image" content="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>"/>
+        <meta property="og:site_name" content="<?php echo $flower->description ?>" />
         <meta property="og:description" content="" />
         <meta property="fb:admins" content="1166749937" />
-        <!-- END FA -->
-        <script type="text/javascript">var switchTo5x = true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: 'f1ac6bbe-5eb3-4b22-95f6-e82a3cd1e8ec'});</script>
+        <!-- FA -->
 
     </head>
     <body>
 
+        <!-- END FA -->
+        <script type="text/javascript">var switchTo5x = true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher: 'f1ac6bbe-5eb3-4b22-95f6-e82a3cd1e8ec'});</script>
+
         <div id="fb-root"></div>
-        <script>(function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id))
-                    return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/es_ES/all.js#xfbml=1";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
+
 
         <script>
             $(function () {
@@ -72,14 +64,14 @@ require_once './info/mostrarDescripcion.php';
         </script>
         <section  id="columns" class="container_9 clearfix col1" >
             <div id="primary_block" class="clearfix">
-                <div  itemprop="image" id="imageContainer">
-                    <img id="foto" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" height="332"/>
+                <div   id="imageContainer">
+                    <img itemprop="image" id="foto" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" height="332"/>
                     <?php /* <img id="zoom_02" height="332" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" style="max-width: 50%; max-height: 50%;"> */ ?>
                 </div>
                 <div id="short_description_block">
                     <h1 itemprop="name" style="font-size: 35px;"><?php echo $flower->name; ?></h1>
                     <div class="price">
-                        <p class="our_price_display" style="font-size: 25px;"> <?php echo round($flower->price, 2, PHP_ROUND_HALF_UP) . " €"; ?> </p>
+                        <p class="our_price_display" style="font-size: 25px;"> <?php echo$flower->price . " €"; ?> </p>
                     </div>
                     <div id="short_description_content" class="rte align_justify">
                         <?php echo mostrarDescripcion($flower->description); ?>
@@ -92,7 +84,11 @@ require_once './info/mostrarDescripcion.php';
                     <button class="btn btn-add" onclick="window.location.href = '<?php echo $link; ?>'">AÑADIR AL CARRO</button>
                     <!-- Go to www.addthis.com/dashboard to customize your tools -->
                 </div>
-                <div style="text-align: match-parent" class="addthis_sharing_toolbox"></div>
+                <span class='st_facebook_large' displayText='Facebook'></span>
+                <span class='st_twitter_large' displayText='Tweet'></span>
+                <span class='st_pinterest_small' displayText='Pinterest'></span>
+                <span class='st_googleplus_large' displayText='Google +'></span>
+
 
             </div>
         </section>
