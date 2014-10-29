@@ -7,11 +7,19 @@ include_once './inc/f-menu.php';
 require_once './info/mostrarDescripcion.php';
 ?>
 
+<div class="width-carousel recommend-block">
+    <div class="container_9">
+        <h3  class="title-block">Trabajos Relaizados</h3>
+        <div align="center">
+        </div>
+    </div>
+</div>
 <div class = "width-carousel recommend-block">
     <div class = "container_9">
         <h3 class = "title-block"><?php echo "Funerarios - Productos" ?></h3>
     </div>
 </div>
+
 
 <section id = "columns" class = "container_9 clearfix col1" >
     <ul id = "og-grid" class = "og-grid">
