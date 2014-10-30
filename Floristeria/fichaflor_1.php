@@ -24,7 +24,7 @@ require_once './admin/libs/BinaryImage.php';
         <link rel="stylesheet" type="text/css" href="css/component.css" />
 
         <meta name="description" content="Mira esta flor que vende la Floristería Albahaca: <?php echo $flower->name; ?> a <?php echo round($flower->price, 2); ?> €" />
-        
+
         <script src="js/jquery-1.7.1.min.js"></script>
         <script src="js/modernizr.custom.js"></script>
         <script src="js/jquery.dlmenu.js"></script>
@@ -33,8 +33,9 @@ require_once './admin/libs/BinaryImage.php';
         <script src="js/jquery.prettyPhoto.js"></script> 
         <script src="js/jquery.bxslider.min.js"></script> 
         <script type="text/javascript" src="js/photoZoom.min.js"></script>
-        <script type="text/javascript">var switchTo5x = true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-        <script type="text/javascript">stLight.options({publisher: 'f1ac6bbe-5eb3-4b22-95f6-e82a3cd1e8ec', embeds: true});</script>
+        <script type="text/javascript">var switchTo5x = true;</script>
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript" src="http://s.sharethis.com/loader.js"></script>
         <link href="css/jquery.bxslider.css" rel="stylesheet" />
     </head>
     <body>
@@ -76,26 +77,15 @@ require_once './admin/libs/BinaryImage.php';
                         <div class="box-collateral box-description">
                             <div   class="std">
                                 <p ><?php echo $flower->description; ?></p>
-                                <span   id="button_1"></span>
-                                <script>
-                                    
-                                    stWidget.addEntry({
-                                        "service": "sharethis",
-                                        "element": document.getElementById('button_1'),
-                                        "url": "http://www.floristeriaalbahaca.es/floristeria/fichaflor.php?id=<?php echo $flower->id; ?>",
-                                        "title": "Floristeria Albahaca - Huesca",
-                                        "type": "large",
-                                        "text": "ShareThis",
-                                        "image": "http://www.floristeriaalbahaca.es/floristeria/resources/image.php?ID=<?php echo $flower->id; ?>",
-                                        "summary": "Mira esta flor que vende la Floristería Albahaca: <?php echo $flower->name; ?> a <?php echo round($flower->price, 2); ?> €"
-                                    });
-                                </script>
+
                             </div>
                         </div>
                     </li>
 
                 </ul>
-
+                <span class='st_facebook_hcount' displayText='Facebook'></span>
+                <span class='st_twitter_hcount' displayText='Tweet'></span>
+                <span class='st__hcount' displayText=''></span>
 
             </div>
         </div>
@@ -117,11 +107,15 @@ require_once './admin/libs/BinaryImage.php';
                             .eq($(this).index()).show();
                 })
 
-                stLight.options({publisher: "12345"});
+
 
             });
         </script>
-        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5450b019262f18a6" async="async"></script> 
+        <script type="text/javascript">stLight.options({publisher: "d853da7b-dcb4-421f-8ce8-c0370f7eba27", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+        <script>
+            var options = {"publisher": "d853da7b-dcb4-421f-8ce8-c0370f7eba27", "logo": {"visible": true, "url": "www.floristeriaalbahaca.es/floristeria", "img": "http://www.floristeriaalbahaca.es/floristeria/images/logo.png", "height": 90}, "ad": {"visible": false, "openDelay": "5", "closeDelay": "0"}, "livestream": {"domain": "", "type": "sharethis", "customColors": {"widgetBackgroundColor": "#FFFFFF", "articleLinkColor": "#006fbb"}}, "ticker": {"visible": false, "domain": "", "title": "", "type": "sharethis", "customColors": {"widgetBackgroundColor": "#4b5c4f", "articleLinkColor": "#FFFFFF"}}, "facebook": {"visible": false, "profile": "facebook"}, "fblike": {"visible": false, "url": ""}, "twitter": {"visible": false, "user": "sharethis"}, "twfollow": {"visible": false}, "custom": [{"visible": false, "title": "Custom 1", "url": "", "img": "", "popup": false, "popupCustom": {"width": 300, "height": 250}}, {"visible": false, "title": "Custom 2", "url": "", "img": "", "popup": false, "popupCustom": {"width": 300, "height": 250}}, {"visible": false, "title": "Custom 3", "url": "", "img": "", "popup": false, "popupCustom": {"width": 300, "height": 250}}], "chicklets": {"items": ["facebook", "twitter", "linkedin", "pinterest", "email", "sharethis"]}, "background": "#659671", "color": "#005a25", "arrowStyle": "light"};
+            var st_bar_widget = new sharethis.widgets.sharebar(options);
+        </script>
 
         <?php
         include_once './inc/f-footer.php';

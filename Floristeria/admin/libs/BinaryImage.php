@@ -20,10 +20,11 @@ class BinaryImage {
 
     // Devuelve los datos en formato binario.
     public static function getImage($base64) {
+        $data = null;
         if (($data = base64_decode($base64)) != false) {
             return $data;
         }
-        return null;
+        return $data;
     }
 
 }
