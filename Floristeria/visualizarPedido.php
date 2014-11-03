@@ -75,14 +75,14 @@ if ($flowers == null) {
                                                 <td><?php echo $flower->name; ?></td>
                                                 <td><?php echo $flower->description; ?></td>
                                                 <td><img width="70" height="70" src="data:<?php echo $flower->image_type; ?>;base64,<?php if ($flower != null) echo $flower->str_imgcodificada; ?>" /></td>
-                                                <td><?php echo round($flower->price, 2, PHP_ROUND_HALF_UP); ?> €</td>
+                                                <td><?php echo round($flower->price, 2); ?> €</td>
                                                 <td><?php echo $flores_pedido[$flower->id]['cantidad']; ?> </td>
-                                                <td><?php echo round($flower->price * $flores_pedido[$flower->id]['cantidad'], 2, PHP_ROUND_HALF_UP); ?>€</td>
+                                                <td><?php echo round($flower->price * $flores_pedido[$flower->id]['cantidad'], 2); ?>€</td>
                                             </tr>
 
                                         <?php endforeach; ?>
 
-                                            <tr><td/><td/><td/><td/><td/><td style="font-size:25px;"><b>TOTAL: </b></td><td style="font-size:25px;"><b><?php echo round(OrderModel::getOrderById($id_pedido)->precio_total, 2, PHP_ROUND_HALF_UP); ?> €</b></td></tr>
+                                            <tr><td/><td/><td/><td/><td/><td style="font-size:25px;"><b>TOTAL: </b></td><td style="font-size:25px;"><b><?php echo round(OrderModel::getOrderById($id_pedido)->precio_total, 2); ?> €</b></td></tr>
                                 </tbody>
                             </table>
                         </div>

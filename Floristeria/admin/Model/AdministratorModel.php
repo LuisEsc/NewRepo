@@ -5,14 +5,18 @@
  *
  * @author Esmonet
  */
+require_once '../core/Connection.php';
 class AdministratorModel {
 
     public static function getAdmin($email, $password) {
-        require_once '../core/Connection.php';
+        
+        
         $con = Connection::getConnection();
+        
         $result = $con->query("SELECT * FROM `administrator` WHERE `email` = '{$email}' AND `password` = '{$password}'");
-        $con->close();
-        return mysqli_fetch_object($result);
+        //$con->close();
+        //print_r($result);
+        return mysqli_fetch_assoc($result);
     }
 
 }

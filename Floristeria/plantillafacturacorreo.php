@@ -53,8 +53,8 @@ $flowers = $_SESSION['flowers'];
                 echo "<tr>";
                     echo "<td height='30'>" . $flowers['name'] . "</td>";
                     echo "<td height='30'>" . $flowers['cant'] . "</td>";
-                    echo "<td height='30'>" . round($flowers['price'], 2, PHP_ROUND_HALF_UP) . " &euro;</td>";
-                    echo "<td height='30'>" . round($flowers['cant'] * $flowers['price'], 2, PHP_ROUND_HALF_UP) . " &euro;</td>";
+                    echo "<td height='30'>" . round($flowers['price'], 2) . " &euro;</td>";
+                    echo "<td height='30'>" . round($flowers['cant'] * $flowers['price'], 2) . " &euro;</td>";
                 echo "</tr>";
             }
             ?>

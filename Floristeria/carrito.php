@@ -78,7 +78,7 @@ $cart = Session::getArraySession();
                                     </dl>
                                     -->
                                 </td>
-                                <td class="a-center"><span class="cart-price"> <span class="price"><?php echo round($S_flower['price'],2,PHP_ROUND_HALF_UP); ?>&nbsp;&euro;</span></span></td>
+                                <td class="a-center"><span class="cart-price"> <span class="price"><?php echo round($S_flower['price'],2); ?>&nbsp;&euro;</span></span></td>
                                 <td class="a-center newcenter" >
                                     <div class="input-qty-box">
                                         <div class="input">

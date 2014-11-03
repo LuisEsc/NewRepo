@@ -64,7 +64,7 @@ if (!isset($_SESSION['user'])) {
                                                 $array = $order->array_flores;
                                                 echo $sumQuantity;
                                                 ?></td>
-                                            <td><?php echo round($order->precio_total, 2, PHP_ROUND_HALF_UP); ?> €</td>
+                                            <td><?php echo round($order->precio_total, 2); ?> €</td>
                                             <td><button onclick="more(<?php echo($order->id_pedido) ?>);" />Details </button></td>
 
                                         </tr>
@@ -79,6 +79,6 @@ if (!isset($_SESSION['user'])) {
         </section>
         <?php
         include_once './inc/f-footer.php';
-        Connection::getConnection()->close();
+        
         ?>
 </html>

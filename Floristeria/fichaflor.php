@@ -76,7 +76,7 @@ require_once './admin/libs/BinaryImage.php';
                         <div class="box-collateral box-description">
                             <div   class="std">
                                 <p ><?php echo $flower->description; ?></p>
-                                <span   id="button_1"></span>
+                                <span id="button_1"></span>
                                 <script>
                                     
                                     stWidget.addEntry({

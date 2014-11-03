@@ -1,26 +1,7 @@
-<?php
-session_start();
-$admin = (isset($_SESSION['admin'])) ? $_SESSION['admin'] : null;
 
-if ($admin != null) {
-    header('location: index.php');
-}
-
-if (filter_input(INPUT_SERVER, 'REQUEST_METHOD') == 'POST') {
-    $email = filter_input(INPUT_POST, 'login_user', FILTER_VALIDATE_EMAIL);
-    $password = filter_input(INPUT_POST, 'login_pass', FILTER_SANITIZE_ENCODED);
-
-    if (($email) && ($password)) {
-        include_once './Model/AdministratorModel.php';
-        if (($object = AdministratorModel::getAdmin($email, $password)) != null) {
-            $_SESSION['admin'] = $object->email;
-            header('location:index.php');
-        }
-    }
-}
-?>
 <html lang="en">
     <head>
+        
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -49,8 +30,7 @@ if (filter_input(INPUT_SERVER, 'REQUEST_METHOD') == 'POST') {
                 </div>
 
 
-
-                <form class="form-signin" role="form" action="" method="post">
+                <form class="form-signin" role="form" action="loguear.php" method="post">
                     <h2 class="form-signin-heading">Inicia sesión</h2>
                     <input name="login_user" type="email" class="form-control" placeholder="Correo electrónico" required autofocus>
                     <input name="login_pass" type="password" class="form-control" placeholder="Contraseña" required>

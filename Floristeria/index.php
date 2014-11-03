@@ -1,13 +1,18 @@
 <?php
-include_once './core/init.php';
+require_once './core/App.php';
+require_once './core/Session.php';
+require_once './core/Connection.php';
+require_once './core/WebPage.php';
+require_once './libs/Flower.php';
+require_once './model/FlowersModel.php';
+require_once './inc/f_session_usuario.php';
 
+$flowers = FlowersModel::getRandomFlowers(5);
 include_once './inc/f-header.php';
-
-include_once './inc/f_session_usuario.php';
-
 include_once './inc/f-cart.php';
 include_once './inc/f-menu.php';
-?> <style type="text/css">
+?>
+<style type="text/css">
         
         .ancho{
             
@@ -54,7 +59,7 @@ include_once './inc/f-menu.php';
     </script>
    
     <div id="iview">
-        <div data-iview:thumbnail="media/slide1.jpg" data-iview:image="media/slide1.jpg">
+        <div data-iview:image="media/slide1.jpg">
             
             <div class="ancho iview-caption caption1" data-x="100" data-y="250" data-transition="expandDown">
                 <h3>Variedad</h3>
@@ -63,7 +68,7 @@ include_once './inc/f-menu.php';
                 <h5 >Disponemos de una gran variedad de flores perfectas para todas las ocasiones.</h5>
             </div>
         </div>
-        <div data-iview:thumbnail="media/scr6-500px.jpg" data-iview:image="media/scr6-500px.jpg" data-iview:transition="block-drop-random" data-iview:pausetime="2000">
+        <div data-iview:image="media/scr6-500px.jpg" data-iview:transition="block-drop-random" data-iview:pausetime="2000">
             <div class="ancho iview-caption caption1" data-x="100" data-y="250" data-transition="expandDown">
                 <h3>Claveles</h3>
             </div>
@@ -90,7 +95,7 @@ include_once './inc/f-menu.php';
 <section  id="columns" class="container_9 clearfix col1" >
     <ul id="og-grid" class="og-grid">
         <?php
-        foreach (FlowersModel::getRandomFlowers(5) as $flower):
+        foreach ($flowers as $flower):
             $link = "flower_to_cart.php?mode=" . Session::_INSERT_ . "&";
             $link.= "id={$flower->id}&";
             $link.= "v=" . md5($flower->id);
