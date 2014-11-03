@@ -9,8 +9,9 @@ class OrderModel {
     }
 
     public static function getOrdersByUserId($user_id) {
+        
         $res = self::toOrderArray(self::setQuery("SELECT * FROM pedidos WHERE id_cliente = '{$user_id}'"));
-        //Connection::getConnection()->close();
+        
         return $res;
     }
     

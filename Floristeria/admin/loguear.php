@@ -1,5 +1,5 @@
 <html><head></head><body><?php
-session_start();
+//session_start();
         require_once './Model/AdministratorModel.php';
 
         $email = $_REQUEST['login_user'];

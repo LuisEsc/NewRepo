@@ -1,5 +1,5 @@
 <?php
-include_once './inc/Session.php';
+require_once '../admin/inc/Session.php';
 $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
 /*
   ?>

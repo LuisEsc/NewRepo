@@ -20,6 +20,7 @@ if (isset($_REQUEST['tipo'])) {
 if (isset($_REQUEST['id_pedido'])) {
     $id_pedido = $_REQUEST['id_pedido'];
 }
+$orders = OrderModel::getOrders();
 ?>
 <html lang="es">
     <script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
@@ -73,7 +74,7 @@ if (isset($_REQUEST['id_pedido'])) {
                 </thead>
                 <tbody>
                     <?php
-                    $orders = OrderModel::getOrders();
+                    
                     foreach ($orders as $order):
                            $sum = OrderModel::getTotalQuantity($order->id_pedido);
                            $sumQuantity = $sum[0];

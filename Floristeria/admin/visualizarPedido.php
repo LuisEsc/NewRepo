@@ -1,5 +1,5 @@
 <?php
-//require_once './inc/Session.php';
+require_once './inc/Session.php';
 require_once '../model/FlowersModel.php';
 require_once '../model/OrderModel.php';
 require_once '../libs/Order.php';
@@ -8,7 +8,7 @@ require_once '../libs/Flower.php';
 require_once '../libs/Usuario.php';
 require_once '../model/UsersModel.php';
 
-error_reporting(0);
+//error_reporting(0);
 
 $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
 
@@ -70,14 +70,14 @@ $flores_pedido = OrderModel::getQuantity($id_pedido);
                             <td><?php echo $flower->name;   ?></td>
                             <td><?php echo $flower->description;    ?></td>
                             <td><img width="70" height="70" src="data:<?php echo $flower->image_type; ?>;base64,<?php if ($flower != null) echo $flower->str_imgcodificada; ?>" /></td>
-                            <td><?php echo round($flower->price,2, PHP_ROUND_HALF_UP); ?> €</td>
+                            <td><?php echo round($flower->price,2); ?> €</td>
                             <td><?php echo $flores_pedido[$flower->id]['cantidad'];  ?></td>
-                            <td><?php $subtotal = round($flores_pedido[$flower->id]['precio_flor']*$flores_pedido[$flower->id]['cantidad'], 2, PHP_ROUND_HALF_UP); $total+= $subtotal; echo $subtotal." €";   ?></td>
+                            <td><?php $subtotal = round($flores_pedido[$flower->id]['precio_flor']*$flores_pedido[$flower->id]['cantidad'], 2); $total+= $subtotal; echo $subtotal." €";   ?></td>
                         </tr>
 
                         <?php endforeach;?>
                         
-                        <tr><td/><td/><td/><td/><td/><td/><td><b>TOTAL: <?php echo round($total,2 ,PHP_ROUND_HALF_UP); ?> €</b></td></tr>
+                        <tr><td/><td/><td/><td/><td/><td/><td><b>TOTAL: <?php echo round($total,2 ); ?> €</b></td></tr>
                 </tbody>
             </table>
                 
