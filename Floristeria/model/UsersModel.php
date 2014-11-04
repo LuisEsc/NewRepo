@@ -95,6 +95,7 @@ class UsersModel {
         $usuario = null;
         if($row!=null)
         $usuario = new Usuario(
+                $row->id,
                 $row->email,
                 $row->password,
                 $row->nombre,
@@ -105,8 +106,7 @@ class UsersModel {
                 $row->localidad,
                 $row->codpostal,
                 $row->provincia,
-                $row->pais,
-                $row->id
+                $row->pais
                 );
         
         return $usuario;

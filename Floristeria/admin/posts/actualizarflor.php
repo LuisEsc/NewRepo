@@ -15,28 +15,28 @@ $descripcion = $_REQUEST['editor1'];
 $flower = null;
 //$flor = FlowersModel::getFlowerById($id);
 
-phpinfo();
+//phpinfo();
 $maximoTamanoFichero = 1572864;
 
 print_r($file);
 if (isset($_FILES['files']) && !empty($_FILES['files']) && $file['error'] != 4) {
     if ($file['error'] == 0) {
         if ($file['size'] <= $maximoTamanoFichero) {
-            echo "id: " . $id;
+            //echo "id: " . $id;
             
             $flower = new Flower($id, $nombre, $precio, $descripcion, $file['name'], $file['type'], $categoria, mysql_escape_string(BinaryImage::getBinary($file['tmp_name'])));
 
             $actualizado = FlowersModel::update($flower);
 
-            echo "se intenta actualizar la flor " . $flower->id;
-            echo "<br/>insert: " . $actualizado;
+            //echo "se intenta actualizar la flor " . $flower->id;
+            //echo "<br/>insert: " . $actualizado;
         } else {
-            echo "Tamaño incorrecto";
+            //echo "Tamaño incorrecto";
         }
     } else {
-        echo "error: ";
+        //echo "error: ";
         print_r($file);
-        echo "hubo un error";
+        //echo "hubo un error";
     }
 }
 if ($file['error'] == 4 && $id != null) {
@@ -44,4 +44,4 @@ if ($file['error'] == 4 && $id != null) {
     $actualizado = FlowersModel::updateNoImg($flower);
     //print_r($nuevaFlor);
 }
-header("Location: ../flowers.php");     
+echo "<script type='text/javascript'>window.location.href='../flowers.php';</script>";

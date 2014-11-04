@@ -20,13 +20,13 @@ if($file['error']==0){
         $insertado = FlowersModel::save($flower);
     }
     else{
-        echo "Tamaño incorrecto";
+        //echo "Tamaño incorrecto";
     }
 }
 else{
-    echo "hubo un error";
+    //echo "hubo un error";
 }
-header("Location: ../flowers.php");
+echo "<script type='text/javascript'>window.location.href='../flowers.php';</script>";
 
 
 

@@ -1,5 +1,7 @@
 <html><head></head><body><?php
-//session_start();
+        require_once '../core/Session.php';
+        require_once '../core/Connection.php';
+        session_start();
         require_once './Model/AdministratorModel.php';
 
         $email = $_REQUEST['login_user'];
@@ -12,7 +14,7 @@
             
             if (($object = AdministratorModel::getAdmin($email, $password)) != null) {
                 print_r($object);
-                $_SESSION['admin'] = $object['email'];
+                $_SESSION['admin'] = $object;
                 print_r($_SESSION['admin']);
                 
                 ?> <script type="text/javascript" >window.location.href='index.php';</script> <?php

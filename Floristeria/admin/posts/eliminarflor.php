@@ -9,13 +9,13 @@ if(isset($_SESSION['admin'])){
     if(isset($_REQUEST['id'])){
         $id = $_REQUEST['id'];
         $eliminado = FlowersModel::delete($id);
-        echo "eliminado";
+        //echo "eliminado";
     }
     else{
-        echo "1";
+        //echo "1";
     }
 }
 else{
-    echo "0";
+    //echo "0";
 }
-header("Location: ../flowers.php");
+echo "<script type='text/javascript'>window.location.href='../flowers.php';</script>";

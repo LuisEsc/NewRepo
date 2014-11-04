@@ -1,20 +1,19 @@
 <?php
 
 session_start();
-if (filter_input(INPUT_SERVER, 'REQUEST_METHOD') == 'GET') {
-    if (($sign = filter_input(INPUT_GET, 'sign_off', FILTER_DEFAULT)) != null) {        
-        if (($sign == 'off') && (isset($_SESSION['admin']))) {
-            $_SESSION['admin']=null;
-            unset($_SESSION['admin']);
-            session_destroy();
-        }
-    }
+if (isset($_GET['sign_off']))
+    $sign = $_GET['sign_off'];
+if (($sign == 'off') && (isset($_SESSION['admin']))) {
+    echo $sign;
+    $_SESSION['admin'] = null;
+    unset($_SESSION['admin']);
+    session_destroy();
 }
+session_start();
 $admin = (isset($_SESSION['admin'])) ? $_SESSION['admin'] : null;
 
 if ($admin == null) {
-    
+
     echo "<script type='text/javascript'>window.location.href='login.php'</script>";
-    
     //header('location: login.php');
 }
