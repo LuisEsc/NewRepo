@@ -50,14 +50,14 @@ class UsersModel {
 
             if ($user->email != NULL) {
                 $res = $con->query("UPDATE usuarios set dni = '{$user->dni}', nombre = '{$user->nombre}', apellidos = '{$user->apellidos}', password = '{$user->password}', telefono = '{$user->telefono}', direccion = '{$user->direccion}', localidad = '{$user->localidad}', codpostal = '{$user->codpostal}', provincia = '{$user->provincia}', pais = '{$user->pais}'  where email = '{$user->email}'");
-                $con->close();
+                //$con->close();
                 return $res;
             } else {
-                $con->close();
+                //$con->close();
                 return 0;
             }
         } else {
-            $con->close();
+            //$con->close();
             return 0;
         }
         //echo $res;

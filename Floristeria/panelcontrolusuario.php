@@ -1,5 +1,6 @@
 <?php
 include_once './core/init.php';
+session_start();
 if(!isset($_SESSION['user'])){
     header("Location: ./registro.php");
 }

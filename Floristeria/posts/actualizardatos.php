@@ -1,9 +1,9 @@
 
 <?php
 
-    error_reporting(0);
+    //error_reporting(0);
     session_start();
-    error_reporting(1);
+    //error_reporting(1);
     require_once "../libs/Usuario.php";
     require_once "../model/UsersModel.php";
     require_once "../core/Connection.php";
@@ -42,31 +42,29 @@
     } else {
         $password = null;
     }
-
-
-
     
-    if ($password == null || $password2 == null || $password != $password2) {
-        $password = $_SESSION['user']->password;
+    if ($password==null || $password2==null || $password!=$password2) {
+        $usuario = UsersModel::isUser($_SESSION['user']->email, $_SESSION['user']->password);
+        $password = $usuario->password;
     }
     
     if ($email != null) {
-        $usuario = UsersModel::isUser($_SESSION['user']->email,$_SESSION['user']->password);
+        $usuario = UsersModel::isUser($_SESSION['user']->email, $_SESSION['user']->password);
         $user = new Usuario($usuario->id, $email, $password, $nombre, $apellidos, $dni, $telefono, $direccion, $localidad, $codpostal, $provincia, $pais);
         
         
-        print_r($user);
+        //print_r($user);
         $actualizado = UsersModel::updateToDb($user);
 
         if ($actualizado) {
-            //unset($_SESSION['user']);
-            $_SESSION['user'] = UsersModel::isUser($email,$password);
+            $user = UsersModel::isUser($email,$password);
+            if($user!=null)
+            $_SESSION['user'] = $user;
         } else {
             echo "<br />no actualizado";
         }
     }
     echo "<script type='text/javascript'>window.location.href='../panelcontrolusuario.php'</script>";
-
-    //header("Location: ../panelcontrolusuario.php");
-
+    //header_remove();
+    //header("Location:  ../panelcontrolusuario.php");
     
