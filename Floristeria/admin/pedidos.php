@@ -1,6 +1,7 @@
 <?php
-require_once './inc/Session.php';
+//require_once './inc/Session.php';
 require_once '../model/FlowersModel.php';
+require_once '../model/OrderModel2.php';
 require_once '../model/OrderModel.php';
 require_once '../libs/Order.php';
 require_once '../core/Connection.php';
@@ -20,7 +21,7 @@ if (isset($_REQUEST['tipo'])) {
 if (isset($_REQUEST['id_pedido'])) {
     $id_pedido = $_REQUEST['id_pedido'];
 }
-$orders = OrderModel::getOrders();
+$orders = OrderModel2::getOrders();
 ?>
 <html lang="es">
     <script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
@@ -76,15 +77,15 @@ $orders = OrderModel::getOrders();
                     <?php
                     
                     foreach ($orders as $order):
-                           $sum = OrderModel::getTotalQuantity($order->id_pedido);
-                           $sumQuantity = $sum[0];
+                           $sum = OrderModel2::getTotalQuantity($order->id_pedido);
+                           $sumQuantity = $sum;
 
                         if ($tipo == $order->preparado || $tipo == null) {
                             ?>
                             <tr>
                                 <td><?php
-                                    $user = UsersModel::getUserById($order->id_cliente);
-                                    echo $user->email;
+                                    $userEmail = UsersModel::getUserEmailById($order->id_cliente);
+                                    echo $userEmail;
                                     ?></td>
                                 <td><?php echo $order->timestamp; ?></td>
                                 <td><?php

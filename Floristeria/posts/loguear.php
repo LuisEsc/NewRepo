@@ -11,14 +11,34 @@ session_start();
     
     if($email!=null && $password!=null){
         $user = UsersModel::isUser($email, $password);
-        
+        //print_r($user);
         if($user!=null){
-            $usuario = new Usuario($email,$password);
+            /*$usuario = new Usuario( $user->id,
+                                    $user->email,
+                                    $user->password,
+                                    $user->nombre,
+                                    $user->apellidos,
+                                    $user->dni,
+                                    $user->telefono,
+                                    $user->direccion,
+                                    $user->localidad,
+                                    $user->codpostal,
+                                    $user->provincia,
+                                    $user->pais
+                                    );*/
             //print_r($usuario->arrayToUser($user));
-            $_SESSION['user']=$usuario->arrayToUser($user);
-            header("Location: ../index.php");
+            
+            //unset($_SESSION['user']);
+            $_SESSION['user']= $user;
+            echo "adkhlasd";
+            //print_r($_SESSION['user']);
+            echo "<script type='text/javascript'>window.location.href='../index.php'</script>";
+
+            
+            //header("Location: ../index.php");
         }
         else{
-            header("Location: ".$_SERVER['HTTP_REFERER']);
+            echo "<script type='text/javascript'>window.location.href='../registro.php'</script>";
+
         }
     }

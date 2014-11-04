@@ -1,7 +1,8 @@
 <?php
-require_once './inc/Session.php';
+//require_once './inc/Session.php';
 require_once '../model/FlowersModel.php';
 require_once '../model/OrderModel.php';
+require_once '../model/OrderModel2.php';
 require_once '../libs/Order.php';
 require_once '../core/Connection.php';
 require_once '../libs/Flower.php';
@@ -23,11 +24,11 @@ else{
     header("Location: pedidos.php");
 }
 
-$user_id = OrderModel::getUserIdByOrderId($id_pedido);
+$user_id = OrderModel2::getUserIdByOrderId($id_pedido);
 //
 
 print_r($user);
-$flores_pedido = OrderModel::getQuantity($id_pedido);
+$flowers = OrderModel2::getFlowersByOrderId($id_pedido);
 ?>
 <html lang="es">
     <script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
@@ -62,22 +63,22 @@ $flores_pedido = OrderModel::getQuantity($id_pedido);
                 </thead>
                 <tbody>
                     <?php
-                        $flowers = OrderModel::getFlowersByOrderId($id_pedido);
+                        
                         foreach ($flowers as $flower):?>
                     
                         <tr>
-                            <td><?php echo $category[$flower->category];    ?></td>
-                            <td><?php echo $flower->name;   ?></td>
-                            <td><?php echo $flower->description;    ?></td>
-                            <td><img width="70" height="70" src="data:<?php echo $flower->image_type; ?>;base64,<?php if ($flower != null) echo $flower->str_imgcodificada; ?>" /></td>
-                            <td><?php echo round($flower->price,2); ?> €</td>
-                            <td><?php echo $flores_pedido[$flower->id]['cantidad'];  ?></td>
-                            <td><?php $subtotal = round($flores_pedido[$flower->id]['precio_flor']*$flores_pedido[$flower->id]['cantidad'], 2); $total+= $subtotal; echo $subtotal." €";   ?></td>
+                            <td><?php echo $category[$flower['category']];    ?></td>
+                            <td><?php echo $flower['name'];   ?></td>
+                            <td><?php echo $flower['description'];    ?></td>
+                            <td><img width="70" height="70" src="data:<?php echo $flower['imagetype']; ?>;base64,<?php if ($flower != null) echo $flower['imgblop']; ?>" /></td>
+                            <td><?php echo round($flower['price'],2); ?> €</td>
+                            <td><?php echo $flower['cantidad'];  ?></td>
+                            <td><?php $subtotal = round($flower['cantidad']*$flower['price'], 2); $total+= $subtotal; echo $subtotal." &euro;";   ?></td>
                         </tr>
 
                         <?php endforeach;?>
                         
-                        <tr><td/><td/><td/><td/><td/><td/><td><b>TOTAL: <?php echo round($total,2 ); ?> €</b></td></tr>
+                        <tr><td/><td/><td/><td/><td/><td/><td><b>TOTAL: <?php echo round($total,2 ); ?> &euro;</b></td></tr>
                 </tbody>
             </table>
                 

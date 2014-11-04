@@ -6,14 +6,14 @@ class UsersModel {
     public static function isUser($email, $password) {
         $con = Connection::getConnection();
 
-        $obj = mysqli_fetch_assoc(self::setQuery("SELECT * FROM `usuarios` WHERE `email` = '{$email}' AND `password` = '{$password}'"));
+        $obj = mysqli_fetch_object(self::setQuery("SELECT * FROM `usuarios` WHERE `email` = '{$email}' AND `password` = '{$password}'"));
         //$con->close();
         return $obj;
     }
     
     public static function getUserById($id){
         //echo "SELECT * FROM usuarios WHERE id = {$id}";
-        $sql = "SELECT * FROM floristeria.usuarios WHERE id = {$id}";
+        $sql = "SELECT * FROM usuarios WHERE id = {$id}";
         $user = self::toObject(self::setQuery($sql));
         //print_r($user);
         //echo $sql;
@@ -21,6 +21,17 @@ class UsersModel {
         //Connection::getConnection()->close();
        // print_r($user);
        return $user;
+    }
+    
+    public static function getUserEmailById($id){
+        
+        $sql = "SELECT email FROM usuarios WHERE id = {$id}";
+        
+        $con = Connection::getConnection();
+        $res = mysqli_fetch_row(mysqli_query($con,$sql));
+        //mysqli_close($con);
+        
+        return $res[0];
     }
 
     public static function insertToDb(Usuario $user) {

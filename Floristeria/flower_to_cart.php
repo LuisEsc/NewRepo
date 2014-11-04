@@ -24,8 +24,10 @@ if ($id !== null && $mode !== null) {
     }
     //Session::removeCard();
     //print_r($_SESSION['flowers']);
-
-    header('Location: ' . getSessionReferer());
+    
+    echo "<script type='text/javascript'>window.location.href='".  getSessionReferer()."'</script>";
+    
+    //header('Location: ' . getSessionReferer());
 }
 
 function getSessionReferer() {

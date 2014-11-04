@@ -26,15 +26,15 @@ class Usuario {
         $this->localidad = $array['localidad'];
         $this->codpostal = $array['codpostal'];
         $this->provincia = $array['provincia'];
-        $this->pais =      $array['pais'];
-        $this->id = $array['id'];
+        $this->pais      = $array['pais'];
+        $this->id        = $array['id'];
         return $this;
     }
     
-    public function __construct($email, $password, $nombre = "", $apellidos = "", $dni = "", $telefono = "", $direccion = "", $localidad = "", $codpostal = "", $provincia = "", $pais = "", $id=0) {
+    public function __construct($id, $email, $password, $nombre = "", $apellidos = "", $dni = "", $telefono = "", $direccion = "", $localidad = "", $codpostal = "", $provincia = "", $pais = "") {
         //echo $this->email;
-        $this->email     = $email;
-        
+        $this->id = $id;
+        $this->email     = $email;        
         $this->password  = $password;
         $this->nombre    = $nombre;
         $this->dni       = $dni;
@@ -45,7 +45,6 @@ class Usuario {
         $this->codpostal = $codpostal;
         $this->provincia = $provincia;
         $this->pais      = $pais;
-        $this->$id = $id;
     }
     
     public function setId($id){

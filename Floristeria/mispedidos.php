@@ -5,7 +5,7 @@ include_once './inc/f-header.php';
 include_once './inc/f-cart.php';
 include_once './inc/f-menu.php';
 require_once './libs/Usuario.php';
-require_once './model/OrderModel.php';
+require_once './model/OrderModel2.php';
 require_once './libs/Order.php';
 require_once './core/Session.php';
 if (!isset($_SESSION['user'])) {
@@ -52,20 +52,20 @@ if (!isset($_SESSION['user'])) {
                                         <th>Funciones</th>
                                     </tr>
                                     <?php
-                                    $orders = OrderModel::getOrdersByUserId($_SESSION['user']->id);
+                                    $orders = OrderModel2::getOrdersByUserId($_SESSION['user']->id);
                                     foreach ($orders as $order):
-                                        $sumQuant = OrderModel::getTotalQuantity($order->id_pedido);
-                                        $sumQuantity = $sumQuant[0];
+                                        $sumQuant = OrderModel2::getTotalQuantity($order['id_pedido']);
+                                        $sumQuantity = $sumQuant;
                                         ?>
 
                                         <tr>
-                                            <td><?php echo $order->timestamp; ?></td>
+                                            <td><?php echo $order['timestam']; ?></td>
                                             <td><?php
-                                                $array = $order->array_flores;
+                                                $array = $order['array_flores'];
                                                 echo $sumQuantity;
                                                 ?></td>
-                                            <td><?php echo round($order->precio_total, 2); ?> €</td>
-                                            <td><button onclick="more(<?php echo($order->id_pedido) ?>);" />Details </button></td>
+                                            <td><?php echo round($order['precio_total'], 2); ?> €</td>
+                                            <td><button onclick="more(<?php echo($order['id_pedido']) ?>);" />Details </button></td>
 
                                         </tr>
 

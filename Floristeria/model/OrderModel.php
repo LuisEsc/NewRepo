@@ -99,7 +99,7 @@ class OrderModel {
         $con = Connection::getConnection();
 
         $res = $con->query($str_query);
-        //$con->close();
+        
 
         return $res;
     }
