@@ -1,5 +1,5 @@
 <?php
-//require_once './inc/Session.php';
+require_once './inc/Session.php';
 require_once '../model/FlowersModel.php';
 require_once '../model/OrderModel.php';
 require_once '../model/OrderModel2.php';
