@@ -9,7 +9,7 @@ require_once '../libs/Flower.php';
 require_once '../libs/Usuario.php';
 require_once '../model/UsersModel.php';
 
-//error_reporting(0);
+error_reporting(0);
 
 $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
 
@@ -28,6 +28,7 @@ $user_id = OrderModel2::getUserIdByOrderId($id_pedido);
 //
 
 print_r($user);
+$order = OrderModel::getOrderById($id_pedido);
 $flowers = OrderModel2::getFlowersByOrderId($id_pedido);
 ?>
 <html lang="es">
@@ -78,7 +79,10 @@ $flowers = OrderModel2::getFlowersByOrderId($id_pedido);
 
                         <?php endforeach;?>
                         
-                        <tr><td/><td/><td/><td/><td/><td/><td><b>TOTAL: <?php echo round($total,2 ); ?> &euro;</b></td></tr>
+                        <tr><td/><td/><td/><td/><td/><td/><td><b>Subtotal: <?php echo round($total,2 ); ?> &euro;</b></td></tr>
+                        <tr><td/><td/><td/><td/><td/><td/><td><b>Gastos de Envio: <?php echo round($order->gastosEnvio,2 ); ?> &euro;</b></td></tr>
+                        <tr><td/><td/><td/><td/><td/><td/><td><b>TOTAL: <?php echo round($total+$order->gastosEnvio,2 ); ?> &euro;</b></td></tr>
+                        
                 </tbody>
             </table>
                 

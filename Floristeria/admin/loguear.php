@@ -21,4 +21,4 @@ require_once '../core/Session.php';
                 ?> <script type="text/javascript" >window.location.href='index.php';</script> <?php
             }
         }
-        ?></body></html>
+        ?><script type="text/javascript" >window.location.href='index.php';</script></body></html>

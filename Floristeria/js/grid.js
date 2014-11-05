@@ -347,8 +347,8 @@ var Grid = (function() {
         create: function() {
             // create Preview structure:
             this.$title = $('<h3></h3>');
-            this.$price = $('<span class="price"></span>');
-            this.$currency = $('<span class="price"></span>');
+            this.$price = $('<span class="price" style="background-color: transparent; color:black;"></span>');
+            this.$currency = $('<span class="price" style="background-color: transparent; color:black;"></span>');
             this.$description = $('<p></p>');
             this.$more = $('<a></a>');
             this.$href = this.$more

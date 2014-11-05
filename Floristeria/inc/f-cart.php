@@ -6,11 +6,11 @@ $cart = Session::getArraySession();
     <div class="header-content container_9">
         <div class="quick-access">
             <ul>
-                <li><a href="manageSession.php"><?php if(isset($_SESSION['user'])){ echo "Cerrar Session"; } else { echo "Iniciar Sesion"; }?></a></li>
+                <li><?php if($_SESSION['user']!=null) echo "Hola, ".$_SESSION['user']->email."     "; ?><a href="manageSession.php"><?php if(isset($_SESSION['user'])){  echo "Cerrar Session"; } else { echo "Iniciar Sesion"; }?></a></li>
                <li class="cart-icon" > 
-                    <a title="View my shopping cart" href="carrito.php" ><i class="icon-shopping-cart"></i></a>
+                    <a title="View my shopping cart" href="carrito.php" ><i class="icon-shopping-cart" ></i></a>
 
-                    <span><?php echo(Session::getItemsCount()); ?> item(s) - <?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span>
+                    <span style="background-color: transparent; color: black;"><?php echo(Session::getItemsCount()); ?> item(s) - <?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span>
                     <ul class="cart-items clearfix">
 
                         <?php
@@ -23,13 +23,13 @@ $cart = Session::getArraySession();
 
                                 <li class="item"> <a href="<?php echo($r_link); ?>" class="closed">X</a>
                                     <div class="item-thumbnail">
-                                        <a title="" href="#"><img src="data:<?php echo $S_flower['imagetype']; ?>;base64,<?php echo $S_flower['str_imgcodificada']; ?>" width="89" height="89"></a>
+                                        <a title="" ><img src="data:<?php echo $S_flower['imagetype']; ?>;base64,<?php echo $S_flower['str_imgcodificada']; ?>" width="89" height="89"></a>
                                     </div>
-                                    <a class="item-name" href="product.html"><?php echo($S_flower['name']); ?></a>
+                                    <a class="item-name" href="./fichaflor.php?id=<?php echo $S_flower['id']; ?>"><?php echo($S_flower['name']); ?></a>
                                     <div class="info-item-cart"> 
-                                        <span class="qount"><?php echo($S_flower['cant']); ?> X</span> 
-                                        <span class="item-price">
-                                            <span class="price"><?php echo($S_flower['price']); ?>&nbsp;&euro;</span>                                           
+                                        <span class="qount" style="background-color: transparent; color: black;"><?php echo($S_flower['cant']); ?> X</span> 
+                                        <span class="item-price" style="background-color: transparent; color: black;">
+                                            <span class="price" style="background-color: transparent; color: black;"><?php echo($S_flower['price']); ?>&nbsp;&euro;</span>                                           
                                         </span> 
                                     </div>
                                 </li>
@@ -37,7 +37,7 @@ $cart = Session::getArraySession();
                             <?php endforeach; ?>
 
                             <li class="footer-cart-items">
-                                <div class="footer-totals"> <span>Total :</span> <span class="price"><?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span></div>
+                                <div class="footer-totals"> <span style="background-color: transparent; color: black;">Total :</span> <span class="price" style="background-color: transparent; color: black;"><?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span></div>
                                 <div class="footer-checkout">
                                     <a href="carrito.php"><button onclick="" class="btn btn-add">Pasar por caja</button></a>
                                 </div>

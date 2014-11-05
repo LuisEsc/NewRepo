@@ -13,14 +13,17 @@ class Order{
     public $timestamp;
     
     public $array_flores = array();
+    
+    public $gastosEnvio = 0.0;
 
-    public function __construct($id_pedido, $id_cliente, $timestamp, $array_flores , $precio_total = 0.0, $preparado = 0){ 
+    public function __construct($id_pedido, $id_cliente, $timestamp, $array_flores , $precio_total = 0.0, $preparado = 0, $gastosEnvio=0.0){ 
         $this->id_pedido = $id_pedido;
         $this->id_cliente = $id_cliente;
         $this->timestamp = $timestamp;
         $this->precio_total = $precio_total;
         $this->array_flores = $array_flores;
         $this->preparado = $preparado;
+        $this->gastosEnvio = $gastosEnvio;
         
     }
     

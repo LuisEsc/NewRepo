@@ -1,7 +1,7 @@
 <header class="third-bg" role="heading" id="header">
     <div class="header-content container_9">
         <div class="quick-access"><ul>
-                <li class="cart-icon"> <a href="/" title="View my shopping cart"> <i class="icon-shopping-cart"></i> </a> <span><?php echo Session::getItemsCount() ?> item(s) - <?php echo Session::getTotalPrice() ?>  &euro;</span>
+                <li class="cart-icon"> <a href="/" title="View your Shopping cart"> <i class="icon-shopping-cart"></i> </a> <span ><?php echo Session::getItemsCount() ?> item(s) - <?php echo Session::getTotalPrice() ?>  &euro;</span>
                     <ul class="cart-items clearfix">
                         <?php
                         $cart = Session::getArraySession();
@@ -10,9 +10,9 @@
                         ?>
                         <li class = "item"> <a class = "closed" href = "product.php?id=' . $flower['id'] . '&m=1">X</a>
                             <div class = "item-thumbnail"> 
-                                <a href = "#" title = ""><img width = "89" height = "89" src = "media/top-cart-item.jpg"></a> 
+                                <a href = "./fichaflor.php?id=<?php $S_flower['id']; ?>" title = ""><img width = "89" height = "89" src = "media/top-cart-item.jpg"></a> 
                             </div>
-                            <a href = "product.html" class = "item-name"><?php echo $S_flower['title'] ?></a>
+                            <a href = "./fichaflor.php?id=<?php $S_flower['id']; ?>" class = "item-name"><?php echo $S_flower['title'] ?></a>
                             <div class = "info-item-cart"> <span class = "qount"><?php echo$S_flower['cant'] ?> X</span> <span class = "item-price"><span class = "price"><?php echo Session::priceFormat($flower['price']) ?>&nbsp;&euro;</span></span> </div>
                         </li>
                         <?php endforeach; ?>

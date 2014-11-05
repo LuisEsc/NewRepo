@@ -10,7 +10,7 @@ require_once '../model/UsersModel.php';
 require_once '../libs/Usuario.php';
 
 //$category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
-
+error_reporting(0);
 $id_pedido = null;
 $tipo = null;
 
@@ -46,10 +46,10 @@ $orders = OrderModel2::getOrders();
         }
         function preparar(ip) {
             if (ip != -1) {
-                window.location.href = "eliminarpedido.php?ip=" + ip;
+                window.location.href = "prepararPedido.php?ip=" + ip;
             }
             else {
-                window.location.href = "eliminarpedido.php";
+                window.location.href = "prepararPedido.php";
             }
         }
     </script>
@@ -69,7 +69,7 @@ $orders = OrderModel2::getOrders();
                         <th>E-mail de Cliente</th>
                         <th>Fecha y Hora</th>
                         <th>Num. flores</th>
-                        <th>precio_total</th>
+                        <th>Precio total</th>
                         <th>Funciones</th>
                     </tr>
                 </thead>
@@ -92,7 +92,7 @@ $orders = OrderModel2::getOrders();
                                     $array = $order->array_flores;
                                     echo $sumQuantity;
                                     ?></td>
-                                <td><?php echo $order->precio_total; ?> €</td>
+                                <td><?php echo $order->precio_total+$order->gastosEnvio; ?> €</td>
                                 <td><button title="informacion del pedido" onclick="more(<?php echo($order->id_pedido) ?>);" class="glyphicon glyphicon-info-sign"> </button>
                                     <?php if ($order->preparado == 0) { ?>
                                         <button title="Marcar como preparado" onclick="preparar(<?php echo $order->id_pedido; ?>);" class="glyphicon glyphicon-ok"> </button></td>

@@ -49,7 +49,7 @@ require_once './admin/libs/BinaryImage.php';
                 <div id="short_description_block">
                     <h1  style="font-size: 35px;"><?php echo $flower->name; ?></h1>
                     <div class="price">
-                        <p class="our_price_display" style="font-size: 25px;"> <?php echo$flower->price . " €"; ?> </p>
+                        <p class="our_price_display" style="font-size: 25px;"> <?php echo round($flower->price,2) . " €"; ?> </p>
                     </div>
                     <div id="short_description_content" class="rte align_justify">
                         <?php echo mostrarDescripcion($flower->description); ?>
@@ -76,7 +76,7 @@ require_once './admin/libs/BinaryImage.php';
                         <div class="box-collateral box-description">
                             <div   class="std">
                                 <p ><?php echo $flower->description; ?></p>
-                                <span id="button_1"></span>
+                                <span id="button_1" style="background-color: transparent; color: black;"> COMPARTIR:</span>
                                 <script>
                                     
                                     stWidget.addEntry({

@@ -1,12 +1,14 @@
 <?php
 require_once './core/init.php';
 //require './core/Session.php';
+session_start();
 $cart = Session::getArraySession();
 
 $user = $_SESSION['user'];
 $flowers = $_SESSION['flowers'];
 
-
+$gastosEnvio = $_SESSION['gastosEnvio'];
+//echo $gastosEnvio;
 
 
 
@@ -62,7 +64,9 @@ $flowers = $_SESSION['flowers'];
 
         </tbody>        
     </table>
-    <h1 class="total"><b>Total:</b> <?php echo Session::getTotalPrice(); ?> &euro;</h1>                
+    <h2>SUBTOTAL: <?php echo Session::getTotalPrice(); ?> &euro;</h2>                
+    <h2>Gastos de Envio: <?php echo $_SESSION['gastosEnvio']; ?> &euro;</h2>
+    <h1 class="total"><b>TOTAL: </b><?php $total = Session::getTotalPrice()+$_SESSION['gastosEnvio']; echo $total; ?> &euro;</h1>
 
 </body>
 </html>

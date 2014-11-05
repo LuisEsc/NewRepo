@@ -7,13 +7,13 @@
                 <h4>Realizamos envíos a:</h4>
                 <div class="block_content">
                     <ul>
-                        <li class="first_item"><a title="Floristería" href="/">Cuarte, Almudévar, Gurrea de Gállego, Zuera
+                        <li class="first_item"><a title="Floristería" >Cuarte, Almudévar, Gurrea de Gállego, Zuera
                             </a></li>
-                        <li class="item"><a title="Floristería" href="/">Tardienta, Grañén, Sariñena, Angüés
+                        <li class="item"><a title="Floristería" >Tardienta, Grañén, Sariñena, Angüés
                             </a></li>
-                        <li class="item"><a title="Floristería" href="/">Ayerbe, Bolea, Sabiñánigo
+                        <li class="item"><a title="Floristería" ">Ayerbe, Bolea, Sabiñánigo
                             </a></li>
-                        <li class="item"><a title="Ver Nuestra Zona de trabajo" href="/">Zona de trabajo</a></li>
+                        <li class="item"><a title="Ver Nuestra Zona de trabajo" >Zona de trabajo</a></li>
                     </ul>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                     <ul>
                         <li class="item"><a title="Política de Privacidad y Cookies" href="politicaPrivacidad.php">Política de Privacidad y Cookies</li>
                         <li class="item"><a title="¿Quienes Somos?" href="/">¿Quienes Somos?</a></li>
-                        <li><a title="Sitemap" href="index.php?controller=sitemap">Sitemap</a></li>
+                        <li><a title="Sitemap" href="sitemap.php">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
