@@ -46,7 +46,7 @@ include_once './inc/f-menu.php';
         <li><a href="centros.php">Centros</a></li>
         <li><a href="plantas.php">Plantas</a></li>
         <li><a href="Funerarios.php">Funerarios</a></li>
-        <li><a href="carrito.php">Carrito</a></li>
+        <li><a href="carrito.php">Carro de la compra</a></li>
         <li><a href="politicaPrivacidad.php">Política de privacidad</a></li>
         <?php if ($_SESSION['user'] == null) { ?>
             <li><a href="registro.php">Registro y Login</a></li>

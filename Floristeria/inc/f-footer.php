@@ -22,7 +22,7 @@
                 <div class="block_content">
                     <ul>
                         <li class="item"><a title="Política de Privacidad y Cookies" href="politicaPrivacidad.php">Política de Privacidad y Cookies</li>
-                        <li class="item"><a title="¿Quienes Somos?" href="/">¿Quienes Somos?</a></li>
+                        <li class="item"><a title="\¿Quienes Somos\?" href="quienessomos.php">¿Quienes Somos?</a></li>
                         <li><a title="Sitemap" href="sitemap.php">Sitemap</a></li>
                     </ul>
                 </div>
