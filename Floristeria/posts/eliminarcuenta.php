@@ -15,7 +15,7 @@ if($borrado==1){
     unset($_SESSION['user']);
     session_destroy();
     
-    header("Location: ../index.php");
+    header("Location: ../inicio.html");
 }
 else{
     echo false;

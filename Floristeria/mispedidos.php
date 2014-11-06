@@ -9,7 +9,7 @@ require_once './model/OrderModel2.php';
 require_once './libs/Order.php';
 require_once './core/Session.php';
 if (!isset($_SESSION['user'])) {
-    header("Location: ./registro.php");
+    header("Location: /floristeria/login.html");
 }
 
 
@@ -27,7 +27,7 @@ if (!isset($_SESSION['user'])) {
 
             });
             function more(ip){
-                window.location.href= "visualizarPedido.php?ip="+ip;
+                window.location.href= "/floristeria/pedido/"+ip+".html";
             }
 
 

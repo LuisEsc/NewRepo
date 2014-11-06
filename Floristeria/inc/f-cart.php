@@ -1,14 +1,15 @@
 <?php
 $cart = Session::getArraySession();
+$category = array(0 => "ramo", 1 => "centro", 2 => "boda", 3 => "planta", 4 => "funerario");
 ?>
 
 <header id="header" role="heading" class="third-bg" >
     <div class="header-content container_9">
         <div class="quick-access">
             <ul>
-                <li><?php if($_SESSION['user']!=null) echo "Hola, ".$_SESSION['user']->email."     "; ?><a href="manageSession.php"><?php if(isset($_SESSION['user'])){  echo "Cerrar Session"; } else { echo "Iniciar Sesion"; }?></a></li>
+                <li><?php if($_SESSION['user']!=null) echo "Hola, ".$_SESSION['user']->email."     "; ?><a href="/floristeria/manageSession.php"><?php if(isset($_SESSION['user'])){  echo "Cerrar Session"; } else { echo "Iniciar Sesion"; }?></a></li>
                <li class="cart-icon" > 
-                    <a title="View my shopping cart" href="carrito.php" ><i class="icon-shopping-cart" ></i></a>
+                    <a title="View my shopping cart" href="/floristeria/carrito.html" ><i class="icon-shopping-cart" ></i></a>
 
                     <span style="background-color: transparent; color: black;"><?php echo(Session::getItemsCount()); ?> item(s) - <?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span>
                     <ul class="cart-items clearfix">
@@ -21,11 +22,11 @@ $cart = Session::getArraySession();
                                 $r_link.= "v=" . md5($S_flower['id']);
                                 ?>
 
-                                <li class="item"> <a href="<?php echo($r_link); ?>" class="closed">X</a>
+                                <li class="item"> <a href="/floristeria/<?php echo($r_link); ?>" class="closed">X</a>
                                     <div class="item-thumbnail">
                                         <a title="" ><img src="data:<?php echo $S_flower['imagetype']; ?>;base64,<?php echo $S_flower['str_imgcodificada']; ?>" width="89" height="89"></a>
                                     </div>
-                                    <a class="item-name" href="./fichaflor.php?id=<?php echo $S_flower['id']; ?>"><?php echo($S_flower['name']); ?></a>
+                                    <a class="item-name" href="/floristeria/<?php echo $category[$S_flower['category']]; ?>/<?php echo $S_flower['name']; ?>.html"><?php echo($S_flower['name']); ?></a>
                                     <div class="info-item-cart"> 
                                         <span class="qount" style="background-color: transparent; color: black;"><?php echo($S_flower['cant']); ?> X</span> 
                                         <span class="item-price" style="background-color: transparent; color: black;">
@@ -39,7 +40,7 @@ $cart = Session::getArraySession();
                             <li class="footer-cart-items">
                                 <div class="footer-totals"> <span style="background-color: transparent; color: black;">Total :</span> <span class="price" style="background-color: transparent; color: black;"><?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span></div>
                                 <div class="footer-checkout">
-                                    <a href="carrito.php"><button onclick="" class="btn btn-add">Pasar por caja</button></a>
+                                    <a href="/floristeria/carrito.html"><button onclick="" class="btn btn-add">Pasar por caja</button></a>
                                 </div>
                             </li>
 
@@ -73,7 +74,7 @@ $cart = Session::getArraySession();
             <li><a class="parent" href="bodas.html">Bodas</a> </li>
             <li><a class="parent" href="plantas.html">Plantas</a> </li>
             <li><a class="parent" href="funerarios.html">Funerarios</a> </li>
-            <li><a class="parent"  href="shopping-cart.html">Carro de compra</a></li>
+            <li><a class="parent" href="carrito.html">Carro de compra</a></li>
         </ul>
     </div>
 </header>

@@ -12,7 +12,7 @@ require_once './core/Session.php';
 $category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
 error_reporting(0);
 if (!isset($_SESSION['user'])) {
-    header("Location: ./registro.php");
+    header("Location: /floristeria/registro.php");
 }
 $id_pedido = null;
 if (isset($_REQUEST['ip'])) {
@@ -22,13 +22,13 @@ $total = 0;
 $order = OrderModel::getOrderById($id_pedido);
 $flowers = OrderModel2::getFlowersByOrderIdAndUserEmail($id_pedido, $_SESSION['user']->id);
 if ($flowers == null) {
-    echo "<script type='text/javascript'>window.location.href='mispedidos.php'</script>";
+    echo "<script type='text/javascript'>window.location.href='/floristeria/mispedidos.html'</script>";
 }
 ?>
 <html>
     <head>
-        <script src="js/jquery-1.7.1.min.js"></script>
-        <script src="js/jquery.validate.js"></script>
+        <script src="/floristeria/js/jquery-1.7.1.min.js"></script>
+        <script src="/floristeria/js/jquery.validate.js"></script>
         <script type="text/javascript">
 
             $(document).ready(function () {
@@ -36,7 +36,7 @@ if ($flowers == null) {
 
             });
             function more(ip) {
-                window.location.href = "visualizarPedido.php?ip=" + ip;
+                window.location.href = "/floristeria/visualizarPedido.php?ip=" + ip;
             }
 
 

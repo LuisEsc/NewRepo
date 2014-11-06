@@ -17,10 +17,10 @@ session_start();
             $_SESSION['user']= $user;
             //echo "adkhlasd";
             //print_r($_SESSION['user']);
-            echo "<script type='text/javascript'>window.location.href='../index.php'</script>";
+            echo "<script type='text/javascript'>window.location.href='../inicio.html'</script>";
         }
         else{
-            echo "<script type='text/javascript'>window.location.href='../registro.php'</script>";
+            echo "<script type='text/javascript'>window.location.href='../login.html'</script>";
 
         }
     }

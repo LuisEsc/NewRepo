@@ -25,7 +25,7 @@ if($email!=null && $password!=null){
        //echo "Se ha creado el usuario correctamente" ;
         $user = new Usuario($email, $password);
         $_SESSION['user'] = $user;
-        header("Location: ../index.php");
+        header("Location: ../inicio.html");
     }
     else{
         //echo "no se ha insertado";

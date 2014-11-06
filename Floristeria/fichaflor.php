@@ -9,15 +9,35 @@ if (isset($_REQUEST['name'])) {
 } else {
     header("Location: /floristeria/inicio.html");
 }
+if ($flower == null) {
+    header("Location: /floristeria/inicio.html");
+}
 ?> <html>
     <head>
 
         <title>Floristería Albahaca - Huesca</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="google-site-verification" content="JWiXF_lDilfR9tZBDpgZVsS8grLHsIZkIZ2GR9t9yj8" />
+        <meta name="msvalidate.01" content="8DCB25076A85F9699A7B1FE77E47B840" />
+        <meta name="keywords" content="toner,samsung,negro,para,scx,4300"/>
+        <meta name="msvalidate.01" content="B3DDF4B8A955E0170C797CBB3A177766" />
+        <meta name="description" content="Toner Samsung Negro Para Scx 4300 Venta de Consumibles Láser  a precios bajos y con las mejores ofertas" />
+
+
+
+        <meta name="robots" content="All" />
+        <meta name="description" content="<?php echo $flower->description; ?>" />
         <link href="/floristeria/css/styles.css" rel="stylesheet" type="text/css" media="all" />
         <link href="/floristeria/css/custom-style.css" rel="stylesheet" type="text/css" media="all" />
         <link rel="stylesheet" type="text/css" href="/floristeria/css/component.css" />
+
+
+
+        <meta property="og:title"           content="<?php echo $flower->name; ?>" /> 
+        <meta property="og:image"           content="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" /> 
+        <meta property="og:description"     content="<?php echo $flower->description; ?>"/>
+
 
         <script src="/floristeria/js/jquery-1.7.1.min.js"></script>
         <script src="/floristeria/js/modernizr.custom.js"></script>
@@ -33,7 +53,10 @@ if (isset($_REQUEST['name'])) {
     </head>
     <body id="index">
         <div id="fb-root"></div>
-        <script>(function (d, s, id) {
+        <script>
+
+
+            (function (d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id))
                     return;
@@ -41,8 +64,11 @@ if (isset($_REQUEST['name'])) {
                 js.id = id;
                 js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&appId=999652026718072&version=v2.0";
                 fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
+            }(document, 'script', 'facebook-jssdk'));
 
+
+
+        </script>
         <div id="page" class="clearfix"><?php
             include_once './inc/f-cart.php';
             include_once './inc/f-menu.php';
@@ -54,9 +80,9 @@ if (isset($_REQUEST['name'])) {
 
             <section  id="columns" class="container_9 clearfix col1" >
                 <div id="primary_block" class="clearfix">
-                    <div  itemprop="image" id="imageContainer">
-                        <img   id="foto" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" height="332"/>
-                        <?php /* <img id="zoom_02" height="332" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" style="max-width: 50%; max-height: 50%;"> */ ?>
+                    <div   id="imageContainer">
+                        <img  id="foto" src="data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>" height="332"/>
+
                     </div>
                     <div id="short_description_block">
                         <h1  style="font-size: 35px;"><?php echo $flower->name; ?></h1>
@@ -88,6 +114,12 @@ if (isset($_REQUEST['name'])) {
                             <div class="box-collateral box-description">
                                 <div   class="std">
                                     <p ><?php echo $flower->description; ?></p>
+
+                                    <a target="blank" href="http://www.facebook.com/sharer/sharer.php?p[url]=http://www.floristeriaalbahaca.es/floristeria/<?php echo $category[$flower->category]; ?>/<?php echo $flower->name; ?>.html&p[title]=<?php echo $flower->name; ?>&p[images][0]=data:<?php echo $flower->image_type; ?>;base64,<?php echo $flower->str_imgcodificada; ?>&p[summary]=<?php echo $flower->description; ?>">COMPARTIR EN FACEBOOK</a>
+
+
+
+
                                     <div class="fb-share-button" data-href="http://www.floristeriaalbahaca.es/floristeria/<?php echo $category[$flower->category]; ?>/<?php echo $flower->name; ?>.html" data-layout="icon_link"></div>
 
                                 </div>
@@ -107,10 +139,8 @@ if (isset($_REQUEST['name'])) {
                 $(document).ready(function () {
 
                     "use strict";
-
                     $('.content-li:first').addClass('active');
                     $('.content-li:first').css('display', 'block');
-
                     $('ul.i-tab').delegate('li:not(.active)', 'click', function () {
                         $(this).addClass('active').siblings().removeClass('active')
                                 .parents('.tabs').find('ul.tab-content .content-li').hide()

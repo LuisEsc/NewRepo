@@ -20,19 +20,19 @@ location.replace("http://windows.microsoft.com/en-US/internet-explorer/products/
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link href="css/styles.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="css/custom-style.css" rel="stylesheet" type="text/css" media="all" />
-        <link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link href="/floristeria/css/styles.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/floristeria/css/custom-style.css" rel="stylesheet" type="text/css" media="all" />
+        <link rel="stylesheet" type="text/css" href="/floristeria/css/component.css" />
 
-        <script src="js/jquery-1.7.1.min.js"></script>
+        <script src="/floristeria/js/jquery-1.7.1.min.js"></script>
 
-        <script src="js/modernizr.custom.js"></script>
-        <script src="js/jquery.dlmenu.js"></script>
-        <script src="js/scripts.js"></script>
+        <script src="/floristeria/js/modernizr.custom.js"></script>
+        <script src="/floristeria/js/jquery.dlmenu.js"></script>
+        <script src="/floristeria/js/scripts.js"></script>
 
 
-        <script src="js/cookietool.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/cookietool.css" />
+        <script src="./js/cookietool.js"></script>
+        <link rel="stylesheet" type="text/css" href="/floristeria/css/cookietool.css" />
 
 
         <!--[if IE 8 ]>

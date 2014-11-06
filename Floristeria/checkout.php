@@ -52,13 +52,15 @@ if ($cart != null) {
     OrderModel::saveOrder($order);
 
     enviarCorreo();
+    
+    $order = OrderModel::getOrderByDate($order->timestamp);   
 }
 ?>
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript">
     //$(document).ready(function () {
 
-        window.location.href = "carrito.php";
+        window.location.href = "/floristeria/pedido/<?php echo $order->id_pedido; ?>.html";
 
     //})
 

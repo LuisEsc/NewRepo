@@ -6,7 +6,7 @@ require_once './core/WebPage.php';
 require_once './libs/Flower.php';
 require_once './model/FlowersModel.php';
 require_once './inc/f_session_usuario.php';
-
+$category = array(0 => "ramo", 1 => "centro", 2 => "boda", 3 => "planta", 4 => "funerario");
 $flowers = FlowersModel::getRandomFlowers(5);
 include_once './inc/f-header.php';
 include_once './inc/f-cart.php';
@@ -101,7 +101,7 @@ include_once './inc/f-menu.php';
             $link.= "v=" . md5($flower->id);
             ?>
             <li> 
-                <a href='fichaflor.php?id=<?php echo $flower->id; ?>'
+                <a href='/floristeria/<?php echo $category[$flower->category]; ?>/<?php echo $flower->name; ?>.html'
                    data-addtohref = "<?php echo($link); ?>"
                    data-onclick ="addToCart();"
                    data-addtocart = "Añadir al carro"

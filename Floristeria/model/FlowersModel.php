@@ -5,6 +5,11 @@ class FlowersModel {
     public static function getFlowers() {
         return self::toArray(self::setQuery("SELECT * FROM `flower` ORDER BY `flower`.`id` ASC"));
     }
+    public static function getFlowerByName($name){
+        
+        return self::toObject(self::setQuery("SELECT * FROM `flower` WHERE `name` = '{$name}' LIMIT 1"));
+        
+    }
 
     public static function getFlowersByCategory($cat) {
         return self::toArray(self::setQuery("SELECT * FROM `flower` WHERE `category` = {$cat} ORDER BY `flower`.`id` ASC"));

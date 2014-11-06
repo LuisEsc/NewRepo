@@ -21,9 +21,9 @@
                 <h4>Información</h4>
                 <div class="block_content">
                     <ul>
-                        <li class="item"><a title="Política de Privacidad y Cookies" href="politicaPrivacidad.php">Política de Privacidad y Cookies</li>
-                        <li class="item"><a title="\¿Quienes Somos\?" href="quienessomos.php">¿Quienes Somos?</a></li>
-                        <li><a title="Sitemap" href="sitemap.php">Sitemap</a></li>
+                        <li class="item"><a title="Política de Privacidad y Cookies" href="/floristeria/politicaPrivacidad.html">Política de Privacidad y Cookies</a></li>
+                        <li class="item"><a title="\¿Quienes Somos\?" href="/floristeria/quienessomos.html">¿Quienes Somos?</a></li>
+                        <li><a title="Sitemap" href="/floristeria/sitemap.html">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
@@ -33,8 +33,8 @@
                     <h4>Mi Cuenta</h4>
                     <div class="block_content">
                         <ul>
-                            <li><a href="mispedidos.php">Mis Pedidos</a></li>
-                            <li><a href="panelcontrolusuario.php">Mis Datos Personales</a></li>
+                            <li><a href="/floristeria/mispedidos.html">Mis Pedidos</a></li>
+                            <li><a href="/floristeria/datospersonales.html">Mis Datos Personales</a></li>
                         </ul>
                     </div>
                 </div>

@@ -25,12 +25,12 @@ require_once './info/mostrarDescripcion.php';
     <ul id = "og-grid" class = "og-grid">
         <?php
         foreach (FlowersModel::getFlowersByCategory(Category::Funerarios) as $flower):
-            $link = "flower_to_cart.php?mode=" . Session::_INSERT_ . "&";
+            $link = "/floristeria/flower_to_cart.php?mode=" . Session::_INSERT_ . "&";
             $link.= "id={$flower->id}&";
             $link.= "v=" . md5($flower->id);
             ?>
             <li> 
-                <a href='fichaflor.php?id=<?php echo $flower->id; ?>'
+                <a href='funerario/<?php echo $flower->name; ?>.html'
                    data-addtohref = "<?php echo($link); ?>"
                    data-onclick ="addToCart();"
                    data-addtocart = "Añadir al carro"

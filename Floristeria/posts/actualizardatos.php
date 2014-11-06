@@ -64,7 +64,7 @@
             echo "<br />no actualizado";
         }
     }
-    echo "<script type='text/javascript'>window.location.href='../panelcontrolusuario.php'</script>";
+    echo "<script type='text/javascript'>window.location.href='../datospersonales.html'</script>";
     //header_remove();
     //header("Location:  ../panelcontrolusuario.php");
     
