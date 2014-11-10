@@ -11,7 +11,7 @@ $password = null;
 if(isset($_REQUEST['login_password'])){
     if(!empty($_REQUEST['login_password'])){
         $password = md5($_REQUEST['login_password']);
-        echo $password."//".$email;
+        
     }
     
 }
@@ -20,12 +20,12 @@ if(isset($_REQUEST['login_password'])){
     
 if($email!=null && $password!=null){        
     
-    $insertado = UsersModel::insertToDb(new Usuario($email, $password));    
+    $insertado = UsersModel::insertToDb(new Usuario(null,$email, $password));    
     if($insertado==true){
        //echo "Se ha creado el usuario correctamente" ;
-        $user = new Usuario($email, $password);
+        $user = new Usuario(null,$email, $password);
         $_SESSION['user'] = $user;
-        header("Location: ../inicio.html");
+        echo "<script type='text/javascript'>window.location.href='http://www.floristeriaalbahaca.es/floristeria/inicio.html'</script>";
     }
     else{
         //echo "no se ha insertado";
@@ -33,7 +33,7 @@ if($email!=null && $password!=null){
    
 }
 else{
-    echo "email o pass mal pasados";
+    echo "<script type='text/javascript'>window.location.href='http://www.floristeriaalbahaca.es/floristeria/login.html'</script>";
 }
 
 

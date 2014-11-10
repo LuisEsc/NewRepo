@@ -1,7 +1,7 @@
 <?php
 
 require_once './core/init.php';
-
+error_reporting(0);
 $id = (isset($_GET['id']) && is_numeric($_GET['id'])) ? (integer) $_GET['id'] : null;
 
 $mode = (isset($_GET['mode']) && is_string($_GET['mode'])) ? (string) $_GET['mode'] : null;

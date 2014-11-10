@@ -4,4 +4,4 @@ session_start();
 
 $_SESSION['gastosEnvio'] = $gastos;
 
-echo $_SESSION['gastosEnvio'];
+echo $gastos;

@@ -1,8 +1,9 @@
 <?php
+session_start();
 require_once './core/init.php';
 require_once './phpmailer/class.phpmailer.php';
 require_once './phpmailer/class.smtp.php';
-session_start();
+error_reporting(0);
 function enviarCorreo() {
 
 
@@ -27,9 +28,9 @@ function enviarCorreo() {
     $msg = ob_get_clean();
     $mail->MsgHTML($msg);
     if (!$mail->Send()) {
-        echo "No se pudo enviar el Mensaje.  ".$mail->ErrorInfo;
+        //echo "No se pudo enviar el Mensaje.  ".$mail->ErrorInfo;
     } else {
-        echo "Mensaje enviado";
+        //echo "Mensaje enviado";
     }
 }
 $gastosEnvio = $_SESSION['gastosEnvio'];
@@ -53,14 +54,13 @@ if ($cart != null) {
 
     enviarCorreo();
     
-    $order = OrderModel::getOrderByDate($order->timestamp);   
+    //$order = OrderModel::getOrderByDate($order->timestamp);   
 }
 ?>
-<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript">
     //$(document).ready(function () {
 
-        window.location.href = "/floristeria/pedido/<?php echo $order->id_pedido; ?>.html";
+       // window.location.href = "/floristeria/pedido/<?php echo $order->id_pedido; ?>.html";
 
     //})
 

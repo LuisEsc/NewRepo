@@ -1,5 +1,5 @@
 <div class="sf-contener clearfix second-bg ">
-    <nav class="nav-wrap container_9"> <a title="onlinestore" href="/floristeria/inicio.html" class="logo "><img alt="logo" src="/floristeria/images/logo.png"></a>
+    <nav class="nav-wrap container_9"> <a title="onlinestore" href="/floristeria/inicio.html" class="logo "><img src="/floristeria/images/logo.png"></a>
         <ul class="sf-menu clearfix  ">
             <li class="item"><a class="parent" href="/floristeria/inicio.html">Inicio</a></li>
             <li class="item"><a class="parent" href="/floristeria/ramos.html">Ramos</a> </li>

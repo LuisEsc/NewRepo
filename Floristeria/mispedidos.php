@@ -1,6 +1,6 @@
 <?php
 include_once './core/init.php';
-
+error_reporting(0);
 include_once './inc/f-header.php';
 include_once './inc/f-cart.php';
 include_once './inc/f-menu.php';

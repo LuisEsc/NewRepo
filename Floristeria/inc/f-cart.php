@@ -1,13 +1,14 @@
 <?php
 $cart = Session::getArraySession();
 $category = array(0 => "ramo", 1 => "centro", 2 => "boda", 3 => "planta", 4 => "funerario");
+session_start();
 ?>
 
 <header id="header" role="heading" class="third-bg" >
     <div class="header-content container_9">
         <div class="quick-access">
             <ul>
-                <li><?php if($_SESSION['user']!=null) echo "Hola, ".$_SESSION['user']->email."     "; ?><a href="/floristeria/manageSession.php"><?php if(isset($_SESSION['user'])){  echo "Cerrar Session"; } else { echo "Iniciar Sesion"; }?></a></li>
+                <li><?php if($_SESSION['user']->email!=null) echo "Hola, ".$_SESSION['user']->email."     "; ?><a href="/floristeria/manageSession.php"><?php if(isset($_SESSION['user'])){  echo "Cerrar Session"; } else { echo "Iniciar Sesion"; }?></a></li>
                <li class="cart-icon" > 
                     <a title="View my shopping cart" href="/floristeria/carrito.html" ><i class="icon-shopping-cart" ></i></a>
 
@@ -26,7 +27,7 @@ $category = array(0 => "ramo", 1 => "centro", 2 => "boda", 3 => "planta", 4 => "
                                     <div class="item-thumbnail">
                                         <a title="" ><img src="data:<?php echo $S_flower['imagetype']; ?>;base64,<?php echo $S_flower['str_imgcodificada']; ?>" width="89" height="89"></a>
                                     </div>
-                                    <a class="item-name" href="/floristeria/<?php echo $category[$S_flower['category']]; ?>/<?php echo $S_flower['name']; ?>.html"><?php echo($S_flower['name']); ?></a>
+                                    <a class="item-name" href="/floristeria/<?php echo $category[0]; ?>/<?php echo $S_flower['name']; ?>.html"><?php echo($S_flower['name']); ?></a>
                                     <div class="info-item-cart"> 
                                         <span class="qount" style="background-color: transparent; color: black;"><?php echo($S_flower['cant']); ?> X</span> 
                                         <span class="item-price" style="background-color: transparent; color: black;">

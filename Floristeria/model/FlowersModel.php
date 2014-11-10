@@ -5,10 +5,15 @@ class FlowersModel {
     public static function getFlowers() {
         return self::toArray(self::setQuery("SELECT * FROM `flower` ORDER BY `flower`.`id` ASC"));
     }
-    public static function getFlowerByName($name){
-        
+
+    public static function getFlowerByName($name) {
+
         return self::toObject(self::setQuery("SELECT * FROM `flower` WHERE `name` = '{$name}' LIMIT 1"));
-        
+    }
+
+    public static function getFlowerByNameAndType($name,$type) {
+
+        return self::toObject(self::setQuery("SELECT * FROM `flower` WHERE `name` = '{$name}' AND category = {$type} LIMIT 1"));
     }
 
     public static function getFlowersByCategory($cat) {
@@ -26,25 +31,26 @@ class FlowersModel {
         $sql = "INSERT INTO flower (id, name, description, price, imagename, imagetype, category, imgblop)";
         //$sql .= "VALUES (null , {$flower->name}}, {$flower->description}, {".(float) $flower->price.",} {$flower->image_name}, {$flower->image_type}, {". (int) $flower->category ."}, {". $flower->str_imgcodificada."})");
         $sql .= "VALUES (null , '{$flower->name}', '{$flower->description}', {$flower->price}, '{$flower->image_name}', '{$flower->image_type}', {$flower->category}, '{$flower->str_imgcodificada}')";
-        
+
         self::setQuery($sql);
     }
-    
-    public static function getRandomFlowers($numFlowers){
+
+    public static function getRandomFlowers($numFlowers) {
         $sql = "SELECT * FROM flower order by RAND() limit {$numFlowers}";
         return self::toArray(self::setQuery($sql));
     }
-    public static function update(Flower $flower){
+
+    public static function update(Flower $flower) {
         $sql = "UPDATE flower SET name = '{$flower->name}', description = '{$flower->description}', price= {$flower->price}, imagename = '{$flower->image_name}', imagetype = '{$flower->image_type}', category = {$flower->category}, imgblop = '{$flower->str_imgcodificada}' where id = {$flower->id}";
         self::setQuery($sql);
     }
-    
-    public static function updateNoImg(Flower $flower){
+
+    public static function updateNoImg(Flower $flower) {
         $sql = "UPDATE flower SET name = '{$flower->name}', description = '{$flower->description}', price= {$flower->price}, category = {$flower->category} where id = {$flower->id}";
         self::setQuery($sql);
     }
-    
-    public static function delete($id){
+
+    public static function delete($id) {
         $sql = "DELETE FROM flower WHERE id='{$id}'";
         return self::setQuery($sql);
     }

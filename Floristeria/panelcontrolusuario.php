@@ -113,7 +113,7 @@ require_once './libs/Usuario.php';
                                             <li>
                                                 <div>
                                                     <button onclick="enviarFormulario();" type="button" id="btn_continuar"      class="button"  name="btn-continuar"     ><pre><span>Guardar cambios</span></pre></button>
-                                                    <button onclick="eliminarCuenta();"   type="button" id="btn_eliminarCuenta" class="button"  name="btn-eliminarCuenta"><pre><span>Eliminar cuenta</span></pre></button>
+                                                    
                                                 </div>
                                             </li>
                                         </ul> 

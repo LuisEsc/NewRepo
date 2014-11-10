@@ -117,7 +117,7 @@ class OrderModel {
 
     private static function toFlowerArray($result) {
         $array = array();
-        while ($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_array($result)) {
             //print_r($row);
             $array[] = new Flower(
                     $row['id'], $row['name'], $row['price'], $row['description'], $row['imagename'], $row['imagetype'], $row['category'], $row['imgblop']
