@@ -4,13 +4,9 @@ require_once './core/init.php';
 include_once './inc/f-header.php';
 include_once './inc/f-cart.php';
 include_once './inc/f-menu.php';
-
-$poblaciones = array(
-    new PoblacionEnvio("HU", "Huesca", 0),
-    new PoblacionEnvio("SI", "Sietamo", 12),
-    new PoblacionEnvio("MO", "Monflorite", 5)
-);
-
+require_once './libs/PoblacionEnvio.php';
+require_once './inc/poblacionesEnvio.php';
+$_SESSION['cometario'] = "";
 $cart = Session::getArraySession();
 ?>
 
@@ -36,22 +32,23 @@ $cart = Session::getArraySession();
         var str = "";
         var gasto = 0.0;
         $(document).ready(function () {
-
+            str = $("#country").find(":selected").attr("str");
             $("#country").change(function () {
                 str = $("#country").find(":selected").attr("str");
             });
 
+
         });
         function datosCorrectos() {
-            
+
             var direccion = <?php echo ((isset($_SESSION['user']->direccion) && !empty($_SESSION['user']->direccion)) ? "\"" . $_SESSION['user']->direccion . "\"" : "\"\""); ?>;
             var localidad = <?php echo ((isset($_SESSION['user']->localidad) && !empty($_SESSION['user']->localidad)) ? "\"" . $_SESSION['user']->localidad . "\"" : "\"\""); ?>;
             var codpostal = <?php echo ((isset($_SESSION['user']->codpostal) && !empty($_SESSION['user']->codpostal)) ? "\"" . $_SESSION['user']->codpostal . "\"" : "\"\""); ?>;
             var nombre = <?php echo ((isset($_SESSION['user']->nombre) && !empty($_SESSION['user']->nombre)) ? "\"" . $_SESSION['user']->nombre . "\"" : "\"\""); ?>;
             var apellido = <?php echo ((isset($_SESSION['user']->apellidos) && !empty($_SESSION['user']->apellidos)) ? "\"" . $_SESSION['user']->apellidos . "\"" : "\"\""); ?>;
             var provincia = <?php echo ((isset($_SESSION['user']->provincia) && !empty($_SESSION['user']->provincia)) ? "\"" . $_SESSION['user']->provincia . "\"" : "\"\""); ?>;
-
-            if (direccion == "" || localidad == "" || codpostal == "" || nombre == "" || apellido == "" || provincia == "") {
+            var telefono = <?php echo ((isset($_SESSION['user']->telefono) && !empty($_SESSION['user']->telefono)) ? "\"" . $_SESSION['user']->telefono . "\"" : "\"\""); ?>;
+            if (direccion == "" || localidad == "" || codpostal == "" || nombre == "" || apellido == "" || provincia == "" || telefono == "") {
                 alert("Por favor, complete sus datos personales antes de completar el pedido.");
                 return false;
             }
@@ -61,13 +58,13 @@ $cart = Session::getArraySession();
                     return false;
                 }
                 else {
-                   
+
                     $.ajax({
-                        data: {"gasto" : gasto},
+                        data: {"gasto": gasto},
                         url: "posts/establecerCosteEnvioEnSesion.php",
                         type: "post",
                         success: function (data) {
-                            
+
                         }
 
                     });
@@ -80,7 +77,15 @@ $cart = Session::getArraySession();
         function procesarPedido() {
 
             if (datosCorrectos()) {
+                $.ajax({
+                    data: {"comentario": $("#comentario").text()},
+                    url: "posts/establecerComentario.php",
+                    type: "post",
+                    success: function (data) {
 
+                    }
+
+                });
                 window.location.href = 'checkout.php';
             }
             else {
@@ -165,16 +170,19 @@ $cart = Session::getArraySession();
                     <div class="shipping">
                         <form action="" method="post">
                             <h2>Población de envio</h2>
-                            <div class="shipping-form">
+                            <div   class="shipping-form">
                                 <ul class="form-list">
                                     <li>
-                                        <div class="input-box">
+                                        <div  class="input-box">
                                             <div class="styled-select">
-                                                <select title="Country" class="validate-select" id="country" name="country_id">
+                                                <select hidden title="Country" class="validate-select" id="country" name="country_id">
                                                     <option str="null" value="-1">-- Selecciona una población --</option>
                                                     <?php
                                                     foreach ($poblaciones as $poblacionesEnvio) {
-                                                        echo "<option str=\"{$poblacionesEnvio->pob}\" value=\"{$poblacionesEnvio->km}\" data\"{$poblacionesEnvio->id}\">{$poblacionesEnvio->pob}</option>";
+                                                        if ($poblacionesEnvio->pob == $_SESSION['user']->localidad)
+                                                            echo "<option selected str=\"{$poblacionesEnvio->pob}\" value=\"{$poblacionesEnvio->km}\" data\"{$poblacionesEnvio->id}\">{$poblacionesEnvio->pob}</option>";
+                                                        else
+                                                            echo "<option str=\"{$poblacionesEnvio->pob}\" value=\"{$poblacionesEnvio->km}\" data\"{$poblacionesEnvio->id}\">{$poblacionesEnvio->pob}</option>";
                                                     }
                                                     ?>
                                                 </select>
@@ -189,11 +197,18 @@ $cart = Session::getArraySession();
                                     </li>
                                 </ul>
                             </div>
+
                         </form>
                     </div>
                 </div>
+
             </div>
+            <h2><b>Si lo desea, puede insertar un comentario en el pedido<br/>Por ejemplo, un mensaje en una tarjeta sorpresa:</b></h2>
+            
+            <textarea rows="3" cols="70" name="comentario" id="comentario"></textarea>
+
             <div class="totals">
+
                 <table id="shopping-cart-totals-table">
                     <colgroup>
                         <col>
@@ -219,7 +234,7 @@ $cart = Session::getArraySession();
                 </table>
                 <ul class="checkout-types">
                     <li>
-                        <button onclick="procesarPedido();" class="button btn-proceed-checkout btn-checkout" title="Proceed to Checkout" type="button"><span><span>PROCEED TO CHECKOUT</span></span></button>
+                        <button onclick="procesarPedido();" class="button btn-proceed-checkout btn-checkout" title="Proceed to Checkout" type="button"><span><span>FINALIZAR PEDIDO</span></span></button>
                     </li>
                 </ul>
             </div>
@@ -250,14 +265,27 @@ $cart = Session::getArraySession();
             })
 
             $('#country').change(function () {
-                var min = <?php echo(PoblacionEnvio::PRECIO_FIJO); ?>;
-                var gastos = min + ($(this).val() * <?php echo(PoblacionEnvio::PRECIO_KM); ?>);
+                /* var min = <?php echo(PoblacionEnvio::PRECIO_FIJO); ?>;
+                 var gastos = min + ($(this).val() * <?php echo(PoblacionEnvio::PRECIO_KM); ?>);
+                 var html_envio = (gastos > 0) ? (Math.round(gastos * 100) / 100).toFixed(2) + "&nbsp;&euro;" : "Gratuito";
+                 var html_total = gastos + <?php echo(Session::getTotalPrice()); ?>;*/
+
+                alert($("#country").val());
+                var gastos = $("#country").val();
                 var html_envio = (gastos > 0) ? (Math.round(gastos * 100) / 100).toFixed(2) + "&nbsp;&euro;" : "Gratuito";
-                var html_total = gastos + <?php echo(Session::getTotalPrice()); ?>;
+                var html_total = gastos * 1.0 + <?php echo(Session::getTotalPrice() * 1.0); ?>;
                 $('#g_envio').html(html_envio);
                 $('#total').html((Math.round(html_total * 100) / 100).toFixed(2) + "&nbsp;&euro;");
                 gasto = (Math.round(gastos * 100) / 100).toFixed(2);
             });
+            str = $("#country").find(":selected").attr("str");
+            if (str != null) {
+                var gastos = $("#country").val();
+                var html_envio = (gastos > 0) ? (Math.round(gastos * 100) / 100).toFixed(2) + "&nbsp;&euro;" : "seleccione<br/>poblacion";
+                var html_total = gastos * 1.0 + <?php echo(Session::getTotalPrice() * 1.0); ?>;
+                $('#g_envio').html(html_envio);
+                $('#total').html((Math.round(html_total * 100) / 100).toFixed(2) + "&nbsp;&euro;");
+            }
         }
         );
     </script>

@@ -13,11 +13,15 @@ class PoblacionEnvio {
     public $id;
     public $pob;
     public $km;
+    public $coste;
 
-    public function __construct($id, $p, $km) {
-        $this->id = $id;
+    public function __construct($p, $km) {
+        $this->id = $p;
         $this->pob = $p;
         $this->km = $km;
+        $this->coste = $km;
+        
+       
     }
 
 }

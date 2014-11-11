@@ -52,8 +52,8 @@ class OrderModel {
     }
 
     public static function saveOrder(Order $order) {
-        $sql = " INSERT INTO pedidos (id_cliente, timestam, precio_total, preparado, gastosEnvio) ";
-        $sql.= " VALUES($order->id_cliente, '{$order->timestamp}', {$order->precio_total}, 0, {$order->gastosEnvio}) ";
+        $sql = " INSERT INTO pedidos (id_cliente, timestam, precio_total, preparado, gastosEnvio,comentario) ";
+        $sql.= " VALUES($order->id_cliente, '{$order->timestamp}', {$order->precio_total}, 0, {$order->gastosEnvio}, '{$order->comentario}') ";
         
         $insertado = false;
         self::setQuery($sql);
@@ -109,7 +109,7 @@ class OrderModel {
         while ($row = mysqli_fetch_assoc($resulta)) {
             //print_r($row);
             $array[] = new Order(
-                    $row['id_pedido'], $row['id_cliente'], $row['timestam'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total'], $row['preparado'], $row['gastosEnvio']
+                    $row['id_pedido'], $row['id_cliente'], $row['timestam'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total'], $row['preparado'], $row['gastosEnvio'], $row['comentario']
             );
         }
         return $array;
@@ -131,7 +131,7 @@ class OrderModel {
         while ($row = mysqli_fetch_assoc($res)) {
             //print_r($row);
             $object = new Order(
-                    $row['id_pedido'], $row['id_cliente'], $row['timestam'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total'], $row['preparado'], $row['gastosEnvio']
+                    $row['id_pedido'], $row['id_cliente'], $row['timestam'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total'], $row['preparado'], $row['gastosEnvio'], $row['comentario']
             );
         }
         return $object;

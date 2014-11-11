@@ -31,6 +31,10 @@ location.replace("http://windows.microsoft.com/en-US/internet-explorer/products/
         <script src="/floristeria/js/scripts.js"></script>
 
 
+        <!-- Bootstrap core CSS -->
+        <!-- Latest compiled and minified CSS -->
+        
+
         <script src="./js/cookietool.js"></script>
         <link rel="stylesheet" type="text/css" href="/floristeria/css/cookietool.css" />
 

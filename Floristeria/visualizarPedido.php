@@ -63,6 +63,7 @@ if ($flowers == null) {
                                         <th>Precio unitario</th>
                                         <th>Cantidad</th>
                                         <th>Importe</th>
+                                        <th>Comentario</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,12 +79,16 @@ if ($flowers == null) {
                                                 <td><img width="70" height="70" src="data:<?php echo $flower['imagetype']; ?>;base64,<?php if ($flower != null) echo $flower['imgblop']; ?>" /></td>
                                                 <td><?php echo round($flower['price'], 2); ?> €</td>
                                                 <td><?php echo $flower['cantidad']; ?> </td>
-                                                <td><?php $subtotal = $flower['price'] * $flower['cantidad'];
-                                    $total+=$subtotal;
-                                    echo round($subtotal, 2) ?>€</td>
+                                                <td><?php
+                                                    $subtotal = $flower['price'] * $flower['cantidad'];
+
+                                                    $total+=$subtotal;
+                                                    echo round($subtotal, 2)
+                                                    ?>€</td>
+                                                
                                             </tr>
 
-    <?php endforeach; ?>
+                                        <?php endforeach; ?>
                                     <tr><td/><td/><td/><td/><td/><td style="font-size:25px;"><b>subtotal: </b></td><td style="font-size:25px;"><b><?php echo $total; ?> €</b></td></tr>
                                     <tr><td/><td/><td/><td/><td/><td style="font-size:25px;"><b>Gastos de Envío: </b></td><td style="font-size:25px;"><b><?php echo $order->gastosEnvio; ?> €</b></td></tr>
                                     <tr><td/><td/><td/><td/><td/><td style="font-size:25px;"><b>TOTAL: </b></td><td style="font-size:25px;"><b><?php echo $total + $order->gastosEnvio; ?> €</b></td></tr>

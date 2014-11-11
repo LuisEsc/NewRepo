@@ -14,7 +14,7 @@ require_once './info/mostrarDescripcion.php';
 
 <div class="width-carousel recommend-block">
     <div class="container_9">
-        <h3  class="title-block">Trabajos Relaizados</h3>
+        <h3  class="title-block">Trabajos Realizados</h3>
         <div align="center">
             <img src="resources/images/slide22.jpg" width="380"/>
             <img src="resources/images/slide33.jpg" width="380"/>

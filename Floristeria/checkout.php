@@ -40,7 +40,7 @@ $cart = Session::getArraySession();
 
 if ($cart != null) {
     $date = date("D-d/M/Y -- g:i:s");
-    $order = new Order(null, $_SESSION['user']->id, $date, null, Session::getTotalPrice(),0, $gastosEnvio);
+    $order = new Order(null, $_SESSION['user']->id, $date, null, Session::getTotalPrice(),0, $gastosEnvio, $_SESSION['comentario']);
     $flowers = array();
     $i = 0;
     foreach ($cart as $indice => $valor) {
@@ -60,7 +60,7 @@ if ($cart != null) {
 <script type="text/javascript">
     //$(document).ready(function () {
 
-       // window.location.href = "/floristeria/pedido/<?php echo $order->id_pedido; ?>.html";
+     window.location.href = "/floristeria/pedido/<?php echo $order->id_pedido; ?>.html";
 
     //})
 

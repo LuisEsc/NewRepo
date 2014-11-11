@@ -22,7 +22,7 @@
     $email = (isset($_REQUEST['txt-email']) ? $_REQUEST['txt-email'] : null);
     $password = null;
     $password2 = null;
-
+    echo $localidad;
     if (isset($_REQUEST['txt-pass'])) {
         if (empty($_REQUEST['txt-pass'])) {
             $password = null;
@@ -64,7 +64,7 @@
             echo "<br />no actualizado";
         }
     }
-    echo "<script type='text/javascript'>window.location.href='../datospersonales.html'</script>";
+    //echo "<script type='text/javascript'>window.location.href='../datospersonales.html'</script>";
     //header_remove();
     //header("Location:  ../panelcontrolusuario.php");
     

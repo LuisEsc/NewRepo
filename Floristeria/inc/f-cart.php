@@ -8,15 +8,23 @@ session_start();
     <div class="header-content container_9">
         <div class="quick-access">
             <ul>
-                <li><?php if($_SESSION['user']->email!=null) echo "Hola, ".$_SESSION['user']->email."     "; ?><a href="/floristeria/manageSession.php"><?php if(isset($_SESSION['user'])){  echo "Cerrar Session"; } else { echo "Iniciar Sesion"; }?></a></li>
-               <li class="cart-icon" > 
-                    <a title="View my shopping cart" href="/floristeria/carrito.html" ><i class="icon-shopping-cart" ></i></a>
+                <li><?php if ($_SESSION['user']->email != null) { ?><button onclick="window.location.href = '/floristeria/datospersonales.html'" style="background-color: #efefef"><img src="/floristeria/media/user.png"/><br/>Datos personales</button><?php echo "  Hola, " . $_SESSION['user']->email . "     ";
+}
+?><a href="/floristeria/manageSession.php"><?php
+                        if (isset($_SESSION['user'])) {
+                            echo "Cerrar Session";
+                        } else {
+                            echo "Iniciar Sesion";
+                        }
+                        ?></a></li>
+                <li class="cart-icon" > 
+                    <a title="Ver mi carrito" href="/floristeria/carrito.html" ><i class="icon-shopping-cart" ></i></a>
 
-                    <span style="background-color: transparent; color: black;"><?php echo(Session::getItemsCount()); ?> item(s) - <?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span>
+                    <span style="background-color: transparent; color: black;"><?php echo(Session::getItemsCount()); ?> Producto(s) - <?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span>
                     <ul class="cart-items clearfix">
 
                         <?php
-                        if ($cart !== null ) {
+                        if ($cart !== null) {
                             foreach ($cart as $S_flower):
                                 $r_link = "flower_to_cart.php?mode=" . Session::_DELETE_ . "&";
                                 $r_link.= "id={$S_flower['id']}&";
@@ -36,7 +44,7 @@ session_start();
                                     </div>
                                 </li>
 
-                            <?php endforeach; ?>
+    <?php endforeach; ?>
 
                             <li class="footer-cart-items">
                                 <div class="footer-totals"> <span style="background-color: transparent; color: black;">Total :</span> <span class="price" style="background-color: transparent; color: black;"><?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span></div>
@@ -45,7 +53,7 @@ session_start();
                                 </div>
                             </li>
 
-                <?php } ?>
+<?php } ?>
                     </ul>
                 </li>
             </ul>
@@ -60,7 +68,7 @@ session_start();
     <!-- Mobile menu -->
 
     <script>
-        $(function() {
+        $(function () {
             'use strict';
             $('#dl-menu').dlmenu();
         });

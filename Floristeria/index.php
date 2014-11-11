@@ -68,20 +68,20 @@ include_once './inc/f-menu.php';
                 <h5 >Disponemos de una gran variedad de flores perfectas para todas las ocasiones.</h5>
             </div>
         </div>
-        <div data-iview:image="media/scr6-500px.jpg" data-iview:transition="block-drop-random" data-iview:pausetime="2000">
+        <div data-iview:image="media/scr6-500px.jpg" data-iview:transition="block-drop-random" data-iview:pausetime="5000">
             <div class="ancho iview-caption caption1" data-x="100" data-y="250" data-transition="expandDown">
-                <h3>Claveles</h3>
+                <h3>Variedad</h3>
             </div>
             <div class="iview-caption caption1" data-x="100" data-y="350" data-transition="expandDown">
-                <h5 > Una variedad de claveles perfecta para una velada romántica.</h5>
+                <h5 >Disponemos de una gran variedad de flores perfectas para todas las ocasiones.</h5>
             </div>
         </div>
         <div data-iview:image="media/scr3-500px.jpg">
             <div class="iview-caption caption1 ancho" data-x="100" data-y="250" data-transition="expandDown">
-                <h3>Florecillas&nbsp;azules</h3>
+                <h3>Variedad</h3>
             </div>
             <div class="iview-caption caption1" data-x="100" data-y="350" data-transition="expandDown">
-                <h5 >Estas alegres florecillas azules seran la alegría de la huerta.</h5>
+                <h5>Disponemos de una gran variedad de flores perfectas para todas las ocasiones.</h5>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <header class="third-bg" role="heading" id="header">
     <div class="header-content container_9">
         <div class="quick-access"><ul>
-                <li class="cart-icon"> <a href="/" title="View your Shopping cart"> <i class="icon-shopping-cart"></i> </a> <span ><?php echo Session::getItemsCount() ?> item(s) - <?php echo Session::getTotalPrice() ?>  &euro;</span>
+                <li class="cart-icon"> <a class="glyphicon glyphicon-user" href="/floristeria/datospersonales.html"></a> <i class="icon-shopping-cart"></i> </a> <span ><?php echo Session::getItemsCount() ?> item(s) - <?php echo Session::getTotalPrice() ?>  &euro;</span>
                     <ul class="cart-items clearfix">
                         <?php
                         $cart = Session::getArraySession();

@@ -15,8 +15,10 @@ class Order{
     public $array_flores = array();
     
     public $gastosEnvio = 0.0;
+    
+    public $comentario;
 
-    public function __construct($id_pedido, $id_cliente, $timestamp, $array_flores , $precio_total = 0.0, $preparado = 0, $gastosEnvio=0.0){ 
+    public function __construct($id_pedido, $id_cliente, $timestamp, $array_flores , $precio_total = 0.0, $preparado = 0, $gastosEnvio=0.0,$comentario = ""){ 
         $this->id_pedido = $id_pedido;
         $this->id_cliente = $id_cliente;
         $this->timestamp = $timestamp;
@@ -24,6 +26,7 @@ class Order{
         $this->array_flores = $array_flores;
         $this->preparado = $preparado;
         $this->gastosEnvio = $gastosEnvio;
+        $this->comentario = $comentario;
         
     }
     
