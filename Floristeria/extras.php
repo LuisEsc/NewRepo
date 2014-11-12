@@ -16,21 +16,21 @@ require_once './info/mostrarDescripcion.php';
 </div>
 <div class = "width-carousel recommend-block">
     <div class = "container_9">
-        <h3 class = "title-block"><?php echo "Plantas - PRODUCTOS" ?></h3>
+        <h3 class = "title-block"><?php echo "EXTRAS - PRODUCTOS" ?></h3>
     </div>
 </div>
 
 <section id = "columns" class = "container_9 clearfix col1" >
     <ul id = "og-grid" class = "og-grid">
         <?php
-        foreach (FlowersModel::getFlowersByCategory(Category::Plantas) as $flower):
+        foreach (FlowersModel::getFlowersByCategory(Category::Extras) as $flower):
             $link = "/floristeria/flower_to_cart.php?mode=" . Session::_INSERT_ . "&";
             $link.= "id={$flower->id}&";
             $link.= "v=" . md5($flower->id);
             
             ?>
             <li style="padding: 20px"> 
-                <a href='planta/<?php echo $flower->name; ?>.html'
+                <a href='extra/<?php echo $flower->name; ?>.html'
                    data-addtohref = "<?php echo($link); ?>"
                    data-onclick ="addToCart();"
                    data-addtocart = "Añadir al carro"

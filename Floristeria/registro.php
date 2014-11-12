@@ -53,7 +53,7 @@ include_once './inc/f-menu.php';
                                             </ul>
                                             <input type="hidden" value="checkout" name="context">
                                             <div class="buttons-set">
-                                                <button onClick="enviarFormulario();"  class="button" type="button"><span>Registrar</span></button>
+                                                <button onClick="enviarFormulario();"  class="button" type="button"><span style="background-color: #8CC152">Registrar</span></button>
                                             </div>
                                         </fieldset>
                                     </form>
@@ -83,7 +83,7 @@ include_once './inc/f-menu.php';
                                             <input type="hidden" value="checkout" name="context">
                                         </fieldset>
                                     <div class="buttons-set">
-                                        <button type="button" onClick="submitt();" class="button"  ><span>Iniciar Sesión</span></button>
+                                        <button type="button" onClick="submitt();" class="button"  ><span style="background-color: #8CC152">Iniciar Sesión</span></button>
                                     </div>
                                       
                                     </form>  

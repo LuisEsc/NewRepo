@@ -51,7 +51,7 @@ include_once './inc/f-menu.php';
                          </ul>
                          <p>Al crear una cuenta en nuestra tienda, usted será capaz de realizar el proceso de compra más rápidamente, almacenar varias direcciones de envío, ver y rastrear sus pedidos en su cuenta y más.</p>
                          <div class="buttons-set">
-                           <button onclick="continuar();" class="button" type="button" id="onepage-guest-register-button"><span><span>Continuar</span></span></button>
+                           <button onclick="continuar();" class="button" type="button" id="onepage-guest-register-button" style="background-color: #8CC152"><span style="background-color: #8CC152"><span style="background-color: #8CC152">Continuar</span></span></button>
                          </div>
                          </form>
                     </div>
@@ -79,7 +79,7 @@ include_once './inc/f-menu.php';
                           </fieldset>
                         </form>
                         <div class="buttons-set">
-                          <button onClick="submit();" class="button" type="button" id="onepage-guest-register-button"><span><span>Iniciar sesión</span></span></button>
+                          <button onClick="submit();" class="button" type="button" id="onepage-guest-register-button" style="background-color: #8CC152"><span style="background-color: #8CC152"><span style="background-color: #8CC152">Iniciar sesión</span></span></button>
                         </div>
                       </div>
                     </div>

@@ -4,7 +4,7 @@ require_once '../model/FlowersModel.php';
     require_once '../core/Connection.php';
     require_once '../libs/Flower.php';
 
-$category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
+$category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios", 5=>"Extras");
 
 $cat = null;
 

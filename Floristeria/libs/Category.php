@@ -12,5 +12,6 @@ abstract class Category {
     const Bodas = 2;
     const Plantas = 3;
     const Funerarios = 4;
+    const Extras = 5;
 
 }

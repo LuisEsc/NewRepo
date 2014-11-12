@@ -5,7 +5,7 @@ require_once '../model/FlowersModel.php';
 require_once '../core/Connection.php';
 require_once '../resources/image.php';
 
-$category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
+$category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios", 5=>"Extras");
 $flower = null;
 
 if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {

@@ -35,7 +35,7 @@ if (isset($_FILES['files']) && !empty($_FILES['files']) && $file['error'] != 4) 
         }
     } else {
         //echo "error: ";
-        print_r($file);
+        //print_r($file);
         //echo "hubo un error";
     }
 }

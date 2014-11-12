@@ -2,7 +2,7 @@
 include_once './core/init.php';
 require_once './resources/image.php';
 $flower = null;
-$category = array(0 => "ramo", 1 => "centro", 2 => "boda", 3 => "planta", 4 => "funerario");
+$category = array(0 => "ramo", 1 => "centro", 2 => "boda", 3 => "planta", 4 => "funerario", 5=>"Extra");
 
 
 if (isset($_REQUEST['name'])) {

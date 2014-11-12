@@ -9,7 +9,7 @@ require_once './model/OrderModel2.php';
 require_once './libs/Order.php';
 require_once './core/Session.php';
 
-$category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
+$category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios", 5=>"Extras");
 error_reporting(0);
 if (!isset($_SESSION['user'])) {
     header("Location: /floristeria/registro.php");

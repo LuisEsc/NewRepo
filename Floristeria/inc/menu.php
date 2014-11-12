@@ -9,6 +9,7 @@ $link = ListPages::$list;
             <li class="item"><a href="<?php echo ListPages::$list['bodas']; ?>" class="parent">Bodas</a> </li>
             <li class="item"><a href="<?php echo ListPages::$list['plantas'] ?>" class="parent">Plantas</a> </li>
             <li class="item"><a href="<?php echo ListPages::$list['funerarios'] ?>" class="parent">Funerarios</a> </li>
+            <li class="item"><a href="<?php echo ListPages::$list['extras'] ?>" class="parent">Extras</a> </li>
             <li class="item"><a href="<?php echo ListPages::$list['carro'] ?>" class="parent">Carro de compra</a></li>
         </ul>
     </nav>

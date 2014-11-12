@@ -29,7 +29,7 @@ require_once './info/mostrarDescripcion.php';
             $link.= "id={$flower->id}&";
             $link.= "v=" . md5($flower->id);
             ?>
-            <li> 
+            <li style="padding: 20px"> 
                 <a href='funerario/<?php echo $flower->name; ?>.html'
                    data-addtohref = "<?php echo($link); ?>"
                    data-onclick ="addToCart();"
@@ -42,7 +42,7 @@ require_once './info/mostrarDescripcion.php';
                    data-title = "<?php echo($flower->name); ?>"
                    data-description = "<?php echo($flower->description); ?>"> 
                     <span class = "overlay-grid"><i class = "icon-zoom-in"></i></span> 
-                    <img width="150" src ="data:<?php echo $flower->image_type ?>;base64,<?php echo $flower->str_imgcodificada; ?>" > 
+                    <img height="200" src ="data:<?php echo $flower->image_type ?>;base64,<?php echo $flower->str_imgcodificada; ?>" > 
                 </a> 
             </li>
         <?php endforeach; ?>

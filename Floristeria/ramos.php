@@ -23,12 +23,14 @@ require_once './info/mostrarDescripcion.php';
 <section id = "columns" class = "container_9 clearfix col1" >
     <ul id = "og-grid" class = "og-grid">
         <?php
+        $i=0;
         foreach (FlowersModel::getFlowersByCategory(Category::Ramos) as $flower):
             $link = "/floristeria/flower_to_cart.php?mode=" . Session::_INSERT_ . "&";
             $link.= "id={$flower->id}&";
             $link.= "v=" . md5($flower->id);
+            
             ?>
-            <li> 
+            <li style="padding: 20px"> 
                 <a href='ramo/<?php echo $flower->name; ?>.html'
                    data-addtohref = "<?php echo($link); ?>"
                    data-onclick ="addToCart();"
@@ -41,10 +43,11 @@ require_once './info/mostrarDescripcion.php';
                    data-title = "<?php echo($flower->name); ?>"
                    data-description = "<?php echo($flower->description); ?>"> 
                     <span class = "overlay-grid"><i class = "icon-zoom-in"></i></span> 
-                    <img width="200"  src ="data:<?php echo $flower->image_type ?>;base64,<?php echo $flower->str_imgcodificada; ?>" > 
+                    <img height="200"  src ="data:<?php echo $flower->image_type ?>;base64,<?php echo $flower->str_imgcodificada; ?>" > 
                 </a> 
             </li>
-        <?php endforeach; ?>
+            
+        <?php  endforeach; ?>
     </ul>
     <script type="text/javascript" src="js/grid.js"></script> 
     <script>

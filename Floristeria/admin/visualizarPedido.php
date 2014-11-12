@@ -11,7 +11,7 @@ require_once '../model/UsersModel.php';
 
 error_reporting(0);
 
-$category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios");
+$category = array(0 => "Ramos", 1 => "Centros", 2 => "Bodas", 3 => "Plantas", 4 => "Funerarios", 5=>"Extras");
 
 $total = 0;
 
