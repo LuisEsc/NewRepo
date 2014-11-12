@@ -19,8 +19,7 @@ $id_pedido = null;
 
 if (isset($_REQUEST['ip'])) {
     $id_pedido = $_REQUEST['ip'];
-}
-else{
+} else {
     header("Location: pedidos.php");
 }
 
@@ -36,16 +35,17 @@ $flowers = OrderModel2::getFlowersByOrderId($id_pedido);
 
     <?php
     require_once './inc/header_struct.php';
-    $user = UsersModel::getUserById($user_id); ?>
+    $user = UsersModel::getUserById($user_id);
+    ?>
 
     <style type="text/css">
         .datos{
             font-size: 20px;
         }
-        
+
     </style>
-    
-    
+
+
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <h1 class="page-header">Detalles del pedido</h1>        
 
@@ -63,33 +63,42 @@ $flowers = OrderModel2::getFlowersByOrderId($id_pedido);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        
-                        foreach ($flowers as $flower):?>
-                    
+                    <?php foreach ($flowers as $flower): ?>
+
                         <tr>
-                            <td><?php echo $category[$flower['category']];    ?></td>
-                            <td><?php echo $flower['name'];   ?></td>
-                            <td><?php echo $flower['description'];    ?></td>
+                            <td><?php echo $category[$flower['category']]; ?></td>
+                            <td><?php echo $flower['name']; ?></td>
+                            <td><?php echo $flower['description']; ?></td>
                             <td><img width="70" height="70" src="data:<?php echo $flower['imagetype']; ?>;base64,<?php if ($flower != null) echo $flower['imgblop']; ?>" /></td>
-                            <td><?php echo round($flower['price'],2); ?> €</td>
-                            <td><?php echo $flower['cantidad'];  ?></td>
-                            <td><?php $subtotal = round($flower['cantidad']*$flower['price'], 2); $total+= $subtotal; echo $subtotal." &euro;";   ?></td>
+                            <td><?php echo round($flower['price'], 2); ?> €</td>
+                            <td><?php echo $flower['cantidad']; ?></td>
+                            <td><?php $subtotal = round($flower['cantidad'] * $flower['price'], 2);
+                    $total+= $subtotal;
+                    echo $subtotal . " &euro;"; ?></td>
                         </tr>
 
-                        <?php endforeach;?>
-                        
-                        <tr><td/><td/><td/><td/><td/><td/><td><b>Subtotal: <?php echo round($total,2 ); ?> &euro;</b></td></tr>
-                        <tr><td/><td/><td/><td/><td/><td/><td><b>Gastos de Envio: <?php echo round($order->gastosEnvio,2 ); ?> &euro;</b></td></tr>
-                        <tr><td/><td/><td/><td/><td/><td/><td><b>TOTAL: <?php echo round($total+$order->gastosEnvio,2 ); ?> &euro;</b></td></tr>
-                        
+                    <?php endforeach; ?>
+
+                    <tr><td/><td/><td/><td/><td/><td/><td><b>Subtotal: <?php echo round($total, 2); ?> &euro;</b></td></tr>
+                    <tr><td/><td/><td/><td/><td/><td/><td><b>Gastos de Envio: <?php echo round($order->gastosEnvio, 2); ?> &euro;</b></td></tr>
+                    <tr><td/><td/><td/><td/><td/><td/><td><b>TOTAL: <?php echo round($total + $order->gastosEnvio, 2); ?> &euro;</b></td></tr>
+
                 </tbody>
             </table>
-                
+            <?php if(!empty($order->comentario)){ ?>
+            
+            <h1 class="page-header">COMENTARIO DEL CLIENTE</h1>
+            
+                <ul>
+                    <li class="datos"><?php echo $order->comentario; ?></li>
+                </ul>
+           
+            <?php } ?>
+            <br/><br/>
             <h1 class="page-header">DATOS DEL CLIENTE</h1>
             <div >
                 <ul>
-                    
+
                     <li class="datos">E-mail: <?php echo $user->email; ?></li>
                     <li class="datos">Nombre: <?php echo $user->nombre; ?></li>
                     <li class="datos">Apellidos: <?php echo $user->apellidos; ?></li>
@@ -98,15 +107,15 @@ $flowers = OrderModel2::getFlowersByOrderId($id_pedido);
                     <li class="datos">Localidad: <?php echo $user->localidad; ?></li>
                     <li class="datos">Código Postal: <?php echo $user->codpostal; ?></li>
                     <li class="datos">Provincia: <?php echo $user->provincia; ?></li>
-                    
+
                 </ul>
             </div>
 
 
 
 
+        </div>
     </div>
-</div>
 </div>
 
 </body>

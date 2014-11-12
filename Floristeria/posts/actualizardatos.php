@@ -2,13 +2,13 @@
 <?php
 
     error_reporting(0);
-    session_start();
     //error_reporting(1);
     require_once "../libs/Usuario.php";
     require_once "../model/UsersModel.php";
     require_once "../core/Connection.php";
     require_once "../core/Session.php";
 
+    session_start();
 
     $nombre = (isset($_REQUEST['txt-nombre']) ? $_REQUEST['txt-nombre'] : null);
     $apellidos = (isset($_REQUEST['txt-apellidos']) ? $_REQUEST['txt-apellidos'] : null);
@@ -64,7 +64,7 @@
             echo "<br />no actualizado";
         }
     }
-    //echo "<script type='text/javascript'>window.location.href='../datospersonales.html'</script>";
+    echo "<script type='text/javascript'>window.location.href='../datospersonales.html'</script>";
     //header_remove();
     //header("Location:  ../panelcontrolusuario.php");
     

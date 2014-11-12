@@ -66,7 +66,7 @@ if (!isset($_SESSION['user'])) {
                                                 echo $sumQuantity;
                                                 ?></td>
                                             <td><?php echo round($order['precio_total']+$order['gastosEnvio'], 2); ?> €</td>
-                                            <td><?php echo $order->comentario?></td>
+                                            <td><?php echo $order['comentario']; ?></td>
                                             <td><button onclick="more(<?php echo($order['id_pedido']) ?>);" />Details </button></td>
 
                                         </tr>

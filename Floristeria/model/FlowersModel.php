@@ -28,9 +28,9 @@ class FlowersModel {
     }
 
     public static function save(Flower $flower) {
-        $sql = "INSERT INTO flower (id, name, description, price, imagename, imagetype, category, imgblop)";
+        $sql = "INSERT INTO flower (id, name, description, price, imagename, imagetype, category, imgblop, visible)";
         //$sql .= "VALUES (null , {$flower->name}}, {$flower->description}, {".(float) $flower->price.",} {$flower->image_name}, {$flower->image_type}, {". (int) $flower->category ."}, {". $flower->str_imgcodificada."})");
-        $sql .= "VALUES (null , '{$flower->name}', '{$flower->description}', {$flower->price}, '{$flower->image_name}', '{$flower->image_type}', {$flower->category}, '{$flower->str_imgcodificada}')";
+        $sql .= "VALUES (null , '{$flower->name}', '{$flower->description}', {$flower->price}, '{$flower->image_name}', '{$flower->image_type}', {$flower->category}, '{$flower->str_imgcodificada}', 1)";
 
         self::setQuery($sql);
     }
@@ -51,7 +51,7 @@ class FlowersModel {
     }
 
     public static function delete($id) {
-        $sql = "DELETE FROM flower WHERE id='{$id}'";
+        $sql = "UPDATE flower SET visible = 0 WHERE id='{$id}'";
         return self::setQuery($sql);
     }
 
@@ -65,9 +65,11 @@ class FlowersModel {
     private static function toArray($result) {
         $array = array();
         while ($row = mysqli_fetch_assoc($result)) {
-            $array[] = new Flower(
-                    $row['id'], $row['name'], $row['price'], $row['description'], $row['imagename'], $row['imagetype'], $row['category'], $row['imgblop']
-            );
+            if($row['visible']==1){
+                $array[] = new Flower(
+                        $row['id'], $row['name'], $row['price'], $row['description'], $row['imagename'], $row['imagetype'], $row['category'], $row['imgblop']
+                );            
+            }
         }
         return $array;
     }
@@ -75,7 +77,9 @@ class FlowersModel {
     private static function toObject($result) {
         $object = mysqli_fetch_object($result);
         if ($object != null) {
-            return new Flower($object->id, $object->name, $object->price, $object->description, $object->imagename, $object->imagetype, $object->category, $object->imgblop);
+            if($object->visible==1){
+                return new Flower($object->id, $object->name, $object->price, $object->description, $object->imagename, $object->imagetype, $object->category, $object->imgblop);
+            }
         }
         return null;
     }

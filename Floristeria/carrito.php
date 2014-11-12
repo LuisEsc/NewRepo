@@ -36,8 +36,6 @@ $cart = Session::getArraySession();
             $("#country").change(function () {
                 str = $("#country").find(":selected").attr("str");
             });
-
-
         });
         function datosCorrectos() {
 
@@ -58,43 +56,48 @@ $cart = Session::getArraySession();
                     return false;
                 }
                 else {
-
+                    var ok = false;
                     $.ajax({
                         data: {"gasto": gasto},
                         url: "posts/establecerCosteEnvioEnSesion.php",
                         type: "post",
                         success: function (data) {
-
+                           
+                                ok=true;
+                           
                         }
 
                     });
-
+                    var i = 0;
+                    while(ok==false && i<100){
+                        i++;
+                    }
                     return true;
                 }
             }
 
         }
+
         function procesarPedido() {
 
             if (datosCorrectos()) {
                 $.ajax({
-                    data: {"comentario": $("#comentario").text()},
+                    data: {"comentario": $("#comentario").val()},
                     url: "posts/establecerComentario.php",
                     type: "post",
                     success: function (data) {
-
+                        if (data == true) {
+                            window.location.href = 'checkout.php';
+                        }
                     }
 
                 });
-                window.location.href = 'checkout.php';
             }
             else {
                 alert("Verifica tus datos personales.\nSelecciona una poblacion de envio que coincida con tu poblacion para poder continuar.\nSi la poblacion en la que reside no está en la lista, no podrá realizar compras online en esta tienda.");
             }
 
         }
-
-
     </script>
     <div class="cart">
         <form method="post" action="./checkout.php">
@@ -175,7 +178,7 @@ $cart = Session::getArraySession();
                                     <li>
                                         <div  class="input-box">
                                             <div class="styled-select">
-                                                <select hidden title="Country" class="validate-select" id="country" name="country_id">
+                                                <select  title="Country" class="validate-select" id="country" name="country_id">
                                                     <option str="null" value="-1">-- Selecciona una población --</option>
                                                     <?php
                                                     foreach ($poblaciones as $poblacionesEnvio) {
@@ -204,7 +207,7 @@ $cart = Session::getArraySession();
 
             </div>
             <h2><b>Si lo desea, puede insertar un comentario en el pedido<br/>Por ejemplo, un mensaje en una tarjeta sorpresa:</b></h2>
-            
+
             <textarea rows="3" cols="70" name="comentario" id="comentario"></textarea>
 
             <div class="totals">
@@ -270,7 +273,7 @@ $cart = Session::getArraySession();
                  var html_envio = (gastos > 0) ? (Math.round(gastos * 100) / 100).toFixed(2) + "&nbsp;&euro;" : "Gratuito";
                  var html_total = gastos + <?php echo(Session::getTotalPrice()); ?>;*/
 
-                alert($("#country").val());
+                //alert($("#country").val());
                 var gastos = $("#country").val();
                 var html_envio = (gastos > 0) ? (Math.round(gastos * 100) / 100).toFixed(2) + "&nbsp;&euro;" : "Gratuito";
                 var html_total = gastos * 1.0 + <?php echo(Session::getTotalPrice() * 1.0); ?>;
@@ -285,6 +288,7 @@ $cart = Session::getArraySession();
                 var html_total = gastos * 1.0 + <?php echo(Session::getTotalPrice() * 1.0); ?>;
                 $('#g_envio').html(html_envio);
                 $('#total').html((Math.round(html_total * 100) / 100).toFixed(2) + "&nbsp;&euro;");
+                gasto = (Math.round(gastos * 100) / 100).toFixed(2);
             }
         }
         );

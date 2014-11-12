@@ -7,7 +7,6 @@ $category = array(0 => "ramo", 1 => "centro", 2 => "boda", 3 => "planta", 4 => "
 
 if (isset($_REQUEST['name'])) {
     $flower = FlowersModel::getFlowerByNameAndType($_REQUEST['name'], $_REQUEST['type']);
-    
 } else {
     header("Location: /floristeria/inicio.html");
 }
@@ -32,7 +31,7 @@ if ($flower == null) {
         <meta property="og:title"           content="<?php echo $flower->name . " a " . round($flower->price, 2) . " €"; ?>" />
         <meta property="og:image" content="http://www.floristeriaalbahaca.es/floristeria/resouces/image.php?ID=<?php echo $flower->id; ?>"/>
         <meta property="og:image:url" content="http://www.floristeriaalbahaca.es/floristeria/resouces/image.php?ID=<?php echo $flower->id; ?>"/>
-        
+
         <meta property="fb:app_id" content="1452262828383247"/>
 
 
@@ -76,18 +75,18 @@ if ($flower == null) {
 
 
     </script>
-    <img class="alt logo" hidden id="foto" src="http://www.floristeriaalbahaca.es/floristeria/resouces/image.php?ID=<?php echo $flower->id; ?>" height="332"/>
+
     <div id="page" class="clearfix"><?php
-        include_once './inc/f-cart.php';
-        include_once './inc/f-menu.php';
-        require_once './info/mostrarDescripcion.php';
-        ?>
+include_once './inc/f-cart.php';
+include_once './inc/f-menu.php';
+require_once './info/mostrarDescripcion.php';
+?>
 
 
 
         <section  id="columns" class="container_9 clearfix col1" >
             <div id="primary_block" class="clearfix">
-                <div   id="imageContainer">
+                <div id="imageContainer">
                     <img itemprop="image" id="foto" src="http://www.floristeriaalbahaca.es/floristeria/resouces/image.php?ID=<?php echo $flower->id; ?>" height="332"/>
 
                 </div>
@@ -119,7 +118,7 @@ if ($flower == null) {
                 <ul class="tab-content">
                     <li  class="content-li active ">
                         <div class="box-collateral box-description">
-                            <div   class="std">
+                            <div  class="std"style="background-color: transparent" >
                                 <p  ><?php echo $flower->description; ?></p>
                                 <div hidden><p itemprop="description"><?php echo strip_tags($flower->description); ?></p></div>
                                 <div
@@ -174,7 +173,7 @@ if ($flower == null) {
 
             });
         </script>
+
+        <?php
+        include_once './inc/f-footer.php';
         
-            <?php
-            include_once './inc/f-footer.php';
-            

@@ -8,7 +8,7 @@ $id = null;
 if(isset($_SESSION['admin'])){
     if(isset($_REQUEST['id'])){
         $id = $_REQUEST['id'];
-        $eliminado = FlowersModel::delete($id);
+        FlowersModel::delete($id);
         //echo "eliminado";
     }
     else{

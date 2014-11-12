@@ -58,12 +58,11 @@ if ($flowers == null) {
                                     <tr>
                                         <th>Categoria</th>
                                         <th>Nombre</th>
-                                        <th width="1">Descripcion</th>
+                                        <th>Descripcion</th>
                                         <th>Imagen</th>
                                         <th>Precio unitario</th>
                                         <th>Cantidad</th>
                                         <th>Importe</th>
-                                        <th>Comentario</th>
                                     </tr>
                                 </thead>
                                 <tbody>

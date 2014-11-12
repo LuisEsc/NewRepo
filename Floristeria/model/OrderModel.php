@@ -52,8 +52,8 @@ class OrderModel {
     }
 
     public static function saveOrder(Order $order) {
-        $sql = " INSERT INTO pedidos (id_cliente, timestam, precio_total, preparado, gastosEnvio,comentario) ";
-        $sql.= " VALUES($order->id_cliente, '{$order->timestamp}', {$order->precio_total}, 0, {$order->gastosEnvio}, '{$order->comentario}') ";
+        $sql = " INSERT INTO pedidos (id_pedido, id_cliente, timestam, precio_total, preparado, gastosEnvio, comentario) ";
+        $sql.= " VALUES(null, $order->id_cliente, '{$order->timestamp}', {$order->precio_total}, 0, {$order->gastosEnvio}, '{$order->comentario}') ";
         
         $insertado = false;
         self::setQuery($sql);
@@ -72,7 +72,7 @@ class OrderModel {
             $insertado = self::setQuery($sql);
         }
 
-        return $insertado;
+        return $result[0];
     }
 
     public static function getFlowersByOrderId($order_id) {

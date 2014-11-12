@@ -10,7 +10,11 @@ $flower = null;
 
 if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
     $flower = FlowersModel::getFlowerById($_REQUEST['id']);
+    if($flower==null){
+        header("Location: flowers.php");
+    }
 }
+
 ?>
 <html lang="es">
     <script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>

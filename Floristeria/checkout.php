@@ -1,9 +1,11 @@
 <?php
-session_start();
 require_once './core/init.php';
 require_once './phpmailer/class.phpmailer.php';
 require_once './phpmailer/class.smtp.php';
 error_reporting(0);
+
+session_start();
+
 function enviarCorreo() {
 
 
@@ -22,7 +24,7 @@ function enviarCorreo() {
     $mail->FromName = "Floristeria Albahaca";
     $mail->Subject = "Resumen de su pedido";
     $mail->AddAddress($_SESSION['user']->email);
-    
+
     ob_start();
     include 'plantillafacturacorreo.php';
     $msg = ob_get_clean();
@@ -33,14 +35,15 @@ function enviarCorreo() {
         //echo "Mensaje enviado";
     }
 }
+
 $gastosEnvio = $_SESSION['gastosEnvio'];
 $cart = Session::getArraySession();
-
+$comentario=$_SESSION['comentario'];
 
 
 if ($cart != null) {
     $date = date("D-d/M/Y -- g:i:s");
-    $order = new Order(null, $_SESSION['user']->id, $date, null, Session::getTotalPrice(),0, $gastosEnvio, $_SESSION['comentario']);
+    $order = new Order(null, $_SESSION['user']->id, $date, null, Session::getTotalPrice(), 0, $gastosEnvio, $comentario);
     $flowers = array();
     $i = 0;
     foreach ($cart as $indice => $valor) {
@@ -50,17 +53,17 @@ if ($cart != null) {
     $order->setFlowerArray($flowers);
 
 
-    OrderModel::saveOrder($order);
-
+    $id = OrderModel::saveOrder($order);
+    $order->id_pedido = $id;
     enviarCorreo();
-    
+
     //$order = OrderModel::getOrderByDate($order->timestamp);   
 }
 ?>
 <script type="text/javascript">
     //$(document).ready(function () {
 
-     window.location.href = "/floristeria/pedido/<?php echo $order->id_pedido; ?>.html";
+    window.location.href = "/floristeria/pedido/<?php echo $order->id_pedido; ?>.html";
 
     //})
 
