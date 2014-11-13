@@ -20,21 +20,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/extras.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/centros.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/login.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/plantas.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/admin/flowers.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/inc/f-menu.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/visualizarPedido.php</file>
             <file>file:/D:/GitHub/NewRepo/Floristeria/Ibercaja.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/Funerarios.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/pruebaceca.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/ramos.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/registro.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/mispedidos.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/Bodas.php</file>
-            <file>file:/D:/GitHub/NewRepo/Floristeria/libs/Category.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/inc/poblacionesEnvio.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/checkout.php</file>
+            <file>file:/D:/GitHub/NewRepo/Floristeria/panelcontrolusuario.php</file>
         </group>
     </open-files>
 </project-private>

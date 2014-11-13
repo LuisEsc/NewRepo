@@ -154,7 +154,7 @@ class Ceca {
         if (strlen(trim($merchantid)) > 0) {
             $this->_merchantID = $merchantid;
         } else {
-            throw new \Exception('Falta agregar MerchantID proporcionada por el comercio, Obligatorio');
+            throw new Exception('Falta agregar MerchantID proporcionada por el comercio, Obligatorio');
         }
     }
 
@@ -166,7 +166,7 @@ class Ceca {
         if (strlen(trim($acquirerbin)) > 0) {
             $this->_acquirerBIN = $acquirerbin;
         } else {
-            throw new \Exception('Falta agregar AcquirerBIN proporcionada por el comercio, Obligatorio');
+            throw new Exception('Falta agregar AcquirerBIN proporcionada por el comercio, Obligatorio');
         }
     }
 
@@ -179,7 +179,7 @@ class Ceca {
         if (strlen(trim($urlok)) > 0) {
             $this->_url_ok = $urlok;
         } else {
-            throw new \Exception('Falta agregar Url Ok de respuesta tras la compra, Obligatorio');
+            throw new Exception('Falta agregar Url Ok de respuesta tras la compra, Obligatorio');
         }
     }
 
@@ -192,7 +192,7 @@ class Ceca {
         if (strlen(trim($urlnok)) > 0) {
             $this->_url_nok = $urlnok;
         } else {
-            throw new \Exception('Falta agregar Url NOk de respuesta cuando se produce un error, Obligatorio');
+            throw new Exception('Falta agregar Url NOk de respuesta cuando se produce un error, Obligatorio');
         }
     }
 
@@ -204,7 +204,7 @@ class Ceca {
         if (strlen(trim($numoperacion)) > 0) {
             $this->_num_operacion = $numoperacion;
         } else {
-            throw new \Exception('Falta agregar Numero de operacion (Num. de factura, pedido, etc), Obligatorio');
+            throw new Exception('Falta agregar Numero de operacion (Num. de factura, pedido, etc), Obligatorio');
         }
     }
 
@@ -217,10 +217,10 @@ class Ceca {
             $importe = $this->priceToSQL($importe);
 
             // Siempre será un número entero donde los dos últimos dígitos serán los céntimos de Euro.
-            $importe = intval(strval(importe * 100));
+            $importe = intval(strval($importe * 10));
             $this->_importe = $importe;
         } else {
-            throw new \Exception('Falta agregar Importe, Obligatorio');
+            throw new Exception('Falta agregar Importe, Obligatorio');
         }
     }
 
@@ -278,7 +278,7 @@ class Ceca {
         if (strlen(trim($claveencriptacion)) > 0) {
             $this->_clave_encriptacion = $claveencriptacion;
         } else {
-            throw new \Exception('Falta agregar la clave de encriptacion proporcionada por el comercio, Obligatorio');
+            throw new Exception('Falta agregar la clave de encriptacion proporcionada por el comercio, Obligatorio');
         }
     }
 

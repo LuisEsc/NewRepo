@@ -8,7 +8,7 @@ class Order{
 
     public $id_cliente;
 
-    public $precio_total;
+    public $precio_total = 0.0;
     
     public $timestamp;
     

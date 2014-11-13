@@ -34,7 +34,7 @@ $poblaciones = ARRAY(
     NEW PoblacionEnvio("FORNILLOS", 9.1),
     NEW PoblacionEnvio("FORNILLOS DE APIÉS", 9.0),
     NEW PoblacionEnvio("GRAÑÉN", 23.7),
-    NEW PoblacionEnvio("HUESCA", 4.0),
+    NEW PoblacionEnvio("HUESCA", 0.5),
     NEW PoblacionEnvio("IBIECA", 23.5),
     NEW PoblacionEnvio("IGRIES", 9.9),
     NEW PoblacionEnvio("LASCASAS", 8.1),
@@ -66,10 +66,3 @@ $poblaciones = ARRAY(
     NEW PoblacionEnvio("VICIÉN", 13.4),
     NEW PoblacionEnvio("YÉQUEDA", 6.4)    
    );
-/*
-    $i=0;
-    while($i<  count($poblaciones)){
-        print_r($poblaciones[$i]);
-        echo"<br/>";
-        $i++;
-    }*/

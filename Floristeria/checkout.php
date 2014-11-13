@@ -2,9 +2,13 @@
 require_once './core/init.php';
 require_once './phpmailer/class.phpmailer.php';
 require_once './phpmailer/class.smtp.php';
+require_once './Ibercaja.php';
+
 error_reporting(0);
 
 session_start();
+
+$order = null;
 
 function enviarCorreo() {
 
@@ -36,10 +40,34 @@ function enviarCorreo() {
     }
 }
 
+function realizarPago() {
+    $costetotal = Session::getTotalPrice()+$_SESSION['gastosEnvio'];
+    echo $costetotal;
+    $costetotal = 0.5;
+    try {
+        $pasarela = new Ceca();
+        $pasarela->setAcquirerBIN('0000554027');
+        $pasarela->setMerchantID('084089028');
+        $pasarela->setClaveEncriptacion('JIZD9D8I');
+        $pasarela->setEntorno('desarrollo');
+        $pasarela->setImporte($costetotal);
+        $pasarela->setTerminalID('00000003');
+        $pasarela->setNumOperacion('A00' . date('His'));
+        $pasarela->setUrlNok('http://tpv.ceca.es:8000/cgi-bin/comunicacion-on-line');
+        $pasarela->setUrlOk('http://tpv.ceca.es:8000/cgi-bin/comunicacion-on-line');
+        $pasarela->setUrlpasareladesarrollo('http://tpv.ceca.es:8000/cgi-bin/comunicacion-on-line');
+        $form = $pasarela->create_form();
+        $pasarela->launchRedirection();
+    } catch (Exception $e) {
+        echo $e->getMessage();
+        exit();
+    }
+    echo $form;
+}
+
 $gastosEnvio = $_SESSION['gastosEnvio'];
 $cart = Session::getArraySession();
-$comentario=$_SESSION['comentario'];
-
+$comentario = $_SESSION['comentario'];
 
 if ($cart != null) {
     $date = date("D-d/M/Y -- g:i:s");
@@ -55,6 +83,9 @@ if ($cart != null) {
 
     $id = OrderModel::saveOrder($order);
     $order->id_pedido = $id;
+
+    realizarPago();
+
     enviarCorreo();
 
     //$order = OrderModel::getOrderByDate($order->timestamp);   
@@ -63,7 +94,7 @@ if ($cart != null) {
 <script type="text/javascript">
     //$(document).ready(function () {
 
-    window.location.href = "/floristeria/pedido/<?php echo $order->id_pedido; ?>.html";
+    //window.location.href = "/floristeria/pedido/<?php echo $order->id_pedido; ?>.html";
 
     //})
 

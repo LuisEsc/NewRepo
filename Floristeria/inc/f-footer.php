@@ -7,13 +7,13 @@
                 <h4>Realizamos envíos a:</h4>
                 <div class="block_content">
                     <ul>
-                        <li class="first_item"><a title="Floristería" >Cuarte, Almudévar, Gurrea de Gállego, Zuera
+                        <li class="first_item"><a title="Floristería" >Ayerbe, Alerre, Sangarrén, Monflorite
                             </a></li>
-                        <li class="item"><a title="Floristería" >Tardienta, Grañén, Sariñena, Angüés
+                        <li class="item"><a title="Floristería" >Bolea, Grañén, Loarre, Tramaced
                             </a></li>
-                        <li class="item"><a title="Floristería" ">Ayerbe, Bolea, Sabiñánigo
+                        <li class="item"><a title="Floristería" ">Yéqueda, Tardienta, Almudévar
                             </a></li>
-                        <li class="item"><a title="Ver Nuestra Zona de trabajo" >Zona de trabajo</a></li>
+                        <li class="item"><a href="/floristeria/zonadetrabajo.html" title="Ver Nuestra Zona de trabajo" >Zona de trabajo</a></li>
                     </ul>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 <h4>Contactar</h4>
                 <div class="block_content">
                     <p><a href="mailto:info@floristeriaalbahaca.es">albahaca@interflora.es</a> <br/>
-                        974 231 468<br />
+                        974 231 468 - 687 938 631<br />
                         C/Jose María Lacasa nº 17, 22001, Huesca</p>
                 </div>
             </div>
