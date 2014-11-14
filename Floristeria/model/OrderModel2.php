@@ -11,7 +11,7 @@ class OrderModel2 {
         $res = $con->query($sql);
 
         while ($row = mysqli_fetch_assoc($res)) {
-            $orderArray[] = new Order($row['id_pedido'], $row['id_cliente'], $row['timestam'], null, $row['precio_total'], $row['preparado'], $row['gastosEnvio'], $row['comentario']);
+            $orderArray[] = new Order($row['id_pedido'], $row['id_cliente'], $row['timestam'], null, $row['precio_total'], $row['preparado'], $row['gastosEnvio'], $row['comentario'],$row['pagado']);
         }
         return $orderArray;
     }
@@ -37,6 +37,23 @@ class OrderModel2 {
         $id_cliente = mysqli_fetch_array($res);
 
         return $id_cliente[0];
+    }
+    public static function delete($id){
+        $con = Connection::getConnection();
+        $sql = "DELETE FROM flores_pedido WHERE id_pedido = {$id}";
+        $con->query($sql);
+        
+        
+        
+        $sql = "DELETE FROM pedidos WHERE id_pedido = {$id}";
+        $res = $con->query($sql);
+        return true;
+    }
+    public static function setPagado($id){
+        $sql = "UPDATE pedidos SET pagado = 1 WHERE id_pedido = '{$id}'";
+        $con = Connection::getConnection();
+        $res = $con->query($sql);
+        return $res;
     }
 
     public static function getFlowersByOrderId($id) {
@@ -65,6 +82,7 @@ class OrderModel2 {
 
 
         while ($row = mysqli_fetch_assoc($res)) {
+            if($row['pagado']==1)
             $orders[] = $row;
         }
 

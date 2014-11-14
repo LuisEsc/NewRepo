@@ -41,9 +41,8 @@ function enviarCorreo() {
 }
 
 function realizarPago() {
-    $costetotal = Session::getTotalPrice()+$_SESSION['gastosEnvio'];
-    echo $costetotal;
-    $costetotal = 0.5;
+    $costetotal = Session::getTotalPrice() + $_SESSION['gastosEnvio'];
+    
     try {
         $pasarela = new Ceca();
         $pasarela->setAcquirerBIN('0000554027');
@@ -53,10 +52,11 @@ function realizarPago() {
         $pasarela->setImporte($costetotal);
         $pasarela->setTerminalID('00000003');
         $pasarela->setNumOperacion('A00' . date('His'));
-        $pasarela->setUrlNok('http://tpv.ceca.es:8000/cgi-bin/comunicacion-on-line');
-        $pasarela->setUrlOk('http://tpv.ceca.es:8000/cgi-bin/comunicacion-on-line');
+        $pasarela->setUrlNok('http://www.floristeriaalbahaca.es/floristeria/pedidonorealizado.html');
+        $pasarela->setUrlOk('http://www.floristeriaalbahaca.es/floristeria/pedidorealizado.html');
         $pasarela->setUrlpasareladesarrollo('http://tpv.ceca.es:8000/cgi-bin/comunicacion-on-line');
-        $form = $pasarela->create_form();
+        $pasarela->setSubmit();
+        $form = $pasarela->create_form();        
         $pasarela->launchRedirection();
     } catch (Exception $e) {
         echo $e->getMessage();
@@ -80,14 +80,10 @@ if ($cart != null) {
     }
     $order->setFlowerArray($flowers);
 
-
-    $id = OrderModel::saveOrder($order);
-    $order->id_pedido = $id;
-
+    
+    $_SESSION['order'] = OrderModel::saveOrder($order);
     realizarPago();
-
-    enviarCorreo();
-
+    
     //$order = OrderModel::getOrderByDate($order->timestamp);   
 }
 ?>

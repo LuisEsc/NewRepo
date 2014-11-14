@@ -1,5 +1,4 @@
 <?php
-require_once './core/init.php';
 //require './core/Session.php';
 session_start();
 $cart = Session::getArraySession();

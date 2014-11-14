@@ -52,8 +52,8 @@ class OrderModel {
     }
 
     public static function saveOrder(Order $order) {
-        $sql = " INSERT INTO pedidos (id_pedido, id_cliente, timestam, precio_total, preparado, gastosEnvio, comentario) ";
-        $sql.= " VALUES(null, $order->id_cliente, '{$order->timestamp}', {$order->precio_total}, 0, {$order->gastosEnvio}, '{$order->comentario}') ";
+        $sql = " INSERT INTO pedidos (id_pedido, id_cliente, timestam, precio_total, preparado, gastosEnvio, comentario, pagado) ";
+        $sql.= " VALUES(null, $order->id_cliente, '{$order->timestamp}', {$order->precio_total}, 0, {$order->gastosEnvio}, '{$order->comentario}', '{$order->pagado}') ";
         
         $insertado = false;
         self::setQuery($sql);
@@ -74,6 +74,7 @@ class OrderModel {
 
         return $result[0];
     }
+    
 
     public static function getFlowersByOrderId($order_id) {
         $sql = " SELECT `flower`.`id`, `flower`.`name`,`flower`.`price`, `flower`.`description`, `flower`.`imagename`, `flower`.`imagetype`, `flower`.`category`, `flower`.`imgblop` ";
@@ -109,7 +110,7 @@ class OrderModel {
         while ($row = mysqli_fetch_assoc($resulta)) {
             //print_r($row);
             $array[] = new Order(
-                    $row['id_pedido'], $row['id_cliente'], $row['timestam'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total'], $row['preparado'], $row['gastosEnvio'], $row['comentario']
+                    $row['id_pedido'], $row['id_cliente'], $row['timestam'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total'], $row['preparado'], $row['gastosEnvio'], $row['comentario'], $row['pagado']
             );
         }
         return $array;
@@ -119,9 +120,11 @@ class OrderModel {
         $array = array();
         while ($row = mysqli_fetch_array($result)) {
             //print_r($row);
-            $array[] = new Flower(
-                    $row['id'], $row['name'], $row['price'], $row['description'], $row['imagename'], $row['imagetype'], $row['category'], $row['imgblop']
-            );
+            if($row['pagado']==1){
+                $array[] = new Flower(
+                        $row['id'], $row['name'], $row['price'], $row['description'], $row['imagename'], $row['imagetype'], $row['category'], $row['imgblop']
+                );            
+            }
         }
         return $array;
     }
@@ -130,9 +133,11 @@ class OrderModel {
         $object = null;
         while ($row = mysqli_fetch_assoc($res)) {
             //print_r($row);
-            $object = new Order(
-                    $row['id_pedido'], $row['id_cliente'], $row['timestam'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total'], $row['preparado'], $row['gastosEnvio'], $row['comentario']
-            );
+            if($row['pagado']==1){
+                $object = new Order(
+                        $row['id_pedido'], $row['id_cliente'], $row['timestam'], (self::getFlowersByOrderId($row['id_pedido'])), $row['precio_total'], $row['preparado'], $row['gastosEnvio'], $row['comentario'], $row['pagado']
+                );
+            }
         }
         return $object;
     }
@@ -150,8 +155,10 @@ class OrderModel {
             $campo++;
         }        
         while($row = mysqli_fetch_array($result)){
-            for($i = 0;$i<sizeof($row) ;$i++){
-                $array_generico[($row[1])][$nombreCampos[$i]] = $row[$i];
+            if($row['pagado']==1){
+                for($i = 0;$i<sizeof($row) ;$i++){
+                    $array_generico[($row[1])][$nombreCampos[$i]] = $row[$i];
+                }
             }
             
         }
