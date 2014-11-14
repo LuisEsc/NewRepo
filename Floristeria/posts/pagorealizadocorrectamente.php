@@ -69,23 +69,7 @@ include_once '../inc/f-menu.php';
             <h3 class="title-block">GRACIAS POR COMPRAR EN FLORISTERÍA ALBAHACA<br/>Éste es el resumen de su pedido</h3>
         </div>
     </div>
-    <section  id="columns" class="container_9 clearfix col1" >
-        <ol id="checkoutSteps" class="opc">
-            <li class="section allow active" id="opc-login">
-                <div class="step-title">
-                    <h2>PEDIDOS</h2>
-                    <a href="#">Edit</a> </div>
-                
-                    <div >
-                        <?php
-                        $mensaje = enviarCorreo();
-                        echo $mensaje;
-                        ?>
-                    </div>
-               
-            </li>
-        </ol>
-    </section>
+    
         <?php
 //echo $_SESSION['email'];
                         include_once '../inc/f-footer.php';

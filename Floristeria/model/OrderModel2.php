@@ -11,6 +11,7 @@ class OrderModel2 {
         $res = $con->query($sql);
 
         while ($row = mysqli_fetch_assoc($res)) {
+            if($row['pagado']==1)
             $orderArray[] = new Order($row['id_pedido'], $row['id_cliente'], $row['timestam'], null, $row['precio_total'], $row['preparado'], $row['gastosEnvio'], $row['comentario'],$row['pagado']);
         }
         return $orderArray;

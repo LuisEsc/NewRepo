@@ -15,16 +15,14 @@ include_once './inc/f-menu.php';
 <section id = "columns" class = "container_9 clearfix col1" >
     <p align="justify">
 POLTICA DE PRIVACIDAD DE DATOS<br/><br/>
-Denominación Social:<br/>
-Nombre Comercial:<br/>
-Domicilio Social:<br/>
-CIF / NIF:<br/>
-Teléfono:<br/>
-Fax:<br/>
-e-Mail:<br/>
+Denominación Social: Pilar Goñi Mériz actuando como persona física<br/>
+Nombre Comercial: Floristería Albahaca<br/>
+Domicilio Social: Calle Jose María Lacasa nº17 Huesca - 22001<br/>
+Teléfono: 974231468<br/>
+e-Mail: albahaca@interflora.es<br/>
 Inscrita en el Registro:<br/>
-Nombre de dominio:<br/>
-Autorización administrativa:<br/><br/>
+Nombre de dominio: www.floristeriaalbahaca.es<br/><br/>
+Autorización administrativa:<br/>
 De conformidad con lo dispuesto en la Ley Orgánica 15/1999, de Protección de Datos de Carácter Personal (LOPD)
 y su normativa de desarrollo, el responsable del sitio web, en cumplimiento de lo dispuesto en el art. 5 y 6
 de la LOPD, informa a todos los usuarios del sitio web que faciliten o vayan a facilitar sus datos personales,
@@ -59,10 +57,8 @@ datos personales sean tratados por parte del prestador para realizar las siguien
         información y oposición, en los términos dispuestos en la legislación vigente.
         Por ello, de conformidad con lo dispuesto en la Ley Orgánica 15/1999,
         de Protección de Datos de Carácter Personal (LOPD) podrá ejercer sus derechos remitiendo una solicitud expresa,
-        junto a una copia de su DNI, a través de los siguientes medios:<br/><br/>
-1.	E-Mail: lopd@web.es<br/>
-2.	Fax: ___________<br/>
-3.	Correo Postal: ____________ <br/><br/>
+        junto a una copia de su DNI, a través de los siguientes medios:<br/>
+1.	E-Mail: albahaca@interflora.es<br/><br/>
 Del mismo modo, el usuario podrá darse de baja de cualquiera de los servicios de suscripción facilitados haciendo clic en el apartado darse de baja de todos los correos electrónicos remitidos por parte del prestador.
 Del mismo modo, el prestador ha adoptado todas las medidas técnicas y de organización necesarias para garantizar la seguridad e integridad de los datos de carácter personal que trate, así como para evitar su pérdida, alteración y/o acceso por parte de terceros no autorizados.
 <br/><br/>

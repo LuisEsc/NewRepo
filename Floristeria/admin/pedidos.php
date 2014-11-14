@@ -80,7 +80,7 @@ $orders = OrderModel2::getOrders();
                            $sum = OrderModel2::getTotalQuantity($order->id_pedido);
                            $sumQuantity = $sum;
 
-                        if ($tipo == $order->preparado || $tipo == null) {
+                        if ($tipo == $order->preparado || $tipo == null || $order->pagado==0) {
                             ?>
                             <tr>
                                 <td><?php
