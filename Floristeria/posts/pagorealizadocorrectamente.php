@@ -11,7 +11,6 @@ require_once '../model/OrderModel2.php';
 session_start();
 
 $order =  $_SESSION['order'];
-echo "..".$order;
 
 OrderModel2::setPagado($order);
 
@@ -42,8 +41,8 @@ function enviarCorreo() {
     } else {
         //echo "Mensaje enviado";
     }
-    return $msg;
 }
+enviarCorreo();
 
 include_once '../inc/f-header.php';
 include_once '../inc/f-cart.php';
@@ -66,7 +65,12 @@ include_once '../inc/f-menu.php';
     <script src="js/iview.js"></script> 
     <div class="width-carousel recommend-block">
         <div class="container_9">
-            <h3 class="title-block">GRACIAS POR COMPRAR EN FLORISTERÍA ALBAHACA<br/>Éste es el resumen de su pedido</h3>
+            <h3 class="title-block">GRACIAS POR COMPRAR EN FLORISTERÍA ALBAHACA</h3>
+        </div>
+    </div>
+    <div class="width-carousel recommend-block">
+        <div class="container_9">
+            <h3 class="title-block">Le hemos enviado un correo electrónico con el resumen de su pedido</h3>
         </div>
     </div>
     

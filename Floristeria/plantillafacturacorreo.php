@@ -63,9 +63,9 @@ $gastosEnvio = $_SESSION['gastosEnvio'];
 
         </tbody>        
     </table>
-    <h2>SUBTOTAL: <?php echo Session::getTotalPrice(); ?> &euro;</h2>                
-    <h2>Gastos de Envio: <?php echo $_SESSION['gastosEnvio']; ?> &euro;</h2>
-    <h1 class="total"><b>TOTAL: </b><?php $total = Session::getTotalPrice()+$_SESSION['gastosEnvio']; echo $total; ?> &euro;</h1>
+    <h2>SUBTOTAL: <?php echo round(Session::getTotalPrice(),2); ?> &euro;</h2>                
+    <h2>Gastos de Envio: <?php echo round($_SESSION['gastosEnvio'],2); ?> &euro;</h2>
+    <h1 class="total"><b>TOTAL: </b><?php $total = Session::getTotalPrice()+$_SESSION['gastosEnvio']; echo round($total,2); ?> &euro;</h1>
 
 </body>
 </html>

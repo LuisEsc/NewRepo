@@ -9,7 +9,6 @@ require_once '../model/OrderModel2.php';
 session_start();
 
 $order = $_SESSION['order'];
-echo $order;
 Ordermodel2::delete($order);
 
 include_once '../inc/f-header.php';

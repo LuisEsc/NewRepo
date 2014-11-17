@@ -129,7 +129,7 @@ require_once './inc/poblacionesEnvio.php';
                                             <br />
                                             <li>
                                                 <div>
-                                                    <button onclick="enviarFormulario();" type="button" id="btn_continuar"      class="button"  name="btn-continuar"     ><pre><span>Guardar cambios</span></pre></button>
+                                                    <button onclick="enviarFormulario();" type="button" id="btn_continuar"      class="button"  name="btn-continuar"    style="background-color: #8CC152" ><pre><span style="background-color: #8CC152">Guardar cambios</span></pre></button>
 
                                                 </div>
                                             </li>
