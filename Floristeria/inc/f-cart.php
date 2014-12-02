@@ -20,7 +20,7 @@ session_start();
                 <li class="cart-icon" > 
                     <a title="Ver mi carrito" href="/floristeria/carrito.html" ><i class="icon-shopping-cart" ></i></a>
 
-                    <span style="background-color: transparent; color: black;"><?php echo(Session::getItemsCount()); ?> Producto(s) - <?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span>
+                    <span style="background-color: transparent; color: black;"><?php echo(Session::getItemsCount()); ?> Producto(s) - <?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span>  
                     <ul class="cart-items clearfix">
 
                         <?php
@@ -45,7 +45,6 @@ session_start();
                                 </li>
 
     <?php endforeach; ?>
-
                             <li class="footer-cart-items">
                                 <div class="footer-totals"> <span style="background-color: transparent; color: black;">Total :</span> <span class="price" style="background-color: transparent; color: black;"><?php echo(Session::getTotalPrice()); ?>&nbsp;&euro;</span></div>
                                 <div class="footer-checkout">
@@ -58,6 +57,8 @@ session_start();
                 </li>
             </ul>
         </div>
+        Telefono de Contacto: 974 231 468 - 687 938 631     
+
         <form method="get"  id="searchbox">
             <p>
                 <input type="text" placeholder="Type and hit enter" value="" name="search_query">

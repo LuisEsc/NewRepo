@@ -59,12 +59,9 @@ FOREIGN KEY (id_producto) REFERENCES flower(id),
 FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE sliders(
-id INT(11) NOT NULL AUTO_INCREMENT,
-imagename VARCHAR(60),
-imagetype VARCHAR(20),
-binaryimg LONGBLOB,
-header TEXT,
-description VARCHAR(100),
+CREATE TABLE quienessomos(
+id int not null auto_increment,
+textoCorto TEXT,
+textoLargo TEXT,
 PRIMARY KEY (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
