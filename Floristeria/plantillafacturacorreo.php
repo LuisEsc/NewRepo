@@ -50,12 +50,12 @@ $gastosEnvio = $_SESSION['gastosEnvio'];
         </thead>
         <tbody>
             <?php
-            foreach ($cart as $flowers) {
+            foreach ($cart as $flores) {
                 echo "<tr>";
-                    echo "<td height='30'>" . $flowers['name'] . "</td>";
-                    echo "<td height='30'>" . $flowers['cant'] . "</td>";
-                    echo "<td height='30'>" . round($flowers['price'], 2) . " &euro;</td>";
-                    echo "<td height='30'>" . round($flowers['cant'] * $flowers['price'], 2) . " &euro;</td>";
+                    echo "<td height='30'>" . $flores['name'] . "</td>";
+                    echo "<td height='30'>" . $flores['cant'] . "</td>";
+                    echo "<td height='30'>" . round($flores['price'], 2) . " &euro;</td>";
+                    echo "<td height='30'>" . round($flores['cant'] * $flores['price'], 2) . " &euro;</td>";
                 echo "</tr>";
             }
             ?>

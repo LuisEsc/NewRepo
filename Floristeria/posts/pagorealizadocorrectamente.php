@@ -14,7 +14,6 @@ $order =  $_SESSION['order'];
 
 OrderModel2::setPagado($order);
 
-function enviarCorreo() {
 
     $mail = new PHPMailer();
 
@@ -41,8 +40,7 @@ function enviarCorreo() {
     } else {
         //echo "Mensaje enviado";
     }
-}
-enviarCorreo();
+
 
 include_once '../inc/f-header.php';
 include_once '../inc/f-cart.php';
